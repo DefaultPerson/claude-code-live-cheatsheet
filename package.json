@@ -1,0 +1,21 @@
+{
+  "name": "claude-code-live-cheatsheet",
+  "version": "1.0.0",
+  "description": "Self-updating visual cheatsheet for Claude Code",
+  "type": "module",
+  "scripts": {
+    "pipeline": "node src/main.js",
+    "pipeline:force": "node src/main.js --force",
+    "render": "node src/main.js --render-only",
+    "detect": "node src/detect.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "puppeteer": "^24.0.0",
+    "semver": "^7.7.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

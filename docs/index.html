@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Cheat Sheet</title>
+
+<meta name="description" content="Self-updating visual cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.">
+<meta property="og:title" content="Claude Code Cheat Sheet">
+<meta property="og:description" content="Auto-updated every 6h from the official CHANGELOG.">
+<meta property="og:image" content="cheatsheet.png">
+<link rel="alternate" type="application/rss+xml" title="Claude Code Cheatsheet Updates" href="feed.xml">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+  --bg:#fafafa; --card:#fff; --text:#222; --muted:#666; --key:#1a1a2e;
+  --border:#ddd; --group-c:#333; --hover:#f5f5f5;
+  --header-line:#e0e0e040;
+  --rc-bg:linear-gradient(to bottom,#fef0d5,#fce8c0); --rc-border:#e8d09a; --rc-text:#5c4813; --rc-dash:#c8a86080; --rc-close:#8a7030;
+  --kbd-color:#444; --kbd-bg:#f3f4f6; --kbd-border:#cfd3d8; --kbd-bottom:#bcc0c6;
+}
+@media(prefers-color-scheme:dark){
+  :root:not(.light){
+    --bg:#0d1117; --card:#161b22; --text:#c9d1d9; --muted:#8b949e; --key:#e2b714;
+    --border:#30363d; --group-c:#ccc; --hover:#1c2128;
+    --header-line:#ffffff15;
+    --rc-bg:linear-gradient(to bottom,#2a2518,#252010); --rc-border:#3a3520; --rc-text:#c0a050; --rc-dash:#70602880; --rc-close:#a09040;
+    --kbd-color:#d0d0d0; --kbd-bg:#2a2f38; --kbd-border:#3e444d; --kbd-bottom:#4a5058;
+  }
+}
+:root.dark{
+  --bg:#0d1117;--card:#161b22;--text:#c9d1d9;--muted:#8b949e;--key:#e2b714;
+  --border:#30363d;--group-c:#ccc;--hover:#1c2128;
+  --header-line:#ffffff15;
+  --rc-bg:linear-gradient(to bottom,#2a2518,#252010);--rc-border:#3a3520;--rc-text:#c0a050;--rc-dash:#70602880;--rc-close:#a09040;
+  --kbd-color:#d0d0d0;--kbd-bg:#2a2f38;--kbd-border:#3e444d;--kbd-bottom:#4a5058;
+}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:11.5px; line-height:1.35; color:var(--text); background:var(--bg);
+  padding:10px 14px;
+  max-width:1400px;margin:0 auto;
+}
+body.png-mode{--bg:#fafafa;--card:#fff;--text:#222;--muted:#666;--key:#1a1a2e;--border:#ddd;--group-c:#333;--hover:#f5f5f5;--header-line:#e0e0e040;--rc-bg:linear-gradient(to bottom,#fef0d5,#fce8c0);--rc-border:#e8d09a;--rc-text:#5c4813;--rc-dash:#c8a86080;--rc-close:#8a7030;--kbd-color:#444;--kbd-bg:#f3f4f6;--kbd-border:#cfd3d8;--kbd-bottom:#bcc0c6}
+
+/* ── HEADER ── */
+.header{display:flex;justify-content:space-between;align-items:center;padding:6px 2px 8px;margin-bottom:0;border-bottom:1px solid var(--header-line)}
+.header h1{font-size:20px;font-weight:800;letter-spacing:-0.3px;color:var(--text)}
+.header-right{text-align:right}
+.version-label{display:block;font-size:13px;font-weight:600;color:var(--text)}
+.date-label{display:block;font-size:11px;color:var(--muted)}
+
+/* ── RECENT CHANGES BAR ── */
+.recent-bar{
+  padding:6px 14px 8px;margin-top:6px;margin-bottom:8px;border-radius:5px;
+  background:var(--rc-bg);border:1px solid var(--rc-border);
+  font-family:'SFMono-Regular','Cascadia Code',Consolas,monospace;
+  font-size:10.5px;color:var(--rc-text);position:relative;
+}
+
+.rc-header{display:flex;align-items:center;gap:4px;margin-bottom:4px;padding-bottom:3px;border-bottom:1px dashed var(--rc-dash)}
+.rc-icon{font-size:12px}
+.rc-title{font-weight:700;font-size:11px}
+.rc-content{display:flex;flex-wrap:wrap;gap:1px 8px}
+.rc-item{white-space:nowrap}
+.rc-close{position:absolute;right:10px;top:8px;background:none;border:none;font-size:18px;cursor:pointer;color:var(--rc-close);font-weight:300}
+
+/* ── GRID ── */
+.grid{display:flex;gap:6px}
+.col{flex:1;display:flex;flex-direction:column;gap:6px}
+@media(max-width:1200px){.grid{flex-wrap:wrap}.col{flex:0 0 calc(50% - 3px)}}
+@media(max-width:700px){.col{flex:0 0 100%}}
+
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;overflow:hidden}
+.card-head{
+  padding:5px 10px;font-weight:700;font-size:10.5px;
+  text-transform:uppercase;letter-spacing:.7px;color:#fff;
+}
+.card-body{padding:2px 0}
+
+/* ── GROUPS & ITEMS ── */
+.group{margin-bottom:0}
+.group-label{padding:3px 10px 1px;font-weight:700;font-size:10px;color:var(--group-c);font-style:italic}
+
+.item{
+  display:flex;align-items:baseline;gap:8px;
+  padding:1.5px 10px;font-size:11px;line-height:1.45;
+  border-bottom:1px solid color-mix(in srgb,var(--border) 35%,transparent);
+}
+.item:hover{background:var(--hover)}
+.item[data-copy]{cursor:pointer}
+
+.item-key{
+  flex:0 0 auto;white-space:nowrap;
+  font-family:'SFMono-Regular','Cascadia Code','Fira Code',Consolas,monospace;
+  font-weight:600;font-size:10.5px;color:var(--key);
+}
+.item-val{flex:1;color:var(--muted);font-size:10.5px}
+
+/* ── KBD ── */
+kbd{
+  display:inline-block;padding:1px 5px;
+  font-family:inherit;font-size:10px;font-weight:600;line-height:1.5;
+  color:var(--kbd-color);background:var(--kbd-bg);
+  border:1px solid var(--kbd-border);border-bottom:2px solid var(--kbd-bottom);
+  border-radius:3px;
+}
+
+/* ── BADGE ── */
+.new{
+  display:inline-block;background:#e74c3c;color:#fff;
+  font-size:7.5px;font-weight:700;font-style:normal;
+  padding:1px 4px;border-radius:3px;margin-left:3px;
+  vertical-align:middle;text-transform:uppercase;
+}
+
+/* ── FOOTER ── */
+.footer{margin-top:14px;text-align:center;font-size:10.5px;color:var(--muted);padding:8px}
+.footer a{color:var(--key);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+
+/* ── THEME TOGGLE ── */
+.theme-toggle{
+  position:fixed;top:12px;right:12px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:8px;padding:6px 10px;cursor:pointer;font-size:14px;z-index:100;
+}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <h1>Claude Code Cheat Sheet</h1>
+  <div class="header-right">
+    <span class="version-label">Claude Code v2.1.92</span>
+    <span class="date-label">Last updated: April 7, 2026</span>
+  </div>
+</header>
+
+<div class="recent-bar">
+  <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
+  <div class="rc-content"><span class="rc-item">• Removed /vim and /tag commands</span>  <span class="rc-item">• /release-notes is now interactive version picker</span>  <span class="rc-item">• MCP result size override up to 500K chars</span>  <span class="rc-item">• Plugins can ship executables under bin/</span>  <span class="rc-item">• /powerup — interactive feature lessons</span>  <span class="rc-item">• PreToolUse defer decision for headless sessions</span>  <span class="rc-item">• MCP_CONNECTION_NONBLOCKING for -p mode</span></div>
+  <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
+</div>
+
+<div class="grid">
+<div class="col">
+      <section class="card" style="border-color:#c0392b40">
+        <div class="card-head" style="background:#c0392b">⌨️ KEYBOARD SHORTCUTS</div>
+        <div class="card-body" style="background:#c0392b18">
+
+            <div class="group">
+              <div class="group-label">General Controls</div>
+              
+              <div class="item" data-copy="Ctrl C">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>C</kbd></span>
+                <span class="item-val">Cancel input/generation</span>
+              </div>
+              <div class="item" data-copy="Ctrl D">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>D</kbd></span>
+                <span class="item-val">Exit session</span>
+              </div>
+              <div class="item" data-copy="Ctrl L">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>L</kbd></span>
+                <span class="item-val">Clear screen</span>
+              </div>
+              <div class="item" data-copy="Ctrl O">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>O</kbd></span>
+                <span class="item-val">Toggle verbose output</span>
+              </div>
+              <div class="item" data-copy="Ctrl R">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>R</kbd></span>
+                <span class="item-val">Reverse search history</span>
+              </div>
+              <div class="item" data-copy="Ctrl G">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>G</kbd></span>
+                <span class="item-val">Open prompt in editor</span>
+              </div>
+              <div class="item" data-copy="Ctrl+X Ctrl+E">
+                <span class="item-key"><kbd>Ctrl</kbd><kbd>X</kbd> <kbd>Ctrl</kbd><kbd>E</kbd></span>
+                <span class="item-val">Open in editor (alias)</span>
+              </div>
+              <div class="item" data-copy="Ctrl B">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>B</kbd></span>
+                <span class="item-val">Background running task</span>
+              </div>
+              <div class="item" data-copy="Ctrl T">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>T</kbd></span>
+                <span class="item-val">Toggle task list</span>
+              </div>
+              <div class="item" data-copy="Ctrl V">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>V</kbd></span>
+                <span class="item-val">Paste image</span>
+              </div>
+              <div class="item" data-copy="Ctrl+X Ctrl+K">
+                <span class="item-key"><kbd>Ctrl</kbd><kbd>X</kbd> <kbd>Ctrl</kbd><kbd>K</kbd></span>
+                <span class="item-val">Kill background agents</span>
+              </div>
+              <div class="item" data-copy="Esc Esc">
+                <span class="item-key"><kbd>Esc</kbd> <kbd>Esc</kbd></span>
+                <span class="item-val">Rewind / undo</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Mode Switching</div>
+              
+              <div class="item" data-copy="Shift Tab">
+                <span class="item-key"><kbd>Shift</kbd> <kbd>Tab</kbd></span>
+                <span class="item-val">Cycle permission modes</span>
+              </div>
+              <div class="item" data-copy="Alt P">
+                <span class="item-key"><kbd>Alt</kbd> <kbd>P</kbd></span>
+                <span class="item-val">Switch model</span>
+              </div>
+              <div class="item" data-copy="Alt T">
+                <span class="item-key"><kbd>Alt</kbd> <kbd>T</kbd></span>
+                <span class="item-val">Toggle thinking</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Input</div>
+              
+              <div class="item" data-copy="\ Enter">
+                <span class="item-key"><kbd>\</kbd> <kbd>Enter</kbd></span>
+                <span class="item-val">Newline (quick)</span>
+              </div>
+              <div class="item" data-copy="Ctrl J">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>J</kbd></span>
+                <span class="item-val">Newline (control seq)</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Prefixes</div>
+              
+              <div class="item" data-copy="/">
+                <span class="item-key"><kbd>/</kbd></span>
+                <span class="item-val">Slash command</span>
+              </div>
+              <div class="item" data-copy="!">
+                <span class="item-key"><kbd>!</kbd></span>
+                <span class="item-val">Direct bash</span>
+              </div>
+              <div class="item" data-copy="@">
+                <span class="item-key"><kbd>@</kbd></span>
+                <span class="item-val">File mention + autocomplete</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Session Picker</div>
+              
+              <div class="item" data-copy="↑↓">
+                <span class="item-key"><kbd>↑↓</kbd></span>
+                <span class="item-val">Navigate</span>
+              </div>
+              <div class="item" data-copy="←→">
+                <span class="item-key"><kbd>←→</kbd></span>
+                <span class="item-val">Expand/collapse</span>
+              </div>
+              <div class="item" data-copy="P">
+                <span class="item-key"><kbd>P</kbd></span>
+                <span class="item-val">Preview</span>
+              </div>
+              <div class="item" data-copy="R">
+                <span class="item-key"><kbd>R</kbd></span>
+                <span class="item-val">Rename</span>
+              </div>
+              <div class="item" data-copy="/">
+                <span class="item-key"><kbd>/</kbd></span>
+                <span class="item-val">Search</span>
+              </div>
+              <div class="item" data-copy="A">
+                <span class="item-key"><kbd>A</kbd></span>
+                <span class="item-val">All projects</span>
+              </div>
+              <div class="item" data-copy="B">
+                <span class="item-key"><kbd>B</kbd></span>
+                <span class="item-val">Current branch</span>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="card" style="border-color:#8e44ad40">
+        <div class="card-head" style="background:#8e44ad">🔌 MCP SERVERS</div>
+        <div class="card-body" style="background:#8e44ad18">
+
+            <div class="group">
+              <div class="group-label">Add Servers</div>
+              
+              <div class="item" data-copy="--transport http">
+                <span class="item-key">--transport http</span>
+                <span class="item-val">Remote HTTP (recommended)</span>
+              </div>
+              <div class="item" data-copy="--transport stdio">
+                <span class="item-key">--transport stdio</span>
+                <span class="item-val">Local process</span>
+              </div>
+              <div class="item" data-copy="--transport sse">
+                <span class="item-key">--transport sse</span>
+                <span class="item-val">Remote SSE</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Scopes</div>
+              
+              <div class="item" data-copy="Local">
+                <span class="item-key">Local</span>
+                <span class="item-val">settings.local.json (you only)</span>
+              </div>
+              <div class="item" data-copy="Project">
+                <span class="item-key">Project</span>
+                <span class="item-val">.mcp.json (shared/VCS)</span>
+              </div>
+              <div class="item" data-copy="User">
+                <span class="item-key">User</span>
+                <span class="item-val">~/.claude.json (global)</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Manage</div>
+              
+              <div class="item" data-copy="/mcp">
+                <span class="item-key">/mcp</span>
+                <span class="item-val">Interactive UI</span>
+              </div>
+              <div class="item" data-copy="claude mcp list">
+                <span class="item-key">claude mcp list</span>
+                <span class="item-val">List all servers</span>
+              </div>
+              <div class="item" data-copy="claude mcp serve">
+                <span class="item-key">claude mcp serve</span>
+                <span class="item-val">CC as MCP server</span>
+              </div>
+              <div class="item" data-copy="Elicitation">
+                <span class="item-key">Elicitation</span>
+                <span class="item-val">Servers request input mid-task</span>
+              </div>
+              <div class="item" data-copy="_meta maxResultSizeChars">
+                <span class="item-key">_meta maxResultSizeChars</span>
+                <span class="item-val">Override result size up to 500K <b class="new">NEW</b></span>
+              </div>
+            </div>
+        </div>
+      </section></div><div class="col">
+      <section class="card" style="border-color:#e67e2240">
+        <div class="card-head" style="background:#e67e22">⚡ SLASH COMMANDS</div>
+        <div class="card-body" style="background:#e67e2218">
+
+            <div class="group">
+              <div class="group-label">Session</div>
+              
+              <div class="item" data-copy="/clear">
+                <span class="item-key">/clear</span>
+                <span class="item-val">Clear conversation</span>
+              </div>
+              <div class="item" data-copy="/compact [focus]">
+                <span class="item-key">/compact [focus]</span>
+                <span class="item-val">Compact context</span>
+              </div>
+              <div class="item" data-copy="/resume">
+                <span class="item-key">/resume</span>
+                <span class="item-val">Resume/switch session</span>
+              </div>
+              <div class="item" data-copy="/rename [name]">
+                <span class="item-key">/rename [name]</span>
+                <span class="item-val">Name current session</span>
+              </div>
+              <div class="item" data-copy="/branch [name]">
+                <span class="item-key">/branch [name]</span>
+                <span class="item-val">Branch conversation (/fork alias)</span>
+              </div>
+              <div class="item" data-copy="/cost">
+                <span class="item-key">/cost</span>
+                <span class="item-val">Token usage stats</span>
+              </div>
+              <div class="item" data-copy="/context">
+                <span class="item-key">/context</span>
+                <span class="item-val">Visualize context (grid)</span>
+              </div>
+              <div class="item" data-copy="/diff">
+                <span class="item-key">/diff</span>
+                <span class="item-val">Interactive diff viewer</span>
+              </div>
+              <div class="item" data-copy="/copy [N]">
+                <span class="item-key">/copy [N]</span>
+                <span class="item-val">Copy last (or Nth) response</span>
+              </div>
+              <div class="item" data-copy="/rewind">
+                <span class="item-key">/rewind</span>
+                <span class="item-val">Rewind conv / code checkpoint</span>
+              </div>
+              <div class="item" data-copy="/export">
+                <span class="item-key">/export</span>
+                <span class="item-val">Export conversation</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Config</div>
+              
+              <div class="item" data-copy="/config">
+                <span class="item-key">/config</span>
+                <span class="item-val">Open settings</span>
+              </div>
+              <div class="item" data-copy="/model [model]">
+                <span class="item-key">/model [model]</span>
+                <span class="item-val">Switch model (←→ effort)</span>
+              </div>
+              <div class="item" data-copy="/fast [on|off]">
+                <span class="item-key">/fast [on|off]</span>
+                <span class="item-val">Toggle fast mode</span>
+              </div>
+              <div class="item" data-copy="/theme">
+                <span class="item-key">/theme</span>
+                <span class="item-val">Change color theme</span>
+              </div>
+              <div class="item" data-copy="/permissions">
+                <span class="item-key">/permissions</span>
+                <span class="item-val">View/update permissions</span>
+              </div>
+              <div class="item" data-copy="/effort [level]">
+                <span class="item-key">/effort [level]</span>
+                <span class="item-val">Set effort (low/med/high/max/auto)</span>
+              </div>
+              <div class="item" data-copy="/color [color]">
+                <span class="item-key">/color [color]</span>
+                <span class="item-val">Set prompt-bar color</span>
+              </div>
+              <div class="item" data-copy="/keybindings">
+                <span class="item-key">/keybindings</span>
+                <span class="item-val">Customize keyboard shortcuts</span>
+              </div>
+              <div class="item" data-copy="/terminal-setup">
+                <span class="item-key">/terminal-setup</span>
+                <span class="item-val">Configure terminal keybindings</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Tools</div>
+              
+              <div class="item" data-copy="/init">
+                <span class="item-key">/init</span>
+                <span class="item-val">Create CLAUDE.md</span>
+              </div>
+              <div class="item" data-copy="/memory">
+                <span class="item-key">/memory</span>
+                <span class="item-val">Edit CLAUDE.md files</span>
+              </div>
+              <div class="item" data-copy="/mcp">
+                <span class="item-key">/mcp</span>
+                <span class="item-val">Manage MCP servers</span>
+              </div>
+              <div class="item" data-copy="/hooks">
+                <span class="item-key">/hooks</span>
+                <span class="item-val">Manage hooks</span>
+              </div>
+              <div class="item" data-copy="/skills">
+                <span class="item-key">/skills</span>
+                <span class="item-val">List available skills</span>
+              </div>
+              <div class="item" data-copy="/agents">
+                <span class="item-key">/agents</span>
+                <span class="item-val">Manage agents</span>
+              </div>
+              <div class="item" data-copy="/chrome">
+                <span class="item-key">/chrome</span>
+                <span class="item-val">Chrome integration</span>
+              </div>
+              <div class="item" data-copy="/reload-plugins">
+                <span class="item-key">/reload-plugins</span>
+                <span class="item-val">Hot-reload plugins</span>
+              </div>
+              <div class="item" data-copy="/add-dir &lt;path&gt;">
+                <span class="item-key">/add-dir &lt;path&gt;</span>
+                <span class="item-val">Add working directory</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Special</div>
+              
+              <div class="item" data-copy="/btw &lt;question&gt;">
+                <span class="item-key">/btw &lt;question&gt;</span>
+                <span class="item-val">Side question (no context)</span>
+              </div>
+              <div class="item" data-copy="/plan [desc]">
+                <span class="item-key">/plan [desc]</span>
+                <span class="item-val">Plan mode (+ auto-start)</span>
+              </div>
+              <div class="item" data-copy="/loop [interval]">
+                <span class="item-key">/loop [interval]</span>
+                <span class="item-val">Schedule recurring task</span>
+              </div>
+              <div class="item" data-copy="/voice">
+                <span class="item-key">/voice</span>
+                <span class="item-val">Push-to-talk voice (20 langs)</span>
+              </div>
+              <div class="item" data-copy="/doctor">
+                <span class="item-key">/doctor</span>
+                <span class="item-val">Diagnose installation</span>
+              </div>
+              <div class="item" data-copy="/pr-comments [PR]">
+                <span class="item-key">/pr-comments [PR]</span>
+                <span class="item-val">Fetch GitHub PR comments</span>
+              </div>
+              <div class="item" data-copy="/stats">
+                <span class="item-key">/stats</span>
+                <span class="item-val">Usage streaks &amp; prefs</span>
+              </div>
+              <div class="item" data-copy="/insights">
+                <span class="item-key">/insights</span>
+                <span class="item-val">Analyze sessions report</span>
+              </div>
+              <div class="item" data-copy="/desktop">
+                <span class="item-key">/desktop</span>
+                <span class="item-val">Continue in Desktop app</span>
+              </div>
+              <div class="item" data-copy="/remote-control">
+                <span class="item-key">/remote-control</span>
+                <span class="item-val">Bridge to claude.ai/code (/rc)</span>
+              </div>
+              <div class="item" data-copy="/usage">
+                <span class="item-key">/usage</span>
+                <span class="item-val">Plan limits &amp; rate status</span>
+              </div>
+              <div class="item" data-copy="/schedule">
+                <span class="item-key">/schedule</span>
+                <span class="item-val">Cloud scheduled tasks</span>
+              </div>
+              <div class="item" data-copy="/security-review">
+                <span class="item-key">/security-review</span>
+                <span class="item-val">Security analysis of changes</span>
+              </div>
+              <div class="item" data-copy="/release-notes">
+                <span class="item-key">/release-notes</span>
+                <span class="item-val">Interactive version picker <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="/feedback">
+                <span class="item-key">/feedback</span>
+                <span class="item-val">Submit feedback (alias: /bug)</span>
+              </div>
+              <div class="item" data-copy="/powerup">
+                <span class="item-key">/powerup</span>
+                <span class="item-val">Interactive lessons + animated demos <b class="new">NEW</b></span>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="card" style="border-color:#c0392b40">
+        <div class="card-head" style="background:#c0392b">📁 MEMORY &AMP; FILES</div>
+        <div class="card-body" style="background:#c0392b18">
+
+            <div class="group">
+              <div class="group-label">CLAUDE.md Locations</div>
+              
+              <div class="item" data-copy="./CLAUDE.md">
+                <span class="item-key">./CLAUDE.md</span>
+                <span class="item-val">Project (team-shared)</span>
+              </div>
+              <div class="item" data-copy="~/.claude/CLAUDE.md">
+                <span class="item-key">~/.claude/CLAUDE.md</span>
+                <span class="item-val">Personal (all projects)</span>
+              </div>
+              <div class="item" data-copy="/etc/claude-code/">
+                <span class="item-key">/etc/claude-code/</span>
+                <span class="item-val">Managed (org-wide)</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Rules &amp; Import</div>
+              
+              <div class="item" data-copy=".claude/rules/*.md">
+                <span class="item-key">.claude/rules/*.md</span>
+                <span class="item-val">Project rules</span>
+              </div>
+              <div class="item" data-copy="~/.claude/rules/*.md">
+                <span class="item-key">~/.claude/rules/*.md</span>
+                <span class="item-val">User rules</span>
+              </div>
+              <div class="item" data-copy="paths: frontmatter">
+                <span class="item-key">paths: frontmatter</span>
+                <span class="item-val">Path-specific rules</span>
+              </div>
+              <div class="item" data-copy="@path/to/file">
+                <span class="item-key">@path/to/file</span>
+                <span class="item-val">Import in CLAUDE.md</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Auto Memory</div>
+              
+              <div class="item" data-copy="~/.claude/projects/&lt;proj&gt;/memory/">
+                <span class="item-key">~/.claude/projects/&lt;proj&gt;/memory/</span>
+                <span class="item-val">Auto-loaded per project</span>
+              </div>
+              <div class="item" data-copy="MEMORY.md">
+                <span class="item-key">MEMORY.md</span>
+                <span class="item-val">Memory index + topic files</span>
+              </div>
+            </div>
+        </div>
+      </section></div><div class="col">
+      <section class="card" style="border-color:#27ae6040">
+        <div class="card-head" style="background:#27ae60">💡 WORKFLOWS &AMP; TIPS</div>
+        <div class="card-body" style="background:#27ae6018">
+
+            <div class="group">
+              <div class="group-label">Plan Mode</div>
+              
+              <div class="item" data-copy="Shift Tab">
+                <span class="item-key"><kbd>Shift</kbd> <kbd>Tab</kbd></span>
+                <span class="item-val">Normal → Auto-Accept → Plan</span>
+              </div>
+              <div class="item" data-copy="--permission-mode plan">
+                <span class="item-key">--permission-mode plan</span>
+                <span class="item-val">Start in plan mode</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Thinking &amp; Effort</div>
+              
+              <div class="item" data-copy="Alt T">
+                <span class="item-key"><kbd>Alt</kbd> <kbd>T</kbd></span>
+                <span class="item-val">Toggle thinking on/off</span>
+              </div>
+              <div class="item" data-copy="&quot;ultrathink&quot;">
+                <span class="item-key">&quot;ultrathink&quot;</span>
+                <span class="item-val">Max effort for turn</span>
+              </div>
+              <div class="item" data-copy="Ctrl O">
+                <span class="item-key"><kbd>Ctrl</kbd> <kbd>O</kbd></span>
+                <span class="item-val">See thinking (verbose)</span>
+              </div>
+              <div class="item" data-copy="/effort">
+                <span class="item-key">/effort</span>
+                <span class="item-val">○ low · ◐ med · ● high</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Git Worktrees</div>
+              
+              <div class="item" data-copy="--worktree name">
+                <span class="item-key">--worktree name</span>
+                <span class="item-val">Isolated branch per feature</span>
+              </div>
+              <div class="item" data-copy="isolation: worktree">
+                <span class="item-key">isolation: worktree</span>
+                <span class="item-val">Agent in own worktree</span>
+              </div>
+              <div class="item" data-copy="sparsePaths">
+                <span class="item-key">sparsePaths</span>
+                <span class="item-val">Checkout only needed dirs</span>
+              </div>
+              <div class="item" data-copy="/batch">
+                <span class="item-key">/batch</span>
+                <span class="item-val">Auto-creates worktrees</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Voice Mode</div>
+              
+              <div class="item" data-copy="/voice">
+                <span class="item-key">/voice</span>
+                <span class="item-val">Enable push-to-talk</span>
+              </div>
+              <div class="item" data-copy="Space (hold)">
+                <span class="item-key"><kbd>Space</kbd> <kbd>(hold)</kbd></span>
+                <span class="item-val">Record, release to send</span>
+              </div>
+              <div class="item" data-copy="20 languages">
+                <span class="item-key">20 languages</span>
+                <span class="item-val">EN, ES, FR, DE, CZ, PL…</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Context Management</div>
+              
+              <div class="item" data-copy="/context">
+                <span class="item-key">/context</span>
+                <span class="item-val">Usage + optimization tips</span>
+              </div>
+              <div class="item" data-copy="/compact [focus]">
+                <span class="item-key">/compact [focus]</span>
+                <span class="item-val">Compress with focus</span>
+              </div>
+              <div class="item" data-copy="Auto-compact">
+                <span class="item-key">Auto-compact</span>
+                <span class="item-val">~95% capacity</span>
+              </div>
+              <div class="item" data-copy="1M context">
+                <span class="item-key">1M context</span>
+                <span class="item-val">Opus 4.6 (Max/Team/Ent)</span>
+              </div>
+              <div class="item" data-copy="CLAUDE.md">
+                <span class="item-key">CLAUDE.md</span>
+                <span class="item-val">Survives compaction!</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Session Power Moves</div>
+              
+              <div class="item" data-copy="claude -c">
+                <span class="item-key">claude -c</span>
+                <span class="item-val">Continue last conv</span>
+              </div>
+              <div class="item" data-copy="claude -r &quot;name&quot;">
+                <span class="item-key">claude -r &quot;name&quot;</span>
+                <span class="item-val">Resume by name</span>
+              </div>
+              <div class="item" data-copy="/btw question">
+                <span class="item-key">/btw question</span>
+                <span class="item-val">Side Q, no context cost</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">SDK / Headless</div>
+              
+              <div class="item" data-copy="claude -p &quot;query&quot;">
+                <span class="item-key">claude -p &quot;query&quot;</span>
+                <span class="item-val">Non-interactive</span>
+              </div>
+              <div class="item" data-copy="--output-format json">
+                <span class="item-key">--output-format json</span>
+                <span class="item-val">Structured output</span>
+              </div>
+              <div class="item" data-copy="--max-budget-usd 5">
+                <span class="item-key">--max-budget-usd 5</span>
+                <span class="item-val">Cost cap</span>
+              </div>
+              <div class="item" data-copy="cat file | claude -p">
+                <span class="item-key">cat file | claude -p</span>
+                <span class="item-val">Pipe input</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Scheduling &amp; Remote</div>
+              
+              <div class="item" data-copy="/loop 5m msg">
+                <span class="item-key">/loop 5m msg</span>
+                <span class="item-val">Recurring task</span>
+              </div>
+              <div class="item" data-copy="/rc">
+                <span class="item-key">/rc</span>
+                <span class="item-val">Remote control</span>
+              </div>
+              <div class="item" data-copy="--remote">
+                <span class="item-key">--remote</span>
+                <span class="item-val">Web session on claude.ai</span>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="card" style="border-color:#2c3e5040">
+        <div class="card-head" style="background:#2c3e50">🖥️ CLI &AMP; FLAGS</div>
+        <div class="card-body" style="background:#2c3e5018">
+
+            <div class="group">
+              <div class="group-label">Core Commands</div>
+              
+              <div class="item" data-copy="claude">
+                <span class="item-key">claude</span>
+                <span class="item-val">Interactive</span>
+              </div>
+              <div class="item" data-copy="claude &quot;q&quot;">
+                <span class="item-key">claude &quot;q&quot;</span>
+                <span class="item-val">With prompt</span>
+              </div>
+              <div class="item" data-copy="claude -p &quot;q&quot;">
+                <span class="item-key">claude -p &quot;q&quot;</span>
+                <span class="item-val">Headless</span>
+              </div>
+              <div class="item" data-copy="claude -c">
+                <span class="item-key">claude -c</span>
+                <span class="item-val">Continue last</span>
+              </div>
+              <div class="item" data-copy="claude -r &quot;n&quot;">
+                <span class="item-key">claude -r &quot;n&quot;</span>
+                <span class="item-val">Resume</span>
+              </div>
+              <div class="item" data-copy="claude update">
+                <span class="item-key">claude update</span>
+                <span class="item-val">Update</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Key Flags</div>
+              
+              <div class="item" data-copy="--model">
+                <span class="item-key">--model</span>
+                <span class="item-val">Set model</span>
+              </div>
+              <div class="item" data-copy="-w">
+                <span class="item-key">-w</span>
+                <span class="item-val">Git worktree</span>
+              </div>
+              <div class="item" data-copy="-n / --name">
+                <span class="item-key">-n / --name</span>
+                <span class="item-val">Session name</span>
+              </div>
+              <div class="item" data-copy="--add-dir">
+                <span class="item-key">--add-dir</span>
+                <span class="item-val">Add dir</span>
+              </div>
+              <div class="item" data-copy="--agent">
+                <span class="item-key">--agent</span>
+                <span class="item-val">Use agent</span>
+              </div>
+              <div class="item" data-copy="--allowedTools">
+                <span class="item-key">--allowedTools</span>
+                <span class="item-val">Pre-approve</span>
+              </div>
+              <div class="item" data-copy="--output-format">
+                <span class="item-key">--output-format</span>
+                <span class="item-val">json/stream</span>
+              </div>
+              <div class="item" data-copy="--json-schema">
+                <span class="item-key">--json-schema</span>
+                <span class="item-val">Structured</span>
+              </div>
+              <div class="item" data-copy="--max-turns">
+                <span class="item-key">--max-turns</span>
+                <span class="item-val">Limit turns</span>
+              </div>
+              <div class="item" data-copy="--max-budget-usd">
+                <span class="item-key">--max-budget-usd</span>
+                <span class="item-val">Cost cap</span>
+              </div>
+              <div class="item" data-copy="--console">
+                <span class="item-key">--console</span>
+                <span class="item-val">Auth via Anthropic Console</span>
+              </div>
+              <div class="item" data-copy="--verbose">
+                <span class="item-key">--verbose</span>
+                <span class="item-val">Verbose</span>
+              </div>
+              <div class="item" data-copy="--bare">
+                <span class="item-key">--bare</span>
+                <span class="item-val">Minimal headless (no hooks/LSP)</span>
+              </div>
+              <div class="item" data-copy="--channels">
+                <span class="item-key">--channels</span>
+                <span class="item-val">Permission relay / MCP push</span>
+              </div>
+              <div class="item" data-copy="--remote">
+                <span class="item-key">--remote</span>
+                <span class="item-val">Web session</span>
+              </div>
+              <div class="item" data-copy="--effort">
+                <span class="item-key">--effort</span>
+                <span class="item-val">low/med/high/max</span>
+              </div>
+              <div class="item" data-copy="--permission-mode">
+                <span class="item-key">--permission-mode</span>
+                <span class="item-val">plan/default/…</span>
+              </div>
+              <div class="item" data-copy="--dangerously-skip-permissions">
+                <span class="item-key">--dangerously-skip-permissions</span>
+                <span class="item-val">Skip all prompts ⚠️</span>
+              </div>
+              <div class="item" data-copy="--chrome">
+                <span class="item-key">--chrome</span>
+                <span class="item-val">Chrome</span>
+              </div>
+            </div>
+        </div>
+      </section></div><div class="col">
+      <section class="card" style="border-color:#2980b940">
+        <div class="card-head" style="background:#2980b9">🤖 SKILLS &AMP; AGENTS</div>
+        <div class="card-body" style="background:#2980b918">
+
+            <div class="group">
+              <div class="group-label">Built-in Skills</div>
+              
+              <div class="item" data-copy="/simplify">
+                <span class="item-key">/simplify</span>
+                <span class="item-val">Code review (3 parallel agents)</span>
+              </div>
+              <div class="item" data-copy="/batch">
+                <span class="item-key">/batch</span>
+                <span class="item-val">Large parallel changes (5-30 worktrees)</span>
+              </div>
+              <div class="item" data-copy="/debug [desc]">
+                <span class="item-key">/debug [desc]</span>
+                <span class="item-val">Troubleshoot from debug log</span>
+              </div>
+              <div class="item" data-copy="/loop [interval]">
+                <span class="item-key">/loop [interval]</span>
+                <span class="item-val">Recurring scheduled task</span>
+              </div>
+              <div class="item" data-copy="/claude-api">
+                <span class="item-key">/claude-api</span>
+                <span class="item-val">Load API + SDK reference</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Custom Skill Locations</div>
+              
+              <div class="item" data-copy=".claude/skills/&lt;name&gt;/">
+                <span class="item-key">.claude/skills/&lt;name&gt;/</span>
+                <span class="item-val">Project skills</span>
+              </div>
+              <div class="item" data-copy="~/.claude/skills/&lt;name&gt;/">
+                <span class="item-key">~/.claude/skills/&lt;name&gt;/</span>
+                <span class="item-val">Personal skills</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Skill Frontmatter</div>
+              
+              <div class="item" data-copy="description">
+                <span class="item-key">description</span>
+                <span class="item-val">Auto-invocation trigger</span>
+              </div>
+              <div class="item" data-copy="allowed-tools">
+                <span class="item-key">allowed-tools</span>
+                <span class="item-val">Skip permission prompts</span>
+              </div>
+              <div class="item" data-copy="model">
+                <span class="item-key">model</span>
+                <span class="item-val">Override model for skill</span>
+              </div>
+              <div class="item" data-copy="effort">
+                <span class="item-key">effort</span>
+                <span class="item-val">Override effort level</span>
+              </div>
+              <div class="item" data-copy="context: fork">
+                <span class="item-key">context: fork</span>
+                <span class="item-val">Run in subagent</span>
+              </div>
+              <div class="item" data-copy="$ARGUMENTS">
+                <span class="item-key">$ARGUMENTS</span>
+                <span class="item-val">User input placeholder</span>
+              </div>
+              <div class="item" data-copy="${CLAUDE_SKILL_DIR}">
+                <span class="item-key">${CLAUDE_SKILL_DIR}</span>
+                <span class="item-val">Skill's own directory</span>
+              </div>
+              <div class="item" data-copy="!`cmd`">
+                <span class="item-key">!`cmd`</span>
+                <span class="item-val">Dynamic context injection</span>
+              </div>
+              <div class="item" data-copy="bin/">
+                <span class="item-key">bin/</span>
+                <span class="item-val">Plugin ships executables <b class="new">NEW</b></span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Built-in Agents</div>
+              
+              <div class="item" data-copy="Explore">
+                <span class="item-key">Explore</span>
+                <span class="item-val">Fast read-only (Haiku)</span>
+              </div>
+              <div class="item" data-copy="Plan">
+                <span class="item-key">Plan</span>
+                <span class="item-val">Research for plan mode</span>
+              </div>
+              <div class="item" data-copy="General">
+                <span class="item-key">General</span>
+                <span class="item-val">Full tools, complex tasks</span>
+              </div>
+              <div class="item" data-copy="Bash">
+                <span class="item-key">Bash</span>
+                <span class="item-val">Terminal separate context</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Agent Frontmatter</div>
+              
+              <div class="item" data-copy="permissionMode">
+                <span class="item-key">permissionMode</span>
+                <span class="item-val">default/acceptEdits/plan/dontAsk/bypass</span>
+              </div>
+              <div class="item" data-copy="isolation: worktree">
+                <span class="item-key">isolation: worktree</span>
+                <span class="item-val">Run in git worktree</span>
+              </div>
+              <div class="item" data-copy="memory: user|project">
+                <span class="item-key">memory: user|project</span>
+                <span class="item-val">Persistent memory</span>
+              </div>
+              <div class="item" data-copy="background: true">
+                <span class="item-key">background: true</span>
+                <span class="item-val">Background task</span>
+              </div>
+              <div class="item" data-copy="maxTurns">
+                <span class="item-key">maxTurns</span>
+                <span class="item-val">Limit agentic turns</span>
+              </div>
+              <div class="item" data-copy="SendMessage">
+                <span class="item-key">SendMessage</span>
+                <span class="item-val">Resume agents (replaces resume)</span>
+              </div>
+              <div class="item" data-copy="initialPrompt">
+                <span class="item-key">initialPrompt</span>
+                <span class="item-val">Auto-submit first turn</span>
+              </div>
+            </div>
+        </div>
+      </section>
+      <section class="card" style="border-color:#f39c1240">
+        <div class="card-head" style="background:#f39c12">⚙️ CONFIG &AMP; ENV</div>
+        <div class="card-body" style="background:#f39c1218">
+
+            <div class="group">
+              <div class="group-label">Config Files</div>
+              
+              <div class="item" data-copy="~/.claude/settings.json">
+                <span class="item-key">~/.claude/settings.json</span>
+                <span class="item-val">User settings</span>
+              </div>
+              <div class="item" data-copy=".claude/settings.json">
+                <span class="item-key">.claude/settings.json</span>
+                <span class="item-val">Project (shared)</span>
+              </div>
+              <div class="item" data-copy=".claude/settings.local.json">
+                <span class="item-key">.claude/settings.local.json</span>
+                <span class="item-val">Local only</span>
+              </div>
+              <div class="item" data-copy="~/.claude.json">
+                <span class="item-key">~/.claude.json</span>
+                <span class="item-val">OAuth, MCP, state</span>
+              </div>
+              <div class="item" data-copy=".mcp.json">
+                <span class="item-key">.mcp.json</span>
+                <span class="item-val">Project MCP servers</span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Key Settings</div>
+              
+              <div class="item" data-copy="modelOverrides">
+                <span class="item-key">modelOverrides</span>
+                <span class="item-val">Map model picker → custom IDs</span>
+              </div>
+              <div class="item" data-copy="autoMemoryDirectory">
+                <span class="item-key">autoMemoryDirectory</span>
+                <span class="item-val">Custom memory dir</span>
+              </div>
+              <div class="item" data-copy="worktree.sparsePaths">
+                <span class="item-key">worktree.sparsePaths</span>
+                <span class="item-val">Sparse checkout dirs</span>
+              </div>
+              <div class="item" data-copy="disableSkillShellExecution">
+                <span class="item-key">disableSkillShellExecution</span>
+                <span class="item-val">Disable shell exec in skills/commands <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="showThinkingSummaries">
+                <span class="item-key">showThinkingSummaries</span>
+                <span class="item-val">Restore thinking summaries in sessions <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="forceRemoteSettingsRefresh">
+                <span class="item-key">forceRemoteSettingsRefresh</span>
+                <span class="item-val">Fail-closed remote settings fetch <b class="new">NEW</b></span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Key Env Vars</div>
+              
+              <div class="item" data-copy="ANTHROPIC_API_KEY">
+                <span class="item-key">ANTHROPIC_API_KEY</span>
+                <span class="item-val">API key</span>
+              </div>
+              <div class="item" data-copy="ANTHROPIC_MODEL">
+                <span class="item-key">ANTHROPIC_MODEL</span>
+                <span class="item-val">Default model</span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_EFFORT_LEVEL">
+                <span class="item-key">CLAUDE_CODE_EFFORT_LEVEL</span>
+                <span class="item-val">low/med/high</span>
+              </div>
+              <div class="item" data-copy="MAX_THINKING_TOKENS">
+                <span class="item-key">MAX_THINKING_TOKENS</span>
+                <span class="item-val">0=off</span>
+              </div>
+              <div class="item" data-copy="ANTHROPIC_CUSTOM_MODEL_OPTION">
+                <span class="item-key">ANTHROPIC_CUSTOM_MODEL_OPTION</span>
+                <span class="item-val">Custom /model entry</span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_PLUGIN_SEED_DIR">
+                <span class="item-key">CLAUDE_CODE_PLUGIN_SEED_DIR</span>
+                <span class="item-val">Multiple plugin seed dirs</span>
+              </div>
+              <div class="item" data-copy="CLAUDECODE">
+                <span class="item-key">CLAUDECODE</span>
+                <span class="item-val">Detect CC shell (=1)</span>
+              </div>
+              <div class="item" data-copy="IS_DEMO">
+                <span class="item-key">IS_DEMO</span>
+                <span class="item-val">Demo mode (hide email/org)</span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_NO_FLICKER">
+                <span class="item-key">CLAUDE_CODE_NO_FLICKER</span>
+                <span class="item-val">Flicker-free alt-screen rendering</span>
+              </div>
+              <div class="item" data-copy="MCP_CONNECTION_NONBLOCKING">
+                <span class="item-key">MCP_CONNECTION_NONBLOCKING</span>
+                <span class="item-val">Skip MCP wait in -p mode <b class="new">NEW</b></span>
+              </div>
+            </div>
+            <div class="group">
+              <div class="group-label">Hooks</div>
+              
+              <div class="item" data-copy="PreToolUse">
+                <span class="item-key">PreToolUse</span>
+                <span class="item-val">Before tool executes</span>
+              </div>
+              <div class="item" data-copy="PostToolUse">
+                <span class="item-key">PostToolUse</span>
+                <span class="item-val">After tool executes</span>
+              </div>
+              <div class="item" data-copy="Notification">
+                <span class="item-key">Notification</span>
+                <span class="item-val">When Claude sends notification</span>
+              </div>
+              <div class="item" data-copy="Stop">
+                <span class="item-key">Stop</span>
+                <span class="item-val">When Claude finishes response</span>
+              </div>
+              <div class="item" data-copy="SubagentStop">
+                <span class="item-key">SubagentStop</span>
+                <span class="item-val">When subagent finishes</span>
+              </div>
+              <div class="item" data-copy="CwdChanged">
+                <span class="item-key">CwdChanged</span>
+                <span class="item-val">Working directory changed</span>
+              </div>
+              <div class="item" data-copy="FileChanged">
+                <span class="item-key">FileChanged</span>
+                <span class="item-val">File changed on disk</span>
+              </div>
+              <div class="item" data-copy="PermissionDenied">
+                <span class="item-key">PermissionDenied</span>
+                <span class="item-val">After auto mode denials</span>
+              </div>
+              <div class="item" data-copy="TaskCreated">
+                <span class="item-key">TaskCreated</span>
+                <span class="item-val">When task created via TaskCreate</span>
+              </div>
+              <div class="item" data-copy="&quot;defer&quot; decision">
+                <span class="item-key">&quot;defer&quot; decision</span>
+                <span class="item-val">Pause tool, resume with -p --resume <b class="new">NEW</b></span>
+              </div>
+            </div>
+        </div>
+      </section></div>
+</div>
+
+
+<footer class="footer">
+  <p>Auto-generated from <a href="https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md">CHANGELOG.md</a> every 6h · <a href="changelog.html">Changelog</a> · <a href="feed.xml">RSS</a></p>
+</footer>
+
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">🌓</button>
+<script>
+(function(){
+  const r=document.documentElement,b=document.getElementById('themeToggle'),s=localStorage.getItem('theme');
+  if(s)r.classList.add(s);
+  b.addEventListener('click',()=>{
+    if(r.classList.contains('dark')){r.classList.remove('dark');r.classList.add('light');localStorage.setItem('theme','light');b.textContent='☀️'}
+    else if(r.classList.contains('light')){r.classList.remove('light');r.classList.add('dark');localStorage.setItem('theme','dark');b.textContent='🌙'}
+    else{r.classList.add('dark');localStorage.setItem('theme','dark');b.textContent='🌙'}
+  });
+  if(s==='dark')b.textContent='🌙';else if(s==='light')b.textContent='☀️';
+})();
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-copy]');if(!t)return;
+  navigator.clipboard.writeText(t.dataset.copy).then(function(){
+    var k=t.querySelector('.item-key'),o=k.innerHTML;
+    k.innerHTML='<span style="color:#27ae60">✓ copied</span>';
+    setTimeout(function(){k.innerHTML=o},700);
+  });
+});
+</script>
+
+
+</body>
+</html>
