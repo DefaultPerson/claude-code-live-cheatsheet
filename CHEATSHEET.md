@@ -1,16 +1,16 @@
-# Claude Code Cheatsheet v2.1.94
+# Claude Code Cheatsheet v2.1.96
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/claude-code-live-cheatsheet/)
 
 ## Recent Changes
 
+- Fixed Bedrock auth regression with AWS_BEARER_TOKEN_BEDROCK *(v2.1.96)*
 - Default effort level changed to high for API/Bedrock/Enterprise users *(v2.1.94)*
 - Amazon Bedrock support via Mantle (CLAUDE_CODE_USE_MANTLE=1) *(v2.1.94)*
 - Plugin skills now use frontmatter name for invocation *(v2.1.94)*
 - hookSpecificOutput.sessionTitle for UserPromptSubmit hooks *(v2.1.94)*
 - Removed /vim and /tag commands *(v2.1.92)*
 - /release-notes is now interactive version picker *(v2.1.92)*
-- MCP result size override up to 500K chars *(v2.1.91)*
 
 ---
 
@@ -328,7 +328,7 @@
 | `${CLAUDE_SKILL_DIR}` | Skill's own directory |
 | `!`cmd`` | Dynamic context injection |
 | `bin/` | Plugin ships executables |
-| `keep-coding-instructions` | Frontmatter for plugin output styles **NEW** |
+| `keep-coding-instructions` | Frontmatter for plugin output styles |
 
 ### Built-in Agents
 
@@ -387,7 +387,7 @@
 | `CLAUDECODE` | Detect CC shell (=1) |
 | `CLAUDE_CODE_NO_FLICKER` | Flicker-free alt-screen rendering |
 | `MCP_CONNECTION_NONBLOCKING` | Skip MCP wait in -p mode |
-| `CLAUDE_CODE_USE_MANTLE` | Enable Amazon Bedrock via Mantle **NEW** |
+| `CLAUDE_CODE_USE_MANTLE` | Enable Amazon Bedrock via Mantle |
 
 ### Hooks
 
@@ -403,7 +403,7 @@
 | `PermissionDenied` | After auto mode denials |
 | `TaskCreated` | When task created via TaskCreate |
 | `"defer" decision` | Pause tool, resume with -p --resume |
-| `hookSpecificOutput.sessionTitle` | Set session title in UserPromptSubmit hooks **NEW** |
+| `hookSpecificOutput.sessionTitle` | Set session title in UserPromptSubmit hooks |
 
 ---
 

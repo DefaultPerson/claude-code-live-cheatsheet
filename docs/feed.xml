@@ -5,14 +5,21 @@
     <link>https://defaultperson.github.io/claude-code-live-cheatsheet/</link>
     <description>Auto-updating cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 07 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Apr 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://defaultperson.github.io/claude-code-live-cheatsheet/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Claude Code v2.1.94 highlights</title>
-      <description><![CDATA[<ul><li>Default effort level changed to high for API/Bedrock/Enterprise users (v2.1.94)</li><li>Amazon Bedrock support via Mantle (CLAUDE_CODE_USE_MANTLE=1) (v2.1.94)</li><li>Plugin skills now use frontmatter name for invocation (v2.1.94)</li><li>hookSpecificOutput.sessionTitle for UserPromptSubmit hooks (v2.1.94)</li><li>Removed /vim and /tag commands (v2.1.92)</li><li>/release-notes is now interactive version picker (v2.1.92)</li><li>MCP result size override up to 500K chars (v2.1.91)</li></ul>]]></description>
-      <pubDate>Tue, 07 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">highlights-v2.1.94</guid>
+      <title>Claude Code v2.1.96 highlights</title>
+      <description><![CDATA[<ul><li>Fixed Bedrock auth regression with AWS_BEARER_TOKEN_BEDROCK (v2.1.96)</li><li>Default effort level changed to high for API/Bedrock/Enterprise users (v2.1.94)</li><li>Amazon Bedrock support via Mantle (CLAUDE_CODE_USE_MANTLE=1) (v2.1.94)</li><li>Plugin skills now use frontmatter name for invocation (v2.1.94)</li><li>hookSpecificOutput.sessionTitle for UserPromptSubmit hooks (v2.1.94)</li><li>Removed /vim and /tag commands (v2.1.92)</li><li>/release-notes is now interactive version picker (v2.1.92)</li></ul>]]></description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">highlights-v2.1.96</guid>
       <link>https://defaultperson.github.io/claude-code-live-cheatsheet/</link>
+    </item>
+    <item>
+      <title>Claude Code v2.1.96</title>
+      <description><![CDATA[<h3>Full changelog</h3><pre>• Fixed Bedrock requests failing with `403 "Authorization header is missing"` when using `AWS_BEARER_TOKEN_BEDROCK` or `CLAUDE_CODE_SKIP_BEDROCK_AUTH` (regression in 2.1.94)</pre>]]></description>
+      <pubDate>Wed, 08 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">v2.1.96</guid>
+      <link>https://defaultperson.github.io/claude-code-live-cheatsheet/changelog.html#v2.1.96</link>
     </item>
     <item>
       <title>Claude Code v2.1.94</title>
