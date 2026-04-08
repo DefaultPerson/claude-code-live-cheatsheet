@@ -1,16 +1,16 @@
-# Claude Code Cheatsheet v2.1.96
+# Claude Code Cheatsheet v2.1.97
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/claude-code-live-cheatsheet/)
 
 ## Recent Changes
 
+- Added focus view toggle (Ctrl+O) in NO_FLICKER mode *(v2.1.97)*
+- Added refreshInterval status line setting for auto-refresh *(v2.1.97)*
+- Added workspace.git_worktree to status line JSON input *(v2.1.97)*
+- Added Cedar policy syntax highlighting (.cedar, .cedarpolicy) *(v2.1.97)*
 - Fixed Bedrock auth regression with AWS_BEARER_TOKEN_BEDROCK *(v2.1.96)*
 - Default effort level changed to high for API/Bedrock/Enterprise users *(v2.1.94)*
 - Amazon Bedrock support via Mantle (CLAUDE_CODE_USE_MANTLE=1) *(v2.1.94)*
-- Plugin skills now use frontmatter name for invocation *(v2.1.94)*
-- hookSpecificOutput.sessionTitle for UserPromptSubmit hooks *(v2.1.94)*
-- Removed /vim and /tag commands *(v2.1.92)*
-- /release-notes is now interactive version picker *(v2.1.92)*
 
 ---
 
@@ -23,7 +23,7 @@
 | `Ctrl C` | Cancel input/generation |
 | `Ctrl D` | Exit session |
 | `Ctrl L` | Clear screen |
-| `Ctrl O` | Toggle verbose output |
+| `Ctrl O` | Focus view (NO_FLICKER mode) **NEW** |
 | `Ctrl R` | Reverse search history |
 | `Ctrl G` | Open prompt in editor |
 | `Ctrl+X Ctrl+E` | Open in editor (alias) |
@@ -373,6 +373,8 @@
 | `disableSkillShellExecution` | Disable shell exec in skills/commands |
 | `showThinkingSummaries` | Restore thinking summaries in sessions |
 | `forceRemoteSettingsRefresh` | Fail-closed remote settings fetch |
+| `refreshInterval` | Auto-refresh status line every N seconds **NEW** |
+| `workspace.git_worktree` | Status line JSON for worktree detection **NEW** |
 
 ### Key Env Vars
 
