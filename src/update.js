@@ -103,8 +103,13 @@ Update the cheatsheet.json with any relevant changes. Output ONLY the complete u
   return result;
 }
 
-const MODEL = process.env.CHEATSHEET_MODEL || 'anthropic/claude-haiku-4.5';
+const MODEL = process.env.CHEATSHEET_MODEL || 'z-ai/glm-5.1';
 const MAX_TOKENS = 10000;
+
+// Errors that should NOT be retried (retry is pointless and wastes money)
+export class NoRetryError extends Error {
+  constructor(message) { super(message); this.noRetry = true; }
+}
 
 async function updateViaOpenRouter(userPrompt) {
   console.log(`Calling OpenRouter API (${MODEL})...`);
@@ -118,10 +123,7 @@ async function updateViaOpenRouter(userPrompt) {
       model: MODEL,
       max_tokens: MAX_TOKENS,
       messages: [
-        {
-          role: 'system',
-          content: [{ type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } }],
-        },
+        { role: 'system', content: SYSTEM_PROMPT },
         { role: 'user', content: userPrompt },
       ],
     }),
@@ -129,6 +131,10 @@ async function updateViaOpenRouter(userPrompt) {
 
   if (!res.ok) {
     const err = await res.text();
+    // 402 = insufficient credits, 401 = bad auth, 403 = forbidden — don't retry
+    if ([401, 402, 403].includes(res.status)) {
+      throw new NoRetryError(`OpenRouter ${res.status}: ${err}`);
+    }
     throw new Error(`OpenRouter ${res.status}: ${err}`);
   }
 

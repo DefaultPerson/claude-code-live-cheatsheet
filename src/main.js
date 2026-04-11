@@ -33,6 +33,10 @@ async function main() {
       try {
         data = await update(data, result.newEntries);
       } catch (err) {
+        if (err.noRetry) {
+          console.error('Non-retryable error:', err.message);
+          process.exit(1);
+        }
         console.error('Update failed, retrying once...');
         try {
           data = await update(data, result.newEntries);
