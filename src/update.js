@@ -74,10 +74,11 @@ export async function update(currentData, newEntries) {
     .map(v => `## ${v.version}\n${v.entries.map(e => `- ${e}`).join('\n')}`)
     .join('\n\n');
 
-  const userPrompt = `Here is the current cheatsheet.json:
+  // Compact JSON (no indentation) saves ~40% tokens vs pretty-printed
+  const userPrompt = `Here is the current cheatsheet.json (compact format):
 
 <cheatsheet>
-${JSON.stringify(currentData, null, 2)}
+${JSON.stringify(currentData)}
 </cheatsheet>
 
 New CHANGELOG entries since version ${currentData.meta.lastVersion}:
@@ -86,7 +87,7 @@ New CHANGELOG entries since version ${currentData.meta.lastVersion}:
 ${changelogText}
 </changelog>
 
-Update the cheatsheet.json with any relevant changes. Output ONLY the complete updated JSON.`;
+Update the cheatsheet.json with any relevant changes. Output ONLY the complete updated JSON in COMPACT format (no whitespace/newlines).`;
 
   let result;
 
@@ -104,7 +105,7 @@ Update the cheatsheet.json with any relevant changes. Output ONLY the complete u
 }
 
 const MODEL = process.env.CHEATSHEET_MODEL || 'z-ai/glm-5.1';
-const MAX_TOKENS = 10000;
+const MAX_TOKENS = 16384;
 
 // Errors that should NOT be retried (retry is pointless and wastes money)
 export class NoRetryError extends Error {
