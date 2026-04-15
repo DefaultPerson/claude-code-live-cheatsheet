@@ -78,7 +78,25 @@ del { opacity: 0.5; text-decoration: line-through; }
 </p>
 
 
-    <details id="v2.1.108" open>
+    <details id="v2.1.109" open>
+      <summary>
+        <strong>v2.1.109</strong>
+        <span class="changelog-date">2026-04-18</span>
+        <span class="changelog-stats">
+          
+          
+          
+        </span>
+      </summary>
+      <div class="diff-body">
+        
+        
+        <div class="diff-item">No cheatsheet changes in this version</div>
+        <div class="raw-section"><div class="diff-label">Full changelog (1 entries):</div><div class="raw-entries"><div class="raw-entry">• Improved the extended-thinking indicator with a rotating progress hint</div></div></div>
+      </div>
+    </details>
+
+    <details id="v2.1.108" >
       <summary>
         <strong>v2.1.108</strong>
         <span class="changelog-date">2026-04-17</span>
@@ -92,7 +110,7 @@ del { opacity: 0.5; text-decoration: line-through; }
         <div class="diff-label">Cheatsheet changes:</div>
         <div class="diff-item diff-add">+ <strong>/recap</strong> → Context summary when returning to session <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-add">+ <strong>Ctrl+A</strong> → Show all projects (in /resume) <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-add">+ <strong>ENABLE_PROMPT_CACHING_1H</strong> → Opt into 1-hour prompt cache TTL <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>FORCE_PROMPT_CACHING_5M</strong> → Force 5-minute prompt cache TTL <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>CLAUDE_CODE_ENABLE_AWAY_SUMMARY</strong> → Force /recap when telemetry disabled <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>slash commands (Skill)</strong> → Model discovers/invokes built-in commands <span class="diff-section">[skills-agents]</span></div><div class="diff-item diff-update">~ <strong>/rewind</strong>: <del>Rewind conv / code checkpoint</del> → Rewind conv / code checkpoint (/undo alias) <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>Ctrl+X Ctrl+E</strong> <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-remove">- <strong>/copy [N]</strong> <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>workspace.git_worktree</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_CERT_STORE</strong> <span class="diff-section">[config-env]</span></div>
         
-        <div class="raw-section"><div class="diff-label">Full changelog (24 entries):</div><div class="raw-entries"><div class="raw-entry">• Added `ENABLE_PROMPT_CACHING_1H` env var to opt into 1-hour prompt cache TTL on API key, Bedrock, Vertex, and Foundry (`ENABLE_PROMPT_CACHING_1H_BEDROCK` is deprecated but still honored), and `FORCE_PROMPT_CACHING_5M` to force 5-minute TTL</div><div class="raw-entry">• Added recap feature to provide context when returning to a session, configurable in /config and manually invocable with /recap; force with `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` if telemetry disabled.</div><div class="raw-entry">• The model can now discover and invoke built-in slash commands like `/init`, `/review`, and `/security-review` via the Skill tool</div><div class="raw-entry">• `/undo` is now an alias for `/rewind`</div><div class="raw-entry">• Improved `/model` to warn before switching models mid-conversation, since the next response re-reads the full history uncached</div><div class="raw-entry">• Improved `/resume` picker to default to sessions from the current directory; press `Ctrl+A` to show all projects</div><div class="raw-entry">• Improved error messages: server rate limits are now distinguished from plan usage limits; 5xx/529 errors show a link to status.claude.com; unknown slash commands suggest the closest match</div><div class="raw-entry">• Reduced memory footprint for file reads, edits, and syntax highlighting by loading language grammars on demand</div><div class="raw-entry">• Added "verbose" indicator when viewing the detailed transcript (`Ctrl+O`)</div><div class="raw-entry">• Added a warning at startup when prompt caching is disabled via `DISABLE_PROMPT_CACHING*` environment variables</div><div class="raw-entry">• Fixed paste not working in the `/login` code prompt (regression in 2.1.105)</div><div class="raw-entry">• Fixed subscribers who set `DISABLE_TELEMETRY` falling back to 5-minute prompt cache TTL instead of 1 hour</div><div class="raw-entry">• Fixed Agent tool prompting for permission in auto mode when the safety classifier's transcript exceeded its context window</div><div class="raw-entry">• Fixed Bash tool producing no output when `CLAUDE_ENV_FILE` (e.g. `~/.zprofile`) ends with a `#` comment line</div><div class="raw-entry">• Fixed `claude --resume &lt;session-id&gt;` losing the session's custom name and color set via `/rename`</div><div class="raw-entry">• Fixed session titles showing placeholder example text when the first message is a short greeting</div><div class="raw-entry">• Fixed terminal escape codes appearing as garbage text in the prompt input after `--teleport`</div><div class="raw-entry">• Fixed `/feedback` retry: pressing Enter to resubmit after a failure now works without first editing the description</div><div class="raw-entry">• Fixed `--teleport` and `--resume &lt;id&gt;` precondition errors (e.g. dirty git tree, session not found) exiting silently instead of showing the error message</div><div class="raw-entry">• Fixed Remote Control session titles set in the web UI being overwritten by auto-generated titles after the third message</div><div class="raw-entry">• Fixed `--resume` truncating sessions when the transcript contained a self-referencing message</div><div class="raw-entry">• Fixed transcript write failures (e.g., disk full) being silently dropped instead of being logged</div><div class="raw-entry">• Fixed diacritical marks (accents, umlauts, cedillas) being dropped from responses when the `language` setting is configured</div><div class="raw-entry">• Fixed policy-managed plugins never auto-updating when running from a different project than where they were first installed</div></div></div>
+        
       </div>
     </details>
 

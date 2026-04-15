@@ -1,4 +1,4 @@
-# Claude Code Cheatsheet v2.1.108
+# Claude Code Cheatsheet v2.1.109
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
@@ -66,7 +66,7 @@
 | `/` | Search |
 | `A` | All projects |
 | `B` | Current branch |
-| `Ctrl+A` | Show all projects (in /resume) **NEW** |
+| `Ctrl+A` | Show all projects (in /resume) |
 
 ## 🔌 MCP Servers
 
@@ -111,7 +111,7 @@
 | `/context` | Visualize context (grid) |
 | `/diff` | Interactive diff viewer |
 | `/rewind` | Rewind conv / code checkpoint (/undo alias) |
-| `/recap` | Context summary when returning to session **NEW** |
+| `/recap` | Context summary when returning to session |
 | `/export` | Export conversation |
 
 ### Config
@@ -331,7 +331,7 @@
 | `bin/` | Plugin ships executables |
 | `keep-coding-instructions` | Frontmatter for plugin output styles |
 | `monitors` | Plugin background monitors (auto-arm on session/skill) |
-| `slash commands (Skill)` | Model discovers/invokes built-in commands **NEW** |
+| `slash commands (Skill)` | Model discovers/invokes built-in commands |
 
 ### Built-in Agents
 
@@ -391,9 +391,9 @@
 | `MCP_CONNECTION_NONBLOCKING` | Skip MCP wait in -p mode |
 | `CLAUDE_CODE_USE_MANTLE` | Enable Amazon Bedrock via Mantle |
 | `CLAUDE_CODE_PERFORCE_MODE` | Fail read-only files with p4 edit hint |
-| `ENABLE_PROMPT_CACHING_1H` | Opt into 1-hour prompt cache TTL **NEW** |
-| `FORCE_PROMPT_CACHING_5M` | Force 5-minute prompt cache TTL **NEW** |
-| `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` | Force /recap when telemetry disabled **NEW** |
+| `ENABLE_PROMPT_CACHING_1H` | Opt into 1-hour prompt cache TTL |
+| `FORCE_PROMPT_CACHING_5M` | Force 5-minute prompt cache TTL |
+| `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` | Force /recap when telemetry disabled |
 
 ### Hooks
 
