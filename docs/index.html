@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.110</span>
-    <span class="date-label">Last updated: April 19, 2026</span>
+    <span class="version-label">Claude Code v2.1.111</span>
+    <span class="date-label">Last updated: April 20, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• Added /tui fullscreen for flicker-free rendering</span>  <span class="rc-item">• Added /focus command to toggle focus view</span>  <span class="rc-item">• Push notification tool for Remote Control</span>  <span class="rc-item">• Ctrl+O now toggles verbose transcript; focus via /focus</span>  <span class="rc-item">• autoScrollEnabled config to disable auto-scroll</span>  <span class="rc-item">• Session recap now on for telemetry-disabled users</span></div>
+  <div class="rc-content"><span class="rc-item">• Opus 4.7 with xhigh effort level now available</span>  <span class="rc-item">• /effort now opens interactive slider with arrow keys</span>  <span class="rc-item">• /ultrareview: parallel multi-agent code review</span>  <span class="rc-item">• /less-permission-prompts skill for allowlist proposals</span>  <span class="rc-item">• Auto mode no longer requires --enable-auto-mode flag</span>  <span class="rc-item">• Auto (match terminal) theme option added</span>  <span class="rc-item">• Glob patterns in read-only bash skip permission prompts</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -168,7 +168,7 @@ kbd{
               </div>
               <div class="item" data-copy="Ctrl L">
                 <span class="item-key"><kbd>Ctrl</kbd> <kbd>L</kbd></span>
-                <span class="item-val">Clear screen</span>
+                <span class="item-val">Clear screen + force full redraw</span>
               </div>
               <div class="item" data-copy="Ctrl O">
                 <span class="item-key"><kbd>Ctrl</kbd> <kbd>O</kbd></span>
@@ -230,6 +230,10 @@ kbd{
                 <span class="item-key"><kbd>Ctrl</kbd> <kbd>J</kbd></span>
                 <span class="item-val">Newline (control seq)</span>
               </div>
+              <div class="item" data-copy="Ctrl+U">
+                <span class="item-key"><kbd>Ctrl</kbd><kbd>U</kbd></span>
+                <span class="item-val">Clear input buffer (Ctrl+Y to restore) <b class="new">NEW</b></span>
+              </div>
             </div>
             <div class="group">
               <div class="group-label">Prefixes</div>
@@ -269,10 +273,6 @@ kbd{
               <div class="item" data-copy="/">
                 <span class="item-key"><kbd>/</kbd></span>
                 <span class="item-val">Search</span>
-              </div>
-              <div class="item" data-copy="A">
-                <span class="item-key"><kbd>A</kbd></span>
-                <span class="item-val">All projects</span>
               </div>
               <div class="item" data-copy="B">
                 <span class="item-key"><kbd>B</kbd></span>
@@ -396,7 +396,7 @@ kbd{
               </div>
               <div class="item" data-copy="/focus">
                 <span class="item-key">/focus</span>
-                <span class="item-val">Toggle focus view <b class="new">NEW</b></span>
+                <span class="item-val">Toggle focus view</span>
               </div>
               <div class="item" data-copy="/export">
                 <span class="item-key">/export</span>
@@ -420,7 +420,7 @@ kbd{
               </div>
               <div class="item" data-copy="/theme">
                 <span class="item-key">/theme</span>
-                <span class="item-val">Change color theme</span>
+                <span class="item-val">Change color theme; Auto matches terminal</span>
               </div>
               <div class="item" data-copy="/permissions">
                 <span class="item-key">/permissions</span>
@@ -428,7 +428,7 @@ kbd{
               </div>
               <div class="item" data-copy="/effort [level]">
                 <span class="item-key">/effort [level]</span>
-                <span class="item-val">Set effort (low/med/high/max/auto)</span>
+                <span class="item-val">Set effort; interactive slider (low/med/xhigh/high/max/auto)</span>
               </div>
               <div class="item" data-copy="/color [color]">
                 <span class="item-key">/color [color]</span>
@@ -444,7 +444,7 @@ kbd{
               </div>
               <div class="item" data-copy="/tui [fullscreen]">
                 <span class="item-key">/tui [fullscreen]</span>
-                <span class="item-val">Switch to flicker-free TUI rendering <b class="new">NEW</b></span>
+                <span class="item-val">Switch to flicker-free TUI rendering</span>
               </div>
             </div>
             <div class="group">
@@ -618,6 +618,10 @@ kbd{
                 <span class="item-key">--permission-mode plan</span>
                 <span class="item-val">Start in plan mode</span>
               </div>
+              <div class="item" data-copy="Auto mode">
+                <span class="item-key">Auto mode</span>
+                <span class="item-val">Built-in for Max subscribers <b class="new">NEW</b></span>
+              </div>
             </div>
             <div class="group">
               <div class="group-label">Thinking &amp; Effort</div>
@@ -636,7 +640,7 @@ kbd{
               </div>
               <div class="item" data-copy="/effort">
                 <span class="item-key">/effort</span>
-                <span class="item-val">○ low · ◐ med · ● high</span>
+                <span class="item-val">○ low · ◐ med · ◑ xhigh · ● high/max</span>
               </div>
             </div>
             <div class="group">
@@ -692,7 +696,7 @@ kbd{
               </div>
               <div class="item" data-copy="1M context">
                 <span class="item-key">1M context</span>
-                <span class="item-val">Opus 4.6 (Max/Team/Ent)</span>
+                <span class="item-val">Opus 4.7 (Max/Team/Ent)</span>
               </div>
               <div class="item" data-copy="CLAUDE.md">
                 <span class="item-key">CLAUDE.md</span>
@@ -752,7 +756,7 @@ kbd{
               </div>
               <div class="item" data-copy="Push notifications">
                 <span class="item-key">Push notifications</span>
-                <span class="item-val">Mobile push via Remote Control <b class="new">NEW</b></span>
+                <span class="item-val">Mobile push via Remote Control</span>
               </div>
             </div>
         </div>
@@ -854,7 +858,7 @@ kbd{
               </div>
               <div class="item" data-copy="--effort">
                 <span class="item-key">--effort</span>
-                <span class="item-val">low/med/high/max</span>
+                <span class="item-val">low/med/xhigh/high/max</span>
               </div>
               <div class="item" data-copy="--permission-mode">
                 <span class="item-key">--permission-mode</span>
@@ -901,6 +905,14 @@ kbd{
               <div class="item" data-copy="/claude-api">
                 <span class="item-key">/claude-api</span>
                 <span class="item-val">Load API + SDK reference</span>
+              </div>
+              <div class="item" data-copy="/ultrareview [PR#]">
+                <span class="item-key">/ultrareview [PR#]</span>
+                <span class="item-val">Cloud code review (parallel multi-agent) <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="/less-permission-prompts">
+                <span class="item-key">/less-permission-prompts</span>
+                <span class="item-val">Scan transcripts for allowlist proposals <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1082,7 +1094,7 @@ kbd{
               </div>
               <div class="item" data-copy="autoScrollEnabled">
                 <span class="item-key">autoScrollEnabled</span>
-                <span class="item-val">Disable auto-scroll in fullscreen <b class="new">NEW</b></span>
+                <span class="item-val">Disable auto-scroll in fullscreen</span>
               </div>
             </div>
             <div class="group">
@@ -1124,13 +1136,13 @@ kbd{
                 <span class="item-key">ENABLE_PROMPT_CACHING_1H</span>
                 <span class="item-val">Opt into 1-hour prompt cache TTL</span>
               </div>
-              <div class="item" data-copy="FORCE_PROMPT_CACHING_5M">
-                <span class="item-key">FORCE_PROMPT_CACHING_5M</span>
-                <span class="item-val">Force 5-minute prompt cache TTL</span>
-              </div>
               <div class="item" data-copy="CLAUDE_CODE_ENABLE_AWAY_SUMMARY">
                 <span class="item-key">CLAUDE_CODE_ENABLE_AWAY_SUMMARY</span>
                 <span class="item-val">Opt out of auto-recap (set to 0)</span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_USE_POWERSHELL_TOOL">
+                <span class="item-key">CLAUDE_CODE_USE_POWERSHELL_TOOL</span>
+                <span class="item-val">Opt in/out of PowerShell tool on Windows <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">

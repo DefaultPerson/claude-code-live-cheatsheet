@@ -1,15 +1,16 @@
-# Claude Code Cheatsheet v2.1.110
+# Claude Code Cheatsheet v2.1.111
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- Added /tui fullscreen for flicker-free rendering *(v2.1.110)*
-- Added /focus command to toggle focus view *(v2.1.110)*
-- Push notification tool for Remote Control *(v2.1.110)*
-- Ctrl+O now toggles verbose transcript; focus via /focus *(v2.1.110)*
-- autoScrollEnabled config to disable auto-scroll *(v2.1.110)*
-- Session recap now on for telemetry-disabled users *(v2.1.110)*
+- Opus 4.7 with xhigh effort level now available *(v2.1.111)*
+- /effort now opens interactive slider with arrow keys *(v2.1.111)*
+- /ultrareview: parallel multi-agent code review *(v2.1.111)*
+- /less-permission-prompts skill for allowlist proposals *(v2.1.111)*
+- Auto mode no longer requires --enable-auto-mode flag *(v2.1.111)*
+- Auto (match terminal) theme option added *(v2.1.111)*
+- Glob patterns in read-only bash skip permission prompts *(v2.1.111)*
 
 ---
 
@@ -21,7 +22,7 @@
 |-----|-------------|
 | `Ctrl C` | Cancel input/generation |
 | `Ctrl D` | Exit session |
-| `Ctrl L` | Clear screen |
+| `Ctrl L` | Clear screen + force full redraw |
 | `Ctrl O` | Toggle verbose transcript |
 | `Ctrl R` | Reverse search history |
 | `Ctrl G` | Open prompt in editor |
@@ -45,6 +46,7 @@
 |-----|-------------|
 | `\ Enter` | Newline (quick) |
 | `Ctrl J` | Newline (control seq) |
+| `Ctrl+U` | Clear input buffer (Ctrl+Y to restore) **NEW** |
 
 ### Prefixes
 
@@ -63,7 +65,6 @@
 | `P` | Preview |
 | `R` | Rename |
 | `/` | Search |
-| `A` | All projects |
 | `B` | Current branch |
 | `Ctrl+A` | Show all projects (in /resume) |
 
@@ -111,7 +112,7 @@
 | `/diff` | Interactive diff viewer |
 | `/rewind` | Rewind conv / code checkpoint (/undo alias) |
 | `/recap` | Context summary when returning to session |
-| `/focus` | Toggle focus view **NEW** |
+| `/focus` | Toggle focus view |
 | `/export` | Export conversation |
 
 ### Config
@@ -121,13 +122,13 @@
 | `/config` | Open settings |
 | `/model [model]` | Switch model (←→ effort) |
 | `/fast [on|off]` | Toggle fast mode |
-| `/theme` | Change color theme |
+| `/theme` | Change color theme; Auto matches terminal |
 | `/permissions` | View/update permissions |
-| `/effort [level]` | Set effort (low/med/high/max/auto) |
+| `/effort [level]` | Set effort; interactive slider (low/med/xhigh/high/max/auto) |
 | `/color [color]` | Set prompt-bar color |
 | `/keybindings` | Customize keyboard shortcuts |
 | `/terminal-setup` | Configure terminal keybindings |
-| `/tui [fullscreen]` | Switch to flicker-free TUI rendering **NEW** |
+| `/tui [fullscreen]` | Switch to flicker-free TUI rendering |
 
 ### Tools
 
@@ -196,6 +197,7 @@
 |-----|-------------|
 | `Shift Tab` | Normal → Auto-Accept → Plan |
 | `--permission-mode plan` | Start in plan mode |
+| `Auto mode` | Built-in for Max subscribers **NEW** |
 
 ### Thinking & Effort
 
@@ -204,7 +206,7 @@
 | `Alt T` | Toggle thinking on/off |
 | `"ultrathink"` | Max effort for turn |
 | `Ctrl O` | Toggle verbose transcript |
-| `/effort` | ○ low · ◐ med · ● high |
+| `/effort` | ○ low · ◐ med · ◑ xhigh · ● high/max |
 
 ### Git Worktrees
 
@@ -230,7 +232,7 @@
 | `/context` | Usage + optimization tips |
 | `/compact [focus]` | Compress with focus |
 | `Auto-compact` | ~95% capacity |
-| `1M context` | Opus 4.6 (Max/Team/Ent) |
+| `1M context` | Opus 4.7 (Max/Team/Ent) |
 | `CLAUDE.md` | Survives compaction! |
 
 ### Session Power Moves
@@ -257,7 +259,7 @@
 | `/loop 5m msg` | Recurring task (/proactive) |
 | `/rc` | Remote Control |
 | `--remote` | Web session on claude.ai |
-| `Push notifications` | Mobile push via Remote Control **NEW** |
+| `Push notifications` | Mobile push via Remote Control |
 
 ## 🖥️ CLI & Flags
 
@@ -291,7 +293,7 @@
 | `--bare` | Minimal headless (no hooks/LSP) |
 | `--channels` | Permission relay / MCP push |
 | `--remote` | Web session |
-| `--effort` | low/med/high/max |
+| `--effort` | low/med/xhigh/high/max |
 | `--permission-mode` | plan/default/… |
 | `--dangerously-skip-permissions` | Skip all prompts ⚠️ |
 | `--chrome` | Chrome |
@@ -308,6 +310,8 @@
 | `/debug [desc]` | Troubleshoot from debug log |
 | `/loop [interval]` | Recurring task (/proactive alias) |
 | `/claude-api` | Load API + SDK reference |
+| `/ultrareview [PR#]` | Cloud code review (parallel multi-agent) **NEW** |
+| `/less-permission-prompts` | Scan transcripts for allowlist proposals **NEW** |
 
 ### Custom Skill Locations
 
@@ -377,7 +381,7 @@
 | `showThinkingSummaries` | Restore thinking summaries in sessions |
 | `forceRemoteSettingsRefresh` | Fail-closed remote settings fetch |
 | `refreshInterval` | Auto-refresh status line every N seconds |
-| `autoScrollEnabled` | Disable auto-scroll in fullscreen **NEW** |
+| `autoScrollEnabled` | Disable auto-scroll in fullscreen |
 
 ### Key Env Vars
 
@@ -392,8 +396,8 @@
 | `CLAUDE_CODE_USE_MANTLE` | Enable Amazon Bedrock via Mantle |
 | `CLAUDE_CODE_PERFORCE_MODE` | Fail read-only files with p4 edit hint |
 | `ENABLE_PROMPT_CACHING_1H` | Opt into 1-hour prompt cache TTL |
-| `FORCE_PROMPT_CACHING_5M` | Force 5-minute prompt cache TTL |
 | `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` | Opt out of auto-recap (set to 0) |
+| `CLAUDE_CODE_USE_POWERSHELL_TOOL` | Opt in/out of PowerShell tool on Windows **NEW** |
 
 ### Hooks
 
