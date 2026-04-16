@@ -106,6 +106,7 @@ Update the cheatsheet.json with any relevant changes. Output ONLY the complete u
 
 const MODEL = process.env.CHEATSHEET_MODEL || 'z-ai/glm-5.1';
 const MAX_TOKENS = 16384;
+const REQUEST_TIMEOUT_MS = 300_000;
 
 // Errors that should NOT be retried (retry is pointless and wastes money)
 export class NoRetryError extends Error {
@@ -113,22 +114,36 @@ export class NoRetryError extends Error {
 }
 
 async function updateViaOpenRouter(userPrompt) {
-  console.log(`Calling OpenRouter API (${MODEL})...`);
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      max_tokens: MAX_TOKENS,
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        { role: 'user', content: userPrompt },
-      ],
-    }),
-  });
+  console.log(`Calling OpenRouter API (${MODEL}, timeout ${REQUEST_TIMEOUT_MS / 1000}s)...`);
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+  let res;
+  try {
+    res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      signal: controller.signal,
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: MAX_TOKENS,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT },
+          { role: 'user', content: userPrompt },
+        ],
+      }),
+    });
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      throw new Error(`OpenRouter request timed out after ${REQUEST_TIMEOUT_MS / 1000}s`);
+    }
+    throw err;
+  } finally {
+    clearTimeout(timer);
+  }
 
   if (!res.ok) {
     const err = await res.text();
