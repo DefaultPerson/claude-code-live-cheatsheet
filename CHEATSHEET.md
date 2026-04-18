@@ -1,4 +1,4 @@
-# Claude Code Cheatsheet v2.1.113
+# Claude Code Cheatsheet v2.1.114
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
@@ -47,7 +47,7 @@
 | `\ Enter` | Newline (quick) |
 | `Ctrl J` | Newline (control seq) |
 | `Ctrl+U` | Clear input buffer (Ctrl+Y to restore) |
-| `Ctrl+E` | Move to end of line (multiline) **NEW** |
+| `Ctrl+E` | Move to end of line (multiline) |
 
 ### Prefixes
 
@@ -381,7 +381,7 @@
 | `showThinkingSummaries` | Restore thinking summaries in sessions |
 | `forceRemoteSettingsRefresh` | Fail-closed remote settings fetch |
 | `refreshInterval` | Auto-refresh status line every N seconds |
-| `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits **NEW** |
+| `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
 
 ### Key Env Vars
 

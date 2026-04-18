@@ -5,14 +5,21 @@
     <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
     <description>Auto-updating cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Apr 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Apr 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://defaultperson.github.io/cc-live-cheatsheet/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Claude Code v2.1.113 highlights</title>
+      <title>Claude Code v2.1.114 highlights</title>
       <description><![CDATA[<ul><li>Native binary replaces bundled JavaScript for CLI spawn (v2.1.113)</li><li>sandbox.network.deniedDomains blocks domains under wildcards (v2.1.113)</li><li>Ctrl+A/E readline line navigation in multiline input (v2.1.113)</li><li>/loop: Esc cancels wakeups, clearer resume labels (v2.1.113)</li><li>/ultrareview: parallelized checks + animated launch state (v2.1.113)</li><li>Stalled subagents fail after 10 min instead of hanging (v2.1.113)</li><li>Bash deny rules now match exec wrappers (sudo, env, etc.) (v2.1.113)</li></ul>]]></description>
-      <pubDate>Wed, 22 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">highlights-v2.1.113</guid>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">highlights-v2.1.114</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
+    </item>
+    <item>
+      <title>Claude Code v2.1.114</title>
+      <description><![CDATA[<h3>Full changelog</h3><pre>• Fixed a crash in the permission dialog when an agent teams teammate requested tool permission</pre>]]></description>
+      <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">v2.1.114</guid>
+      <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.114</link>
     </item>
     <item>
       <title>Claude Code v2.1.113</title>

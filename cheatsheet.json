@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastVersion": "2.1.113",
-    "lastUpdated": "2026-04-22",
+    "lastVersion": "2.1.114",
+    "lastUpdated": "2026-04-23",
     "schemaVersion": 1
   },
   "recentChanges": [
@@ -42,6 +42,16 @@
     }
   ],
   "changelog": [
+    {
+      "version": "2.1.114",
+      "date": "2026-04-23",
+      "added": [],
+      "updated": [],
+      "removed": [],
+      "raw": [
+        "Fixed a crash in the permission dialog when an agent teams teammate requested tool permission"
+      ]
+    },
     {
       "version": "2.1.113",
       "date": "2026-04-22",
@@ -670,7 +680,7 @@
             {
               "key": "Ctrl+E",
               "value": "Move to end of line (multiline)",
-              "isNew": true
+              "isNew": false
             }
           ]
         },
@@ -1415,7 +1425,7 @@
             {
               "key": "sandbox.network.deniedDomains",
               "value": "Block domains even when allowedDomains wildcard permits",
-              "isNew": true
+              "isNew": false
             }
           ]
         },
