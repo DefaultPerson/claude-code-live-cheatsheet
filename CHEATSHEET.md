@@ -1,16 +1,16 @@
-# Claude Code Cheatsheet v2.1.114
+# Claude Code Cheatsheet v2.1.116
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- Native binary replaces bundled JavaScript for CLI spawn *(v2.1.113)*
-- sandbox.network.deniedDomains blocks domains under wildcards *(v2.1.113)*
-- Ctrl+A/E readline line navigation in multiline input *(v2.1.113)*
-- /loop: Esc cancels wakeups, clearer resume labels *(v2.1.113)*
-- /ultrareview: parallelized checks + animated launch state *(v2.1.113)*
-- Stalled subagents fail after 10 min instead of hanging *(v2.1.113)*
-- Bash deny rules now match exec wrappers (sudo, env, etc.) *(v2.1.113)*
+- Thinking spinner shows inline progress (still thinking / almost done) *(v2.1.116)*
+- /resume up to 67% faster on large sessions *(v2.1.116)*
+- MCP defers resources/templates/list to first @-mention for faster startup *(v2.1.116)*
+- Agent frontmatter hooks: now fire for --agent main-thread *(v2.1.116)*
+- Sandbox auto-allow no longer bypasses dangerous-path rm check *(v2.1.116)*
+- /config search now matches option values *(v2.1.116)*
+- /reload-plugins auto-installs missing marketplace dependencies *(v2.1.116)*
 
 ---
 

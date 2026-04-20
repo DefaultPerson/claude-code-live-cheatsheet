@@ -78,7 +78,25 @@ del { opacity: 0.5; text-decoration: line-through; }
 </p>
 
 
-    <details id="v2.1.114" open>
+    <details id="v2.1.116" open>
+      <summary>
+        <strong>v2.1.116</strong>
+        <span class="changelog-date">2026-04-25</span>
+        <span class="changelog-stats">
+          
+          
+          
+        </span>
+      </summary>
+      <div class="diff-body">
+        
+        
+        <div class="diff-item">No cheatsheet changes in this version</div>
+        <div class="raw-section"><div class="diff-label">Full changelog (24 entries):</div><div class="raw-entries"><div class="raw-entry">• `/resume` on large sessions is significantly faster (up to 67% on 40MB+ sessions) and handles sessions with many dead-fork entries more efficiently</div><div class="raw-entry">• Faster MCP startup when multiple stdio servers are configured; `resources/templates/list` is now deferred to first `@`-mention</div><div class="raw-entry">• Smoother fullscreen scrolling in VS Code, Cursor, and Windsurf terminals — `/terminal-setup` now configures the editor's scroll sensitivity</div><div class="raw-entry">• Thinking spinner now shows progress inline ("still thinking", "thinking more", "almost done thinking"), replacing the separate hint row</div><div class="raw-entry">• `/config` search now matches option values (e.g. searching "vim" finds the Editor mode setting)</div><div class="raw-entry">• `/doctor` can now be opened while Claude is responding, without waiting for the current turn to finish</div><div class="raw-entry">• `/reload-plugins` and background plugin auto-update now auto-install missing plugin dependencies from marketplaces you've already added</div><div class="raw-entry">• Bash tool now surfaces a hint when `gh` commands hit GitHub's API rate limit, so agents can back off instead of retrying</div><div class="raw-entry">• The Usage tab in Settings now shows your 5-hour and weekly usage immediately and no longer fails when the usage endpoint is rate-limited</div><div class="raw-entry">• Agent frontmatter `hooks:` now fire when running as a main-thread agent via `--agent`</div><div class="raw-entry">• Slash command menu now shows "No commands match" when your filter has zero results, instead of disappearing</div><div class="raw-entry">• Security: sandbox auto-allow no longer bypasses the dangerous-path safety check for `rm`/`rmdir` targeting `/`, `$HOME`, or other critical system directories</div><div class="raw-entry">• Fixed Devanagari and other Indic scripts rendering with broken column alignment in the terminal UI</div><div class="raw-entry">• Fixed Ctrl+- not triggering undo in terminals using the Kitty keyboard protocol (iTerm2, Ghostty, kitty, WezTerm, Windows Terminal)</div><div class="raw-entry">• Fixed Cmd+Left/Right not jumping to line start/end in terminals that use the Kitty keyboard protocol (Warp fullscreen, kitty, Ghostty, WezTerm)</div><div class="raw-entry">• Fixed Ctrl+Z hanging the terminal when Claude Code is launched via a wrapper process (e.g. `npx`, `bun run`)</div><div class="raw-entry">• Fixed scrollback duplication in inline mode where resizing the terminal or large output bursts would repeat earlier conversation history</div><div class="raw-entry">• Fixed modal search dialogs overflowing the screen at short terminal heights, hiding the search box and keyboard hints</div><div class="raw-entry">• Fixed scattered blank cells and disappearing composer chrome in the VS Code integrated terminal during scrolling</div><div class="raw-entry">• Fixed an intermittent API 400 error related to cache control TTL ordering that could occur when a parallel request completed during request setup</div><div class="raw-entry">• Fixed `/branch` rejecting conversations with transcripts larger than 50MB</div><div class="raw-entry">• Fixed `/resume` silently showing an empty conversation on large session files instead of reporting the load error</div><div class="raw-entry">• Fixed `/plugin` Installed tab showing the same item twice when it appears under Needs attention or Favorites</div><div class="raw-entry">• Fixed `/update` and `/tui` not working after entering a worktree mid-session</div></div></div>
+      </div>
+    </details>
+
+    <details id="v2.1.114" >
       <summary>
         <strong>v2.1.114</strong>
         <span class="changelog-date">2026-04-23</span>
@@ -110,7 +128,7 @@ del { opacity: 0.5; text-decoration: line-through; }
         <div class="diff-label">Cheatsheet changes:</div>
         <div class="diff-item diff-add">+ <strong>sandbox.network.deniedDomains</strong> → Block domains even when allowedDomains wildcard permits <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>Ctrl+E</strong> → Move to end of line (multiline input) <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-remove">- <strong>autoScrollEnabled</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>B</strong> <span class="diff-section">[keyboard-shortcuts]</span></div>
         
-        <div class="raw-section"><div class="diff-label">Full changelog (38 entries):</div><div class="raw-entries"><div class="raw-entry">• Changed the CLI to spawn a native Claude Code binary (via a per-platform optional dependency) instead of bundled JavaScript</div><div class="raw-entry">• Added `sandbox.network.deniedDomains` setting to block specific domains even when a broader `allowedDomains` wildcard would otherwise permit them</div><div class="raw-entry">• Fullscreen mode: Shift+↑/↓ now scrolls the viewport when extending a selection past the visible edge</div><div class="raw-entry">• `Ctrl+A` and `Ctrl+E` now move to the start/end of the current logical line in multiline input, matching readline behavior</div><div class="raw-entry">• Windows: `Ctrl+Backspace` now deletes the previous word</div><div class="raw-entry">• Long URLs in responses and bash output stay clickable when they wrap across lines (in terminals with OSC 8 hyperlinks)</div><div class="raw-entry">• Improved `/loop`: pressing Esc now cancels pending wakeups, and wakeups display as "Claude resuming /loop wakeup" for clarity</div><div class="raw-entry">• `/extra-usage` now works from Remote Control (mobile/web) clients</div><div class="raw-entry">• Remote Control clients can now query `@`-file autocomplete suggestions</div><div class="raw-entry">• Improved `/ultrareview`: faster launch with parallelized checks, diffstat in the launch dialog, and animated launching state</div><div class="raw-entry">• Subagents that stall mid-stream now fail with a clear error after 10 minutes instead of hanging silently</div><div class="raw-entry">• Bash tool: multi-line commands whose first line is a comment now show the full command in the transcript, closing a UI-spoofing vector</div><div class="raw-entry">• Running `cd &lt;current-directory&gt; &amp;&amp; git …` no longer triggers a permission prompt when the `cd` is a no-op</div><div class="raw-entry">• Security: on macOS, `/private/{etc,var,tmp,home}` paths are now treated as dangerous removal targets under `Bash(rm:*)` allow rules</div><div class="raw-entry">• Security: Bash deny rules now match commands wrapped in `env`/`sudo`/`watch`/`ionice`/`setsid` and similar exec wrappers</div><div class="raw-entry">• Security: `Bash(find:*)` allow rules no longer auto-approve `find -exec`/`-delete`</div><div class="raw-entry">• Fixed MCP concurrent-call timeout handling where a message for one tool call could silently disarm another call's watchdog</div><div class="raw-entry">• Fixed Cmd-backspace / `Ctrl+U` to once again delete from the cursor to the start of the line</div><div class="raw-entry">• Fixed markdown tables breaking when a cell contains an inline code span with a pipe character</div><div class="raw-entry">• Fixed session recap auto-firing while composing unsent text in the prompt</div><div class="raw-entry">• Fixed `/copy` "Full response" not aligning markdown table columns for pasting into GitHub, Notion, or Slack</div><div class="raw-entry">• Fixed messages typed while viewing a running subagent being hidden from its transcript and misattributed to the parent AI</div><div class="raw-entry">• Fixed Bash `dangerouslyDisableSandbox` running commands outside the sandbox without a permission prompt</div><div class="raw-entry">• Fixed `/effort auto` confirmation — now says "Effort level set to max" to match the status bar label</div><div class="raw-entry">• Fixed the "copied N chars" toast overcounting emoji and other multi-code-unit characters</div><div class="raw-entry">• Fixed `/insights` crashing with `EBUSY` on Windows</div><div class="raw-entry">• Fixed exit confirmation dialog mislabeling one-shot scheduled tasks as recurring — now shows a countdown</div><div class="raw-entry">• Fixed slash/@ completion menu not sitting flush against the prompt border in fullscreen mode</div><div class="raw-entry">• Fixed `CLAUDE_CODE_EXTRA_BODY` `output_config.effort` causing 400 errors on subagent calls to models that don't support effort and on Vertex AI</div><div class="raw-entry">• Fixed prompt cursor disappearing when `NO_COLOR` is set</div><div class="raw-entry">• Fixed `ToolSearch` ranking so pasted MCP tool names surface the actual tool instead of description-matching siblings</div><div class="raw-entry">• Fixed compacting a resumed long-context session failing with "Extra usage is required for long context requests"</div><div class="raw-entry">• Fixed `plugin install` succeeding when a dependency version conflicts with an already-installed plugin — now reports `range-conflict`</div><div class="raw-entry">• Fixed "Refine with Ultraplan" not showing the remote session URL in the transcript</div><div class="raw-entry">• Fixed SDK image content blocks that fail to process crashing the session — now degrade to a text placeholder</div><div class="raw-entry">• Fixed Remote Control sessions not streaming subagent transcripts</div><div class="raw-entry">• Fixed Remote Control sessions not being archived when Claude Code exits</div><div class="raw-entry">• Fixed `thinking.type.enabled is not supported` 400 error when using Opus 4.7 via a Bedrock Application Inference Profile ARN</div></div></div>
+        <div class="raw-section"><div class="diff-label">Full changelog (38 entries):</div><div class="raw-entries"><div class="raw-entry">• Changed the CLI to spawn a native Claude Code binary (via a per-platform optional dependency) instead of bundled JavaScript</div><div class="raw-entry">• Added sandbox.network.deniedDomains setting to block specific domains even when a broader allowedDomains wildcard would otherwise permit them</div><div class="raw-entry">• Fullscreen mode: Shift+↑/↓ now scrolls the viewport when extending a selection past the visible edge</div><div class="raw-entry">• Ctrl+A and Ctrl+E now move to the start/end of the current logical line in multiline input, matching readline behavior</div><div class="raw-entry">• Windows: Ctrl+Backspace now deletes the previous word</div><div class="raw-entry">• Long URLs in responses and bash output stay clickable when they wrap across lines (in terminals with OSC 8 hyperlinks)</div><div class="raw-entry">• Improved /loop: pressing Esc now cancels pending wakeups, and wakeups display as Claude resuming /loop wakeup for clarity</div><div class="raw-entry">• /extra-usage now works from Remote Control (mobile/web) clients</div><div class="raw-entry">• Remote Control clients can now query @-file autocomplete suggestions</div><div class="raw-entry">• Improved /ultrareview: faster launch with parallelized checks, diffstat in the launch dialog, and animated launching state</div><div class="raw-entry">• Subagents that stall mid-stream now fail with a clear error after 10 minutes instead of hanging silently</div><div class="raw-entry">• Bash tool: multi-line commands whose first line is a comment now show the full command in the transcript, closing a UI-spoofing vector</div><div class="raw-entry">• Running cd &lt;current-directory&gt; &amp;&amp; git … no longer triggers a permission prompt when the cd is a no-op</div><div class="raw-entry">• Security: on macOS, /private/{etc,var,tmp,home} paths are now treated as dangerous removal targets under Bash(rm:*) allow rules</div><div class="raw-entry">• Security: Bash deny rules now match commands wrapped in env/sudo/watch/ionice/setsid and similar exec wrappers</div><div class="raw-entry">• Security: Bash(find:*) allow rules no longer auto-approve find -exec/-delete</div><div class="raw-entry">• Fixed MCP concurrent-call timeout handling where a message for one tool call could silently disarm another call's watchdog</div><div class="raw-entry">• Fixed Cmd-backspace / Ctrl+U to once again delete from the cursor to the start of the line</div><div class="raw-entry">• Fixed markdown tables breaking when a cell contains an inline code span with a pipe character</div><div class="raw-entry">• Fixed session recap auto-firing while composing unsent text in the prompt</div><div class="raw-entry">• Fixed /copy Full response not aligning markdown table columns for pasting into GitHub, Notion, or Slack</div><div class="raw-entry">• Fixed messages typed while viewing a running subagent being hidden from its transcript and misattributed to the parent AI</div><div class="raw-entry">• Fixed Bash dangerouslyDisableSandbox running commands outside the sandbox without a permission prompt</div><div class="raw-entry">• Fixed /effort auto confirmation — now says Effort level set to max to match the status bar label</div><div class="raw-entry">• Fixed the copied N chars toast overcounting emoji and other multi-code-unit characters</div><div class="raw-entry">• Fixed /insights crashing with EBUSY on Windows</div><div class="raw-entry">• Fixed exit confirmation dialog mislabeling one-shot scheduled tasks as recurring — now shows a countdown</div><div class="raw-entry">• Fixed slash/@ completion menu not sitting flush against the prompt border in fullscreen mode</div><div class="raw-entry">• Fixed CLAUDE_CODE_EXTRA_BODY output_config.effort causing 400 errors on subagent calls to models that don't support effort and on Vertex AI</div><div class="raw-entry">• Fixed prompt cursor disappearing when NO_COLOR is set</div><div class="raw-entry">• Fixed ToolSearch ranking so pasted MCP tool names surface the actual tool instead of description-matching siblings</div><div class="raw-entry">• Fixed compacting a resumed long-context session failing with Extra usage is required for long context requests</div><div class="raw-entry">• Fixed plugin install succeeding when a dependency version conflicts with an already-installed plugin — now reports range-conflict</div><div class="raw-entry">• Fixed Refine with Ultraplan not showing the remote session URL in the transcript</div><div class="raw-entry">• Fixed SDK image content blocks that fail to process crashing the session — now degrade to a text placeholder</div><div class="raw-entry">• Fixed Remote Control sessions not streaming subagent transcripts</div><div class="raw-entry">• Fixed Remote Control sessions not being archived when Claude Code exits</div><div class="raw-entry">• Fixed thinking.type.enabled is not supported 400 error when using Opus 4.7 via a Bedrock Application Inference Profile ARN</div></div></div>
       </div>
     </details>
 
@@ -128,7 +146,7 @@ del { opacity: 0.5; text-decoration: line-through; }
         
         
         <div class="diff-item">No cheatsheet changes in this version</div>
-        <div class="raw-section"><div class="diff-label">Full changelog (1 entries):</div><div class="raw-entries"><div class="raw-entry">• Fixed "claude-opus-4-7 is temporarily unavailable" for auto mode</div></div></div>
+        <div class="raw-section"><div class="diff-label">Full changelog (1 entries):</div><div class="raw-entries"><div class="raw-entry">• Fixed claude-opus-4-7 is temporarily unavailable for auto mode</div></div></div>
       </div>
     </details>
 
@@ -168,24 +186,6 @@ del { opacity: 0.5; text-decoration: line-through; }
       </div>
     </details>
 
-    <details id="v2.1.109" >
-      <summary>
-        <strong>v2.1.109</strong>
-        <span class="changelog-date">2026-04-18</span>
-        <span class="changelog-stats">
-          
-          
-          
-        </span>
-      </summary>
-      <div class="diff-body">
-        
-        
-        <div class="diff-item">No cheatsheet changes in this version</div>
-        <div class="raw-section"><div class="diff-label">Full changelog (1 entries):</div><div class="raw-entries"><div class="raw-entry">• Improved the extended-thinking indicator with a rotating progress hint</div></div></div>
-      </div>
-    </details>
-
     <details id="v2.1.108" >
       <summary>
         <strong>v2.1.108</strong>
@@ -201,24 +201,6 @@ del { opacity: 0.5; text-decoration: line-through; }
         <div class="diff-item diff-add">+ <strong>/recap</strong> → Context summary when returning to session <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-add">+ <strong>Ctrl+A</strong> → Show all projects (in /resume) <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-add">+ <strong>ENABLE_PROMPT_CACHING_1H</strong> → Opt into 1-hour prompt cache TTL <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>FORCE_PROMPT_CACHING_5M</strong> → Force 5-minute prompt cache TTL <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>CLAUDE_CODE_ENABLE_AWAY_SUMMARY</strong> → Force /recap when telemetry disabled <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>slash commands (Skill)</strong> → Model discovers/invokes built-in commands <span class="diff-section">[skills-agents]</span></div><div class="diff-item diff-update">~ <strong>/rewind</strong>: <del>Rewind conv / code checkpoint</del> → Rewind conv / code checkpoint (/undo alias) <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>Ctrl+X Ctrl+E</strong> <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-remove">- <strong>/copy [N]</strong> <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_SUBPROCESS_ENV_SCRUB</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>workspace.git_worktree</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_CERT_STORE</strong> <span class="diff-section">[config-env]</span></div>
         
         
-      </div>
-    </details>
-
-    <details id="v2.1.107" >
-      <summary>
-        <strong>v2.1.107</strong>
-        <span class="changelog-date">2026-04-16</span>
-        <span class="changelog-stats">
-          
-          
-          
-        </span>
-      </summary>
-      <div class="diff-body">
-        
-        
-        <div class="diff-item">No cheatsheet changes in this version</div>
-        <div class="raw-section"><div class="diff-label">Full changelog (1 entries):</div><div class="raw-entries"><div class="raw-entry">• Show thinking hints sooner during long operations</div></div></div>
       </div>
     </details>
 
@@ -290,24 +272,6 @@ del { opacity: 0.5; text-decoration: line-through; }
         <div class="diff-label">Cheatsheet changes:</div>
         <div class="diff-item diff-add">+ <strong>Ctrl O</strong> → Focus view (NO_FLICKER mode) <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-add">+ <strong>refreshInterval</strong> → Auto-refresh status line every N seconds <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>workspace.git_worktree</strong> → Status line JSON for worktree detection <span class="diff-section">[config-env]</span></div><div class="diff-item diff-update">~ <strong>Ctrl O</strong>: <del>Toggle verbose output</del> → Focus view (NO_FLICKER mode) <span class="diff-section">[keyboard-shortcuts]</span></div>
         
-        
-      </div>
-    </details>
-
-    <details id="v2.1.96" >
-      <summary>
-        <strong>v2.1.96</strong>
-        <span class="changelog-date">2026-04-08</span>
-        <span class="changelog-stats">
-          
-          
-          
-        </span>
-      </summary>
-      <div class="diff-body">
-        
-        
-        <div class="diff-item">No cheatsheet changes in this version</div>
         
       </div>
     </details>
