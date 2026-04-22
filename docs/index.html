@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.116</span>
-    <span class="date-label">Last updated: April 25, 2026</span>
+    <span class="version-label">Claude Code v2.1.117</span>
+    <span class="date-label">Last updated: April 26, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• Thinking spinner shows inline progress (still thinking / almost done)</span>  <span class="rc-item">• /resume up to 67% faster on large sessions</span>  <span class="rc-item">• MCP defers resources/templates/list to first @-mention for faster startup</span>  <span class="rc-item">• Agent frontmatter hooks: now fire for --agent main-thread</span>  <span class="rc-item">• Sandbox auto-allow no longer bypasses dangerous-path rm check</span>  <span class="rc-item">• /config search now matches option values</span>  <span class="rc-item">• /reload-plugins auto-installs missing marketplace dependencies</span></div>
+  <div class="rc-content"><span class="rc-item">• Agent frontmatter mcpServers loaded for --agent main-thread</span>  <span class="rc-item">• Forked subagents enabled via CLAUDE_CODE_FORK_SUBAGENT=1</span>  <span class="rc-item">• /model selections persist across restarts (overrides project pins)</span>  <span class="rc-item">• Default effort for Pro/Max on Opus 4.6/Sonnet 4.6 now high</span>  <span class="rc-item">• Native builds: Glob/Grep replaced by embedded bfs/ugrep</span>  <span class="rc-item">• blockedMarketplaces/strictKnownMarketplaces enforced on plugins</span>  <span class="rc-item">• /resume offers to summarize stale sessions before re-reading</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -1030,6 +1030,10 @@ kbd{
                 <span class="item-key">initialPrompt</span>
                 <span class="item-val">Auto-submit first turn</span>
               </div>
+              <div class="item" data-copy="mcpServers">
+                <span class="item-key">mcpServers</span>
+                <span class="item-val">Load MCP servers for agent session <b class="new">NEW</b></span>
+              </div>
             </div>
         </div>
       </section>
@@ -1068,17 +1072,9 @@ kbd{
                 <span class="item-key">modelOverrides</span>
                 <span class="item-val">Map model picker → custom IDs</span>
               </div>
-              <div class="item" data-copy="autoMemoryDirectory">
-                <span class="item-key">autoMemoryDirectory</span>
-                <span class="item-val">Custom memory dir</span>
-              </div>
               <div class="item" data-copy="worktree.sparsePaths">
                 <span class="item-key">worktree.sparsePaths</span>
                 <span class="item-val">Sparse checkout dirs</span>
-              </div>
-              <div class="item" data-copy="disableSkillShellExecution">
-                <span class="item-key">disableSkillShellExecution</span>
-                <span class="item-val">Disable shell exec in skills/commands</span>
               </div>
               <div class="item" data-copy="showThinkingSummaries">
                 <span class="item-key">showThinkingSummaries</span>
@@ -1095,6 +1091,14 @@ kbd{
               <div class="item" data-copy="sandbox.network.deniedDomains">
                 <span class="item-key">sandbox.network.deniedDomains</span>
                 <span class="item-val">Block domains even when allowedDomains wildcard permits</span>
+              </div>
+              <div class="item" data-copy="blockedMarketplaces">
+                <span class="item-key">blockedMarketplaces</span>
+                <span class="item-val">Block plugin marketplaces (managed) <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="strictKnownMarketplaces">
+                <span class="item-key">strictKnownMarketplaces</span>
+                <span class="item-val">Only allow known marketplaces (managed) <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1140,9 +1144,9 @@ kbd{
                 <span class="item-key">CLAUDE_CODE_ENABLE_AWAY_SUMMARY</span>
                 <span class="item-val">Opt out of auto-recap (set to 0)</span>
               </div>
-              <div class="item" data-copy="CLAUDE_CODE_USE_POWERSHELL_TOOL">
-                <span class="item-key">CLAUDE_CODE_USE_POWERSHELL_TOOL</span>
-                <span class="item-val">Opt in/out of PowerShell tool on Windows</span>
+              <div class="item" data-copy="CLAUDE_CODE_FORK_SUBAGENT">
+                <span class="item-key">CLAUDE_CODE_FORK_SUBAGENT</span>
+                <span class="item-val">Enable forked subagents on external builds <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">

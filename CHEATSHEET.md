@@ -1,16 +1,16 @@
-# Claude Code Cheatsheet v2.1.116
+# Claude Code Cheatsheet v2.1.117
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- Thinking spinner shows inline progress (still thinking / almost done) *(v2.1.116)*
-- /resume up to 67% faster on large sessions *(v2.1.116)*
-- MCP defers resources/templates/list to first @-mention for faster startup *(v2.1.116)*
-- Agent frontmatter hooks: now fire for --agent main-thread *(v2.1.116)*
-- Sandbox auto-allow no longer bypasses dangerous-path rm check *(v2.1.116)*
-- /config search now matches option values *(v2.1.116)*
-- /reload-plugins auto-installs missing marketplace dependencies *(v2.1.116)*
+- Agent frontmatter mcpServers loaded for --agent main-thread *(v2.1.117)*
+- Forked subagents enabled via CLAUDE_CODE_FORK_SUBAGENT=1 *(v2.1.117)*
+- /model selections persist across restarts (overrides project pins) *(v2.1.117)*
+- Default effort for Pro/Max on Opus 4.6/Sonnet 4.6 now high *(v2.1.117)*
+- Native builds: Glob/Grep replaced by embedded bfs/ugrep *(v2.1.117)*
+- blockedMarketplaces/strictKnownMarketplaces enforced on plugins *(v2.1.117)*
+- /resume offers to summarize stale sessions before re-reading *(v2.1.117)*
 
 ---
 
@@ -357,6 +357,7 @@
 | `maxTurns` | Limit agentic turns |
 | `SendMessage` | Resume agents (replaces resume) |
 | `initialPrompt` | Auto-submit first turn |
+| `mcpServers` | Load MCP servers for agent session **NEW** |
 
 ## ⚙️ Config & Env
 
@@ -375,13 +376,13 @@
 | Key | Description |
 |-----|-------------|
 | `modelOverrides` | Map model picker → custom IDs |
-| `autoMemoryDirectory` | Custom memory dir |
 | `worktree.sparsePaths` | Sparse checkout dirs |
-| `disableSkillShellExecution` | Disable shell exec in skills/commands |
 | `showThinkingSummaries` | Restore thinking summaries in sessions |
 | `forceRemoteSettingsRefresh` | Fail-closed remote settings fetch |
 | `refreshInterval` | Auto-refresh status line every N seconds |
 | `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
+| `blockedMarketplaces` | Block plugin marketplaces (managed) **NEW** |
+| `strictKnownMarketplaces` | Only allow known marketplaces (managed) **NEW** |
 
 ### Key Env Vars
 
@@ -397,7 +398,7 @@
 | `CLAUDE_CODE_PERFORCE_MODE` | Fail read-only files with p4 edit hint |
 | `ENABLE_PROMPT_CACHING_1H` | Opt into 1-hour prompt cache TTL |
 | `CLAUDE_CODE_ENABLE_AWAY_SUMMARY` | Opt out of auto-recap (set to 0) |
-| `CLAUDE_CODE_USE_POWERSHELL_TOOL` | Opt in/out of PowerShell tool on Windows |
+| `CLAUDE_CODE_FORK_SUBAGENT` | Enable forked subagents on external builds **NEW** |
 
 ### Hooks
 
