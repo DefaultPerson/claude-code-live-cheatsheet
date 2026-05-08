@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.133</span>
-    <span class="date-label">Last updated: May 12, 2026</span>
+    <span class="version-label">Claude Code v2.1.136</span>
+    <span class="date-label">Last updated: May 15, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• worktree.baseRef setting (fresh|head) changes EnterWorktree default base</span>  <span class="rc-item">• $CLAUDE_EFFORT now available in hooks and Bash tool commands</span>  <span class="rc-item">• Fixed /effort in one session changing effort in other sessions</span>  <span class="rc-item">• Fixed subagents not discovering project/user/plugin skills</span>  <span class="rc-item">• Fixed HTTP(S)_PROXY not respected for full MCP OAuth flow</span>  <span class="rc-item">• Fixed parallel sessions 401 after refresh-token race</span></div>
+  <div class="rc-content"><span class="rc-item">• autoMode.hard_deny blocks unconditionally regardless of allow exceptions</span>  <span class="rc-item">• CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL</span>  <span class="rc-item">• Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK</span>  <span class="rc-item">• Fixed MCP OAuth refresh tokens lost with concurrent refreshes</span>  <span class="rc-item">• Fixed plan mode not blocking file writes with matching Edit allow rule</span>  <span class="rc-item">• Fixed --resume/--continue not finding sessions when path has underscores</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -1124,10 +1124,6 @@ kbd{
                 <span class="item-key">worktree.sparsePaths</span>
                 <span class="item-val">Sparse checkout dirs</span>
               </div>
-              <div class="item" data-copy="forceRemoteSettingsRefresh">
-                <span class="item-key">forceRemoteSettingsRefresh</span>
-                <span class="item-val">Fail-closed remote settings fetch</span>
-              </div>
               <div class="item" data-copy="sandbox.network.deniedDomains">
                 <span class="item-key">sandbox.network.deniedDomains</span>
                 <span class="item-val">Block domains even when allowedDomains wildcard permits</span>
@@ -1146,7 +1142,11 @@ kbd{
               </div>
               <div class="item" data-copy="worktree.baseRef">
                 <span class="item-key">worktree.baseRef</span>
-                <span class="item-val">fresh|head — base branch for worktrees (default changed) <b class="new">NEW</b></span>
+                <span class="item-val">fresh|head — base branch for worktrees (default changed)</span>
+              </div>
+              <div class="item" data-copy="autoMode.hard_deny">
+                <span class="item-key">autoMode.hard_deny</span>
+                <span class="item-val">Block unconditionally regardless of user intent or allow exceptions <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1168,10 +1168,6 @@ kbd{
                 <span class="item-key">MAX_THINKING_TOKENS</span>
                 <span class="item-val">0=off</span>
               </div>
-              <div class="item" data-copy="CLAUDE_CODE_NO_FLICKER">
-                <span class="item-key">CLAUDE_CODE_NO_FLICKER</span>
-                <span class="item-val">Flicker-free alt-screen rendering</span>
-              </div>
               <div class="item" data-copy="DISABLE_UPDATES">
                 <span class="item-key">DISABLE_UPDATES</span>
                 <span class="item-val">Block all update paths including manual</span>
@@ -1190,7 +1186,11 @@ kbd{
               </div>
               <div class="item" data-copy="CLAUDE_EFFORT">
                 <span class="item-key">CLAUDE_EFFORT</span>
-                <span class="item-val">Current effort level in hooks and Bash tool <b class="new">NEW</b></span>
+                <span class="item-val">Current effort level in hooks and Bash tool</span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL">
+                <span class="item-key">CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</span>
+                <span class="item-val">Re-enable session quality survey for OTEL enterprises <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">

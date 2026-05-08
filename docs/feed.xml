@@ -5,14 +5,76 @@
     <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
     <description>Auto-updating cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 12 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://defaultperson.github.io/cc-live-cheatsheet/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Claude Code v2.1.133 highlights</title>
-      <description><![CDATA[<ul><li>worktree.baseRef setting (fresh|head) changes EnterWorktree default base (v2.1.133)</li><li>$CLAUDE_EFFORT now available in hooks and Bash tool commands (v2.1.133)</li><li>Fixed /effort in one session changing effort in other sessions (v2.1.133)</li><li>Fixed subagents not discovering project/user/plugin skills (v2.1.133)</li><li>Fixed HTTP(S)_PROXY not respected for full MCP OAuth flow (v2.1.133)</li><li>Fixed parallel sessions 401 after refresh-token race (v2.1.133)</li></ul>]]></description>
-      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">highlights-v2.1.133</guid>
+      <title>Claude Code v2.1.136 highlights</title>
+      <description><![CDATA[<ul><li>autoMode.hard_deny blocks unconditionally regardless of allow exceptions (v2.1.136)</li><li>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL (v2.1.136)</li><li>Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK (v2.1.136)</li><li>Fixed MCP OAuth refresh tokens lost with concurrent refreshes (v2.1.136)</li><li>Fixed plan mode not blocking file writes with matching Edit allow rule (v2.1.136)</li><li>Fixed --resume/--continue not finding sessions when path has underscores (v2.1.136)</li></ul>]]></description>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">highlights-v2.1.136</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
+    </item>
+    <item>
+      <title>Claude Code v2.1.136</title>
+      <description><![CDATA[<h3>Cheatsheet changes</h3><pre>+ [config-env] autoMode.hard_deny: Block unconditionally regardless of user intent or allow exceptions
++ [config-env] CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL: Re-enable session quality survey for OTEL enterprises
+- [config-env] forceRemoteSettingsRefresh
+- [config-env] CLAUDE_CODE_NO_FLICKER</pre>
+<h3>Full changelog</h3><pre>• Added `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` to re-enable the session quality survey for enterprises capturing responses through OpenTelemetry
+• Added `settings.autoMode.hard_deny` for auto mode classifier rules that block unconditionally regardless of user intent or allow exceptions
+• Fixed MCP servers configured in `.mcp.json`, plugins, and claude.ai connectors silently disappearing after `/clear` in the VS Code extension, JetBrains plugin, and Agent SDK
+• Fixed a rare login loop where a concurrent credential write could overwrite a freshly-rotated OAuth token and force re-login
+• Fixed MCP OAuth refresh tokens being lost when multiple servers refresh concurrently — users with several remote MCP servers should no longer need daily re-authentication
+• Fixed an API error (400) when extended thinking emitted a redacted thinking block after a tool call
+• Fixed `--resume` / `--continue` not finding sessions when the project path contains underscores
+• Fixed plan mode not blocking file writes when a matching `Edit(...)` allow rule exists
+• WSL2: image paste from Windows clipboard now works via a PowerShell fallback when xclip/wl-paste cannot read image data
+• Fixed plugin `Stop`/`UserPromptSubmit` hooks failing when cache cleanup deletes a version still in use by a running session
+• Improved visual consistency across slash command dialogs: standardized footer hints, dialog spacing, and arrow-key styling, and the dialog frame now appears immediately during loading instead of popping in after
+• Fixed colors appearing at wrong positions in bash command output and markdown code blocks
+• Fixed ReasonML diffs rendering corrupted "undefined" text artifacts at word-diff boundaries
+• Fixed worktree exit dialog warning about uncommitted files in the wrong directory after worktree removal
+• Fixed `@` file picker not matching files created mid-session in small non-git directories
+• Fixed `@`-mention file picker not finding files in directories with more than 100 entries
+• Fixed failed tool calls not being click-to-expand in fullscreen mode when their output was truncated
+• Fixed Backspace and Ctrl+Backspace getting swapped after using Ctrl+G to open an external editor on terminals with persistent extended-key modes
+• Fixed `/usage` weekly reset showing time of day instead of the calendar date
+• Fixed welcome banner ellipsis causing column overflow on CJK terminals
+• Fixed `/insights` crash when session history contains tool calls with malformed input fields
+• Fixed a renderer crash when a tool's collapsibility classification changes mid-session
+• Fixed a `skills` entry in `plugin.json` hiding the plugin's default `skills/` directory, and listing a file path now shows an error instead of failing silently
+• Fixed IDE shell-integration lock files not respecting `CLAUDE_CONFIG_DIR`
+• Fixed trailing whitespace in copied terminal output during streaming
+• Fixed plugin uninstall and enable/disable not matching slugs case-insensitively
+• Fixed tool error truncation marker showing a negative count for surrogate-pair strings
+• Fixed env vars from `CLAUDE_ENV_FILE` SessionStart hooks going stale after `/resume` or `/clear`
+• Fixed `/branch` saving a multi-line session title when given a pasted multi-line name
+• Fixed a stray leading space on the second line of wrapped text at the column boundary
+• Fixed Esc not dismissing dialogs in `/install-github-app`, `/desktop`, `/resume`, and `/web-setup`
+• Fixed `/doctor` MCP schema errors not naming the missing field or showing the source file path
+• Fixed Bash permission prompts showing an internal parser diagnostic instead of a user-readable explanation
+• Fixed plugin slash commands with spaces (e.g. `/myplugin review`) not resolving to their namespaced form
+• Fixed `AskUserQuestion` discarding multi-select answers when supplied as an array
+• Fixed `/clear &lt;name&gt;` not labeling the cleared session for `/resume`
+• Fixed `CronList` output missing qualifiers and the scheduled prompt
+• Fixed "Jump to bottom" overlay leaving color artifacts on CJK characters in fullscreen mode
+• Fixed wide markdown tables leaving a stale bordered render in terminal scrollback while streaming
+• Fixed pasted text being silently dropped when a long prompt with a pasted-text placeholder was auto-truncated
+• Fixed `/release-notes` getting stuck on an old version after a failed changelog refresh
+• Fixed `/mcp` server list not scrolling when there are more servers than fit in the terminal
+• Fixed mid-input slash command autocomplete not working after an initial slash command
+• Fixed scrolling to bottom re-engaging auto-follow with `autoScrollEnabled: false`
+• Fixed prompt suggestions being auto-submitted by Enter on an empty input instead of requiring Tab or arrow to accept
+• Fixed keyboard shortcut hints not reflecting rebound keys from `keybindings.json`
+• Fixed `/settings` language change being reverted on Escape after confirming
+• Fixed `/terminal-setup` only appearing in autocomplete on exact name match instead of partial prefixes
+• Fixed "Chat about this" on an `AskUserQuestion` dialog erasing the question text
+• Fixed MCP tool results being invisible when the server returns content blocks
+• Improved error message when `--worktree` collides with an existing or stale worktree
+• Changed plugin marketplace removal key to `d` (matching delete elsewhere) instead of `r` which collided with retry</pre>]]></description>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">v2.1.136</guid>
+      <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.136</link>
     </item>
     <item>
       <title>Claude Code v2.1.133</title>
@@ -20,24 +82,7 @@
 + [config-env] CLAUDE_EFFORT: Current effort level in hooks and Bash tool
 ~ [skills-agents] ${CLAUDE_EFFORT}: Current effort level (skills, hooks, Bash tool)
 - [config-env] blockedMarketplaces
-- [config-env] strictKnownMarketplaces</pre>
-<h3>Full changelog</h3><pre>• Added `worktree.baseRef` setting (`fresh` | `head`) to choose whether `--worktree`, `EnterWorktree`, and agent-isolation worktrees branch from `origin/&lt;default&gt;` or local `HEAD`. **Note:** the default `fresh` changes `EnterWorktree`'s base back to `origin/&lt;default&gt;` (it has been local `HEAD` since 2.1.128) — set `worktree.baseRef: "head"` to keep unpushed commits in new worktrees
-• Added `sandbox.bwrapPath` and `sandbox.socatPath` managed settings (Linux/WSL) to specify custom bubblewrap and socat binary locations
-• Added `parentSettingsBehavior` admin-tier key (`'first-wins' | 'merge'`) to let admins opt SDK `managedSettings` (parent tier) into the policy merge
-• Hooks now receive the active effort level via the `effort.level` JSON input field and the `$CLAUDE_EFFORT` environment variable, and Bash tool commands can read `$CLAUDE_EFFORT`
-• Improved focus mode behavior
-• Improved memory usage by releasing warm-spare background workers under memory pressure
-• Fixed parallel sessions all dead-ending at 401 after a refresh-token race wiped shared credentials
-• Fixed `Edit`/`Write` allow rules scoped to a drive root (`C:\`) or POSIX `/` matching incorrectly and always prompting
-• Fixed an unhandled rejection (`ECOMPROMISED`) when a history or session-log file lock is compromised by clock skew or slow disk
-• Fixed pressing Esc during conversation compaction showing a spurious "Error compacting conversation" notification
-• Fixed `HTTP(S)_PROXY` / `NO_PROXY` / mTLS not being respected for the full MCP OAuth flow including discovery, dynamic client registration, token exchange, and token refresh
-• Fixed Read/Write/Edit being denied on mapped network drives passed via `--add-dir` / SDK `additionalDirectories`
-• Fixed Remote Control stop/interrupt from claude.ai not fully canceling the CLI session the same way local Esc does, causing queued messages to never advance after interrupting a stuck tool or prompt
-• Fixed `/effort` in one session unexpectedly changing the effort level of other concurrent sessions, and a related issue where an IDE effort change could be silently dropped
-• Fixed subagents not discovering project, user, or plugin skills via the Skill tool
-• `claude --help` now lists `--remote-control` alongside `--remote-control-session-name-prefix`
-• [VSCode] Fixed `claudeCode.claudeProcessWrapper` failing with "Unsupported platform" when the extension build doesn't bundle a Claude binary</pre>]]></description>
+- [config-env] strictKnownMarketplaces</pre>]]></description>
       <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="false">v2.1.133</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.133</link>
@@ -225,24 +270,6 @@
       <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="false">v2.1.110</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.110</link>
-    </item>
-    <item>
-      <title>Claude Code v2.1.108</title>
-      <description><![CDATA[<h3>Cheatsheet changes</h3><pre>+ [slash-commands] /recap: Context summary when returning to session
-+ [keyboard-shortcuts] Ctrl+A: Show all projects (in /resume)
-+ [config-env] ENABLE_PROMPT_CACHING_1H: Opt into 1-hour prompt cache TTL
-+ [config-env] FORCE_PROMPT_CACHING_5M: Force 5-minute prompt cache TTL
-+ [config-env] CLAUDE_CODE_ENABLE_AWAY_SUMMARY: Force /recap when telemetry disabled
-+ [skills-agents] slash commands (Skill): Model discovers/invokes built-in commands
-~ [slash-commands] /rewind: Rewind conv / code checkpoint (/undo alias)
-- [keyboard-shortcuts] Ctrl+X Ctrl+E
-- [slash-commands] /copy [N]
-- [config-env] CLAUDE_CODE_SUBPROCESS_ENV_SCRUB
-- [config-env] workspace.git_worktree
-- [config-env] CLAUDE_CODE_CERT_STORE</pre>]]></description>
-      <pubDate>Fri, 17 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">v2.1.108</guid>
-      <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.108</link>
     </item>
   </channel>
 </rss>

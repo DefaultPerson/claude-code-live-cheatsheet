@@ -1,15 +1,15 @@
-# Claude Code Cheatsheet v2.1.133
+# Claude Code Cheatsheet v2.1.136
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- worktree.baseRef setting (fresh|head) changes EnterWorktree default base *(v2.1.133)*
-- $CLAUDE_EFFORT now available in hooks and Bash tool commands *(v2.1.133)*
-- Fixed /effort in one session changing effort in other sessions *(v2.1.133)*
-- Fixed subagents not discovering project/user/plugin skills *(v2.1.133)*
-- Fixed HTTP(S)_PROXY not respected for full MCP OAuth flow *(v2.1.133)*
-- Fixed parallel sessions 401 after refresh-token race *(v2.1.133)*
+- autoMode.hard_deny blocks unconditionally regardless of allow exceptions *(v2.1.136)*
+- CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL *(v2.1.136)*
+- Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK *(v2.1.136)*
+- Fixed MCP OAuth refresh tokens lost with concurrent refreshes *(v2.1.136)*
+- Fixed plan mode not blocking file writes with matching Edit allow rule *(v2.1.136)*
+- Fixed --resume/--continue not finding sessions when path has underscores *(v2.1.136)*
 
 ---
 
@@ -388,12 +388,12 @@
 |-----|-------------|
 | `modelOverrides` | Map model picker → custom IDs |
 | `worktree.sparsePaths` | Sparse checkout dirs |
-| `forceRemoteSettingsRefresh` | Fail-closed remote settings fetch |
 | `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
 | `wslInheritsWindowsSettings` | WSL inherits Windows managed settings |
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
-| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) **NEW** |
+| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
+| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions **NEW** |
 
 ### Key Env Vars
 
@@ -403,12 +403,12 @@
 | `ANTHROPIC_MODEL` | Default model |
 | `CLAUDE_CODE_EFFORT_LEVEL` | low/med/high |
 | `MAX_THINKING_TOKENS` | 0=off |
-| `CLAUDE_CODE_NO_FLICKER` | Flicker-free alt-screen rendering |
 | `DISABLE_UPDATES` | Block all update paths including manual |
 | `ANTHROPIC_BEDROCK_SERVICE_TIER` | Select Bedrock tier (default/flex/priority) |
 | `CLAUDE_CODE_SESSION_ID` | Session ID in Bash tool subprocess env |
 | `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN` | Opt out of fullscreen alternate-screen renderer |
-| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool **NEW** |
+| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
+| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises **NEW** |
 
 ### Hooks
 
