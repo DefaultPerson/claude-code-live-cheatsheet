@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastVersion": "2.1.137",
-    "lastUpdated": "2026-05-16",
+    "lastVersion": "2.1.138",
+    "lastUpdated": "2026-05-17",
     "schemaVersion": 1
   },
   "recentChanges": [
@@ -37,6 +37,16 @@
     }
   ],
   "changelog": [
+    {
+      "version": "2.1.138",
+      "date": "2026-05-17",
+      "added": [],
+      "updated": [],
+      "removed": [],
+      "raw": [
+        "Internal fixes"
+      ]
+    },
     {
       "version": "2.1.137",
       "date": "2026-05-16",
@@ -573,66 +583,6 @@
         {
           "section": "config-env",
           "key": "FORCE_PROMPT_CACHING_5M"
-        }
-      ]
-    },
-    {
-      "version": "2.1.110",
-      "date": "2026-04-19",
-      "added": [
-        {
-          "section": "slash-commands",
-          "key": "/tui [fullscreen]",
-          "value": "Switch to flicker-free TUI rendering"
-        },
-        {
-          "section": "slash-commands",
-          "key": "/focus",
-          "value": "Toggle focus view"
-        },
-        {
-          "section": "config-env",
-          "key": "autoScrollEnabled",
-          "value": "Disable auto-scroll in fullscreen"
-        },
-        {
-          "section": "workflows-tips",
-          "key": "Push notifications",
-          "value": "Mobile push via Remote Control"
-        }
-      ],
-      "updated": [
-        {
-          "section": "keyboard-shortcuts",
-          "key": "Ctrl O",
-          "oldValue": "Focus view (NO_FLICKER mode)",
-          "newValue": "Toggle verbose transcript"
-        },
-        {
-          "section": "workflows-tips",
-          "key": "Ctrl O",
-          "oldValue": "See thinking (verbose)",
-          "newValue": "Toggle verbose transcript"
-        },
-        {
-          "section": "config-env",
-          "key": "CLAUDE_CODE_ENABLE_AWAY_SUMMARY",
-          "oldValue": "Force /recap when telemetry disabled",
-          "newValue": "Opt out of auto-recap (set to 0)"
-        }
-      ],
-      "removed": [
-        {
-          "section": "slash-commands",
-          "key": "/insights"
-        },
-        {
-          "section": "slash-commands",
-          "key": "/stats"
-        },
-        {
-          "section": "config-env",
-          "key": "CLAUDECODE"
         }
       ]
     }

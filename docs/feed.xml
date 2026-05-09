@@ -5,14 +5,21 @@
     <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
     <description>Auto-updating cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.</description>
     <language>en</language>
-    <lastBuildDate>Sat, 16 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 17 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://defaultperson.github.io/cc-live-cheatsheet/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>Claude Code v2.1.137 highlights</title>
+      <title>Claude Code v2.1.138 highlights</title>
       <description><![CDATA[<ul><li>autoMode.hard_deny blocks unconditionally regardless of allow exceptions (v2.1.136)</li><li>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL (v2.1.136)</li><li>Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK (v2.1.136)</li><li>Fixed MCP OAuth refresh tokens lost with concurrent refreshes (v2.1.136)</li><li>Fixed plan mode not blocking file writes with matching Edit allow rule (v2.1.136)</li><li>Fixed --resume/--continue not finding sessions when path has underscores (v2.1.136)</li></ul>]]></description>
-      <pubDate>Sat, 16 May 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">highlights-v2.1.137</guid>
+      <pubDate>Sun, 17 May 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">highlights-v2.1.138</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
+    </item>
+    <item>
+      <title>Claude Code v2.1.138</title>
+      <description><![CDATA[<h3>Full changelog</h3><pre>• Internal fixes</pre>]]></description>
+      <pubDate>Sun, 17 May 2026 00:00:00 GMT</pubDate>
+      <guid isPermaLink="false">v2.1.138</guid>
+      <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.138</link>
     </item>
     <item>
       <title>Claude Code v2.1.137</title>
@@ -209,22 +216,6 @@
       <pubDate>Mon, 20 Apr 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="false">v2.1.111</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.111</link>
-    </item>
-    <item>
-      <title>Claude Code v2.1.110</title>
-      <description><![CDATA[<h3>Cheatsheet changes</h3><pre>+ [slash-commands] /tui [fullscreen]: Switch to flicker-free TUI rendering
-+ [slash-commands] /focus: Toggle focus view
-+ [config-env] autoScrollEnabled: Disable auto-scroll in fullscreen
-+ [workflows-tips] Push notifications: Mobile push via Remote Control
-~ [keyboard-shortcuts] Ctrl O: Toggle verbose transcript
-~ [workflows-tips] Ctrl O: Toggle verbose transcript
-~ [config-env] CLAUDE_CODE_ENABLE_AWAY_SUMMARY: Opt out of auto-recap (set to 0)
-- [slash-commands] /insights
-- [slash-commands] /stats
-- [config-env] CLAUDECODE</pre>]]></description>
-      <pubDate>Sun, 19 Apr 2026 00:00:00 GMT</pubDate>
-      <guid isPermaLink="false">v2.1.110</guid>
-      <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.110</link>
     </item>
   </channel>
 </rss>
