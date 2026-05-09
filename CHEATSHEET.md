@@ -1,4 +1,4 @@
-# Claude Code Cheatsheet v2.1.136
+# Claude Code Cheatsheet v2.1.137
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
@@ -393,7 +393,7 @@
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
 | `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
-| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions **NEW** |
+| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions |
 
 ### Key Env Vars
 
@@ -408,7 +408,7 @@
 | `CLAUDE_CODE_SESSION_ID` | Session ID in Bash tool subprocess env |
 | `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN` | Opt out of fullscreen alternate-screen renderer |
 | `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
-| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises **NEW** |
+| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises |
 
 ### Hooks
 
