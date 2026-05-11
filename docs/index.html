@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.138</span>
-    <span class="date-label">Last updated: May 17, 2026</span>
+    <span class="version-label">Claude Code v2.1.139</span>
+    <span class="date-label">Last updated: May 18, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• autoMode.hard_deny blocks unconditionally regardless of allow exceptions</span>  <span class="rc-item">• CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL</span>  <span class="rc-item">• Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK</span>  <span class="rc-item">• Fixed MCP OAuth refresh tokens lost with concurrent refreshes</span>  <span class="rc-item">• Fixed plan mode not blocking file writes with matching Edit allow rule</span>  <span class="rc-item">• Fixed --resume/--continue not finding sessions when path has underscores</span></div>
+  <div class="rc-content"><span class="rc-item">• Agent view: `claude agents` lists every CC session</span>  <span class="rc-item">• /goal command: set completion condition, Claude works until met</span>  <span class="rc-item">• Hook args: string[] exec form and continueOnBlock for PostToolUse</span>  <span class="rc-item">• CLAUDE_PROJECT_DIR now passed to MCP stdio servers</span>  <span class="rc-item">• API key disables Remote Control, /schedule, claude.ai MCP, notifications</span>  <span class="rc-item">• /scroll-speed command: tune mouse wheel speed with live preview</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -190,10 +190,6 @@ kbd{
                 <span class="item-key"><kbd>Ctrl</kbd> <kbd>T</kbd></span>
                 <span class="item-val">Toggle task list</span>
               </div>
-              <div class="item" data-copy="Ctrl V">
-                <span class="item-key"><kbd>Ctrl</kbd> <kbd>V</kbd></span>
-                <span class="item-val">Paste image</span>
-              </div>
               <div class="item" data-copy="Ctrl+X Ctrl+K">
                 <span class="item-key"><kbd>Ctrl</kbd><kbd>X</kbd> <kbd>Ctrl</kbd><kbd>K</kbd></span>
                 <span class="item-val">Kill background agents</span>
@@ -201,6 +197,14 @@ kbd{
               <div class="item" data-copy="Esc Esc">
                 <span class="item-key"><kbd>Esc</kbd> <kbd>Esc</kbd></span>
                 <span class="item-val">Rewind / undo</span>
+              </div>
+              <div class="item" data-copy="{ / }">
+                <span class="item-key"><kbd>{</kbd> <kbd>/</kbd> <kbd>}</kbd></span>
+                <span class="item-val">Jump between user prompts (transcript view) <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="?">
+                <span class="item-key"><kbd>?</kbd></span>
+                <span class="item-val">Show keyboard shortcuts (transcript view) <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -269,10 +273,6 @@ kbd{
               <div class="item" data-copy="←→">
                 <span class="item-key"><kbd>←→</kbd></span>
                 <span class="item-val">Expand/collapse</span>
-              </div>
-              <div class="item" data-copy="P">
-                <span class="item-key"><kbd>P</kbd></span>
-                <span class="item-val">Preview</span>
               </div>
               <div class="item" data-copy="R">
                 <span class="item-key"><kbd>R</kbd></span>
@@ -356,6 +356,10 @@ kbd{
                 <span class="item-key">workspace</span>
                 <span class="item-val">Reserved server name — skipped with warning</span>
               </div>
+              <div class="item" data-copy="${CLAUDE_PROJECT_DIR}">
+                <span class="item-key">${CLAUDE_PROJECT_DIR}</span>
+                <span class="item-val">Reference project dir in MCP server commands <b class="new">NEW</b></span>
+              </div>
             </div>
         </div>
       </section></div><div class="col">
@@ -386,10 +390,6 @@ kbd{
                 <span class="item-key">/branch [name]</span>
                 <span class="item-val">Branch conversation (/fork alias)</span>
               </div>
-              <div class="item" data-copy="/cost">
-                <span class="item-key">/cost</span>
-                <span class="item-val">Alias for /usage (cost tab)</span>
-              </div>
               <div class="item" data-copy="/context">
                 <span class="item-key">/context</span>
                 <span class="item-val">Visualize context (grid)</span>
@@ -413,6 +413,10 @@ kbd{
               <div class="item" data-copy="/export">
                 <span class="item-key">/export</span>
                 <span class="item-val">Export conversation</span>
+              </div>
+              <div class="item" data-copy="/goal [condition]">
+                <span class="item-key">/goal [condition]</span>
+                <span class="item-val">Set completion condition; Claude works across turns until met <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -457,6 +461,10 @@ kbd{
               <div class="item" data-copy="/tui [fullscreen]">
                 <span class="item-key">/tui [fullscreen]</span>
                 <span class="item-val">Switch to flicker-free TUI rendering</span>
+              </div>
+              <div class="item" data-copy="/scroll-speed">
+                <span class="item-key">/scroll-speed</span>
+                <span class="item-val">Tune mouse wheel scroll speed with live preview <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -553,10 +561,6 @@ kbd{
               <div class="item" data-copy="/powerup">
                 <span class="item-key">/powerup</span>
                 <span class="item-val">Interactive lessons + animated demos</span>
-              </div>
-              <div class="item" data-copy="/team-onboarding">
-                <span class="item-key">/team-onboarding</span>
-                <span class="item-val">Generate teammate ramp-up guide</span>
               </div>
             </div>
         </div>
@@ -770,6 +774,10 @@ kbd{
                 <span class="item-key">Push notifications</span>
                 <span class="item-val">Mobile push via Remote Control</span>
               </div>
+              <div class="item" data-copy="API key → no cloud">
+                <span class="item-key"><kbd>API</kbd> <kbd>key</kbd> <kbd>→</kbd> <kbd>no</kbd> <kbd>cloud</kbd></span>
+                <span class="item-val">API key disables Remote Control, /schedule, claude.ai MCP, notifications <b class="new">NEW</b></span>
+              </div>
             </div>
         </div>
       </section>
@@ -819,6 +827,14 @@ kbd{
               <div class="item" data-copy="claude project purge [path]">
                 <span class="item-key">claude project purge [path]</span>
                 <span class="item-val">Delete all CC state; --dry-run, -y, -i, --all</span>
+              </div>
+              <div class="item" data-copy="claude agents">
+                <span class="item-key">claude agents</span>
+                <span class="item-val">Agent view — list every CC session (running/blocked/done) <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="claude plugin details &lt;name&gt;">
+                <span class="item-key">claude plugin details &lt;name&gt;</span>
+                <span class="item-val">Show plugin component inventory and projected token cost <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1128,10 +1144,6 @@ kbd{
                 <span class="item-key">sandbox.network.deniedDomains</span>
                 <span class="item-val">Block domains even when allowedDomains wildcard permits</span>
               </div>
-              <div class="item" data-copy="wslInheritsWindowsSettings">
-                <span class="item-key">wslInheritsWindowsSettings</span>
-                <span class="item-val">WSL inherits Windows managed settings</span>
-              </div>
               <div class="item" data-copy="autoMode.$defaults">
                 <span class="item-key">autoMode.$defaults</span>
                 <span class="item-val">Extend built-in auto mode rules instead of replacing</span>
@@ -1192,6 +1204,10 @@ kbd{
                 <span class="item-key">CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</span>
                 <span class="item-val">Re-enable session quality survey for OTEL enterprises</span>
               </div>
+              <div class="item" data-copy="CLAUDE_PROJECT_DIR">
+                <span class="item-key">CLAUDE_PROJECT_DIR</span>
+                <span class="item-val">Project dir passed to MCP stdio servers and hooks env <b class="new">NEW</b></span>
+              </div>
             </div>
             <div class="group">
               <div class="group-label">Hooks</div>
@@ -1220,14 +1236,6 @@ kbd{
                 <span class="item-key">SubagentStop</span>
                 <span class="item-val">When subagent finishes</span>
               </div>
-              <div class="item" data-copy="CwdChanged">
-                <span class="item-key">CwdChanged</span>
-                <span class="item-val">Working directory changed</span>
-              </div>
-              <div class="item" data-copy="FileChanged">
-                <span class="item-key">FileChanged</span>
-                <span class="item-val">File changed on disk</span>
-              </div>
               <div class="item" data-copy="PermissionDenied">
                 <span class="item-key">PermissionDenied</span>
                 <span class="item-val">After auto mode denials</span>
@@ -1243,6 +1251,14 @@ kbd{
               <div class="item" data-copy="mcp_tool type">
                 <span class="item-key">mcp_tool type</span>
                 <span class="item-val">Invoke MCP tool directly from hook</span>
+              </div>
+              <div class="item" data-copy="args: string[]">
+                <span class="item-key">args: string[]</span>
+                <span class="item-val">Hook exec form — spawn directly without shell <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="continueOnBlock">
+                <span class="item-key">continueOnBlock</span>
+                <span class="item-val">PostToolUse: feed rejection reason back, continue turn <b class="new">NEW</b></span>
               </div>
             </div>
         </div>

@@ -1,42 +1,186 @@
 {
   "meta": {
-    "lastVersion": "2.1.138",
-    "lastUpdated": "2026-05-17",
+    "lastVersion": "2.1.139",
+    "lastUpdated": "2026-05-18",
     "schemaVersion": 1
   },
   "recentChanges": [
     {
-      "version": "2.1.136",
-      "text": "autoMode.hard_deny blocks unconditionally regardless of allow exceptions",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "Agent view: `claude agents` lists every CC session",
+      "date": "2026-05-18"
     },
     {
-      "version": "2.1.136",
-      "text": "CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "/goal command: set completion condition, Claude works until met",
+      "date": "2026-05-18"
     },
     {
-      "version": "2.1.136",
-      "text": "Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "Hook args: string[] exec form and continueOnBlock for PostToolUse",
+      "date": "2026-05-18"
     },
     {
-      "version": "2.1.136",
-      "text": "Fixed MCP OAuth refresh tokens lost with concurrent refreshes",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "CLAUDE_PROJECT_DIR now passed to MCP stdio servers",
+      "date": "2026-05-18"
     },
     {
-      "version": "2.1.136",
-      "text": "Fixed plan mode not blocking file writes with matching Edit allow rule",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "API key disables Remote Control, /schedule, claude.ai MCP, notifications",
+      "date": "2026-05-18"
     },
     {
-      "version": "2.1.136",
-      "text": "Fixed --resume/--continue not finding sessions when path has underscores",
-      "date": "2026-05-15"
+      "version": "2.1.139",
+      "text": "/scroll-speed command: tune mouse wheel speed with live preview",
+      "date": "2026-05-18"
     }
   ],
   "changelog": [
+    {
+      "version": "2.1.139",
+      "date": "2026-05-18",
+      "added": [
+        {
+          "section": "slash-commands",
+          "key": "/goal [condition]",
+          "value": "Set completion condition; Claude works across turns until met"
+        },
+        {
+          "section": "slash-commands",
+          "key": "/scroll-speed",
+          "value": "Tune mouse wheel scroll speed with live preview"
+        },
+        {
+          "section": "keyboard-shortcuts",
+          "key": "{ / }",
+          "value": "Jump between user prompts (transcript view)"
+        },
+        {
+          "section": "keyboard-shortcuts",
+          "key": "?",
+          "value": "Show keyboard shortcuts (transcript view)"
+        },
+        {
+          "section": "cli-flags",
+          "key": "claude agents",
+          "value": "Agent view — list every CC session (running/blocked/done)"
+        },
+        {
+          "section": "cli-flags",
+          "key": "claude plugin details <name>",
+          "value": "Show plugin component inventory and projected token cost"
+        },
+        {
+          "section": "config-env",
+          "key": "CLAUDE_PROJECT_DIR",
+          "value": "Project dir passed to MCP stdio servers and hooks env"
+        },
+        {
+          "section": "config-env",
+          "key": "args: string[]",
+          "value": "Hook exec form — spawn directly without shell"
+        },
+        {
+          "section": "config-env",
+          "key": "continueOnBlock",
+          "value": "PostToolUse: feed rejection reason back to Claude, continue turn"
+        },
+        {
+          "section": "mcp-servers",
+          "key": "${CLAUDE_PROJECT_DIR}",
+          "value": "Reference project dir in MCP server commands"
+        },
+        {
+          "section": "workflows-tips",
+          "key": "API key → no cloud",
+          "value": "API key disables Remote Control, /schedule, claude.ai MCP, notifications"
+        }
+      ],
+      "updated": [],
+      "removed": [
+        {
+          "section": "keyboard-shortcuts",
+          "key": "Ctrl V"
+        },
+        {
+          "section": "keyboard-shortcuts",
+          "key": "P"
+        },
+        {
+          "section": "slash-commands",
+          "key": "/cost"
+        },
+        {
+          "section": "slash-commands",
+          "key": "/team-onboarding"
+        },
+        {
+          "section": "config-env",
+          "key": "wslInheritsWindowsSettings"
+        },
+        {
+          "section": "config-env",
+          "key": "CwdChanged"
+        },
+        {
+          "section": "config-env",
+          "key": "FileChanged"
+        }
+      ],
+      "raw": [
+        "Added agent view (Research Preview): a single list of every Claude Code session — running, blocked on you, or done. Run `claude agents` to get started. See https://code.claude.com/docs/en/agent-view",
+        "Added `/goal` command: set a completion condition and Claude keeps working across turns until it's met. Works in interactive, `-p`, and Remote Control. Shows live elapsed/turns/tokens as an overlay panel",
+        "Added `/scroll-speed` command to tune mouse wheel scroll speed with a live preview",
+        "Added `claude plugin details <name>` to show a plugin's component inventory and projected per-session token cost",
+        "Added transcript view navigation: `?` for keyboard shortcuts, `{`/`}` to jump between user prompts, `v` to toggle shortcut panel",
+        "Added hook `args: string[]` field (exec form) that spawns the command directly without a shell, so path placeholders never need quoting",
+        "Added hook `continueOnBlock` config option for `PostToolUse` — set to `true` to feed the hook's rejection reason back to Claude and continue the turn",
+        "MCP stdio servers now receive `CLAUDE_PROJECT_DIR` in their environment, matching hooks. Plugin configs can reference `${CLAUDE_PROJECT_DIR}` in commands",
+        "Compaction prompt now asks the model to preserve sensitive user instructions",
+        "`/mcp` Reconnect now picks up `.mcp.json` edits without a restart, and shows the HTTP status and URL when reconnecting fails",
+        "`/context all` per-skill token estimates now account for the model's tokenizer and show rounded values",
+        "`claude plugin install <name>@<marketplace>` now auto-refreshes the marketplace and retries before reporting a plugin as not found",
+        "`/plugin` installed-plugin details now show hook event names and MCP server names cleanly",
+        "`/context` now shows the providing plugin's name for plugin-sourced skills",
+        "Remote MCP server reconnect retry on transient failures is now enabled for all users",
+        "API requests from subagents now carry `x-claude-code-agent-id` / `x-claude-code-parent-agent-id` headers, and `claude_code.llm_request` OTEL spans include `agent_id` / `parent_agent_id` attributes",
+        "Remote Control, `/schedule`, claude.ai MCP connectors, and notification preferences are now disabled when `ANTHROPIC_API_KEY` / `apiKeyHelper` / `ANTHROPIC_AUTH_TOKEN` is set, even if a Claude.ai login also exists. Unset the API key to use these features",
+        "Fixed a deadlock where expired credentials and the `forceRemoteSettingsRefresh` policy setting blocked `claude auth login`/`logout`/`status` with no way to recover",
+        "Fixed `autoAllowBashIfSandboxed` not auto-approving commands with shell expansions like `$VAR` and `$(cmd)`",
+        "Fixed a bug where a hook writing to the terminal could corrupt an on-screen interactive prompt; hooks now run without terminal access",
+        "Fixed unbounded memory growth when an HTTP/SSE MCP server streams non-protocol data — response bodies now capped at 16 MB per SSE frame",
+        "Fixed `Skill(name *)` permission rules — the wildcard form now works as a prefix match, matching `Bash(ls *)` behavior",
+        "Fixed settings hot-reload not detecting edits to symlinked `~/.claude/settings.json`",
+        "Fixed plugin details failing to load when the marketplace key differs from the manifest name",
+        "Fixed `/model` picker \"Default\" row not reflecting `ANTHROPIC_DEFAULT_OPUS_MODEL`/`ANTHROPIC_DEFAULT_SONNET_MODEL` overrides",
+        "Fixed spurious \"stream idle timeout\" 5 minutes after a response completed, caused by the watchdog timer not being cleared on stream cancellation",
+        "Fixed silent `exit 1` when 10+ MCP servers are configured and the cache directory is unwritable — the error message now includes the underlying cause",
+        "Fixed a typing cursor blinking on tab names, list pointers, and select rows in dialogs",
+        "Fixed transcript view letter shortcuts not working after mouse click",
+        "Fixed Bash-mode up-arrow history repeating the first entry and clobbering the in-progress draft",
+        "Fixed pasting or dropping multiple images only inserting the last one",
+        "Fixed hyperlinks using unreadable dark navy on dark themes — they now adapt to the active theme",
+        "Fixed model picker showing a redundant \"Current model\" row for third-party users whose model is set to the `opus` alias",
+        "Fixed legacy Opus picker entry on PAYG 3P providers resolving to the same model as the default entry",
+        "Fixed mouse wheel scrolling speed in Cursor and VS Code 1.92–1.104; the trackpad now scrolls at a steady rate and the mouse wheel keeps ~3 lines per notch",
+        "Fixed scroll behavior in Windows Terminal and VS Code when attached to background sessions",
+        "Fixed MCP resources from disconnected servers lingering in `@server:` autocomplete",
+        "Fixed two-file diff snippets over-reporting the number of truncated lines by one",
+        "Fixed Grep results not relativizing Windows drive-letter paths and count mode reporting wrong totals for single-file paths",
+        "Fixed border-embedded text overflowing on CJK/emoji due to visual cell width miscalculation",
+        "Fixed fuzzy-match highlighting splitting emoji and astral-plane characters mid-pair",
+        "Fixed skill argument names containing regex metacharacters breaking argument substitution",
+        "Fixed ProgressBar rendering a full block for an almost-full fractional cell",
+        "Fixed task polling and `fs.watch` being resurrected when the last subscriber leaves while a fetch is in flight",
+        "Fixed plugin dependency resolution leaving a stale count when the manifest name differs from the source identifier",
+        "Fixed Insights Time-of-Day chart skewing when a session has an unparseable timestamp",
+        "Fixed keybindings using only the cmd/super/win modifier being flagged as unparseable",
+        "Fixed `claude_code.active_time.total` OpenTelemetry metric not being emitted in `--print` mode",
+        "Fixed `claude plugin update` not preserving cross-plugin symlinks inside a marketplace",
+        "[VSCode] Press Cmd/Ctrl+Shift+T to reopen the most recently closed session tab, configurable via `claudeCode.enableReopenClosedSessionShortcut`"
+      ]
+    },
     {
       "version": "2.1.138",
       "date": "2026-05-17",
@@ -512,79 +656,6 @@
       "added": [],
       "updated": [],
       "removed": []
-    },
-    {
-      "version": "2.1.111",
-      "date": "2026-04-20",
-      "added": [
-        {
-          "section": "skills-agents",
-          "key": "/ultrareview [PR#]",
-          "value": "Cloud code review (parallel multi-agent)"
-        },
-        {
-          "section": "skills-agents",
-          "key": "/less-permission-prompts",
-          "value": "Scan transcripts for allowlist proposals"
-        },
-        {
-          "section": "config-env",
-          "key": "CLAUDE_CODE_USE_POWERSHELL_TOOL",
-          "value": "Opt in/out of PowerShell tool on Windows"
-        },
-        {
-          "section": "keyboard-shortcuts",
-          "key": "Ctrl+U",
-          "value": "Clear input buffer (Ctrl+Y to restore)"
-        },
-        {
-          "section": "workflows-tips",
-          "key": "Auto mode",
-          "value": "Built-in for Max subscribers"
-        }
-      ],
-      "updated": [
-        {
-          "section": "slash-commands",
-          "key": "/effort [level]",
-          "oldValue": "Set effort (low/med/high/max/auto)",
-          "newValue": "Set effort; interactive slider (low/med/xhigh/high/max/auto)"
-        },
-        {
-          "section": "keyboard-shortcuts",
-          "key": "Ctrl+L",
-          "oldValue": "Clear screen",
-          "newValue": "Clear screen + force full redraw"
-        },
-        {
-          "section": "cli-flags",
-          "key": "--effort",
-          "oldValue": "low/med/high/max",
-          "newValue": "low/med/xhigh/high/max"
-        },
-        {
-          "section": "workflows-tips",
-          "key": "/effort",
-          "oldValue": "○ low · ◐ med · ● high",
-          "newValue": "○ low · ◐ med · ◑ xhigh · ● high/max"
-        },
-        {
-          "section": "workflows-tips",
-          "key": "1M context",
-          "oldValue": "Opus 4.6 (Max/Team/Ent)",
-          "newValue": "Opus 4.7 (Max/Team/Ent)"
-        }
-      ],
-      "removed": [
-        {
-          "section": "keyboard-shortcuts",
-          "key": "A"
-        },
-        {
-          "section": "config-env",
-          "key": "FORCE_PROMPT_CACHING_5M"
-        }
-      ]
     }
   ],
   "sections": [
@@ -640,11 +711,6 @@
               "isNew": false
             },
             {
-              "key": "Ctrl V",
-              "value": "Paste image",
-              "isNew": false
-            },
-            {
               "key": "Ctrl+X Ctrl+K",
               "value": "Kill background agents",
               "isNew": false
@@ -653,6 +719,16 @@
               "key": "Esc Esc",
               "value": "Rewind / undo",
               "isNew": false
+            },
+            {
+              "key": "{ / }",
+              "value": "Jump between user prompts (transcript view)",
+              "isNew": true
+            },
+            {
+              "key": "?",
+              "value": "Show keyboard shortcuts (transcript view)",
+              "isNew": true
             }
           ]
         },
@@ -737,11 +813,6 @@
             {
               "key": "←→",
               "value": "Expand/collapse",
-              "isNew": false
-            },
-            {
-              "key": "P",
-              "value": "Preview",
               "isNew": false
             },
             {
@@ -848,6 +919,11 @@
               "key": "workspace",
               "value": "Reserved server name — skipped with warning",
               "isNew": false
+            },
+            {
+              "key": "${CLAUDE_PROJECT_DIR}",
+              "value": "Reference project dir in MCP server commands",
+              "isNew": true
             }
           ]
         }
@@ -890,11 +966,6 @@
               "isNew": false
             },
             {
-              "key": "/cost",
-              "value": "Alias for /usage (cost tab)",
-              "isNew": false
-            },
-            {
               "key": "/context",
               "value": "Visualize context (grid)",
               "isNew": false
@@ -923,6 +994,11 @@
               "key": "/export",
               "value": "Export conversation",
               "isNew": false
+            },
+            {
+              "key": "/goal [condition]",
+              "value": "Set completion condition; Claude works across turns until met",
+              "isNew": true
             }
           ]
         },
@@ -978,6 +1054,11 @@
               "key": "/tui [fullscreen]",
               "value": "Switch to flicker-free TUI rendering",
               "isNew": false
+            },
+            {
+              "key": "/scroll-speed",
+              "value": "Tune mouse wheel scroll speed with live preview",
+              "isNew": true
             }
           ]
         },
@@ -1097,11 +1178,6 @@
             {
               "key": "/powerup",
               "value": "Interactive lessons + animated demos",
-              "isNew": false
-            },
-            {
-              "key": "/team-onboarding",
-              "value": "Generate teammate ramp-up guide",
               "isNew": false
             }
           ]
@@ -1373,6 +1449,11 @@
               "key": "Push notifications",
               "value": "Mobile push via Remote Control",
               "isNew": false
+            },
+            {
+              "key": "API key → no cloud",
+              "value": "API key disables Remote Control, /schedule, claude.ai MCP, notifications",
+              "isNew": true
             }
           ]
         }
@@ -1437,11 +1518,6 @@
             {
               "key": "sandbox.network.deniedDomains",
               "value": "Block domains even when allowedDomains wildcard permits",
-              "isNew": false
-            },
-            {
-              "key": "wslInheritsWindowsSettings",
-              "value": "WSL inherits Windows managed settings",
               "isNew": false
             },
             {
@@ -1518,6 +1594,11 @@
               "key": "CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL",
               "value": "Re-enable session quality survey for OTEL enterprises",
               "isNew": false
+            },
+            {
+              "key": "CLAUDE_PROJECT_DIR",
+              "value": "Project dir passed to MCP stdio servers and hooks env",
+              "isNew": true
             }
           ]
         },
@@ -1555,16 +1636,6 @@
               "isNew": false
             },
             {
-              "key": "CwdChanged",
-              "value": "Working directory changed",
-              "isNew": false
-            },
-            {
-              "key": "FileChanged",
-              "value": "File changed on disk",
-              "isNew": false
-            },
-            {
               "key": "PermissionDenied",
               "value": "After auto mode denials",
               "isNew": false
@@ -1583,6 +1654,16 @@
               "key": "mcp_tool type",
               "value": "Invoke MCP tool directly from hook",
               "isNew": false
+            },
+            {
+              "key": "args: string[]",
+              "value": "Hook exec form — spawn directly without shell",
+              "isNew": true
+            },
+            {
+              "key": "continueOnBlock",
+              "value": "PostToolUse: feed rejection reason back, continue turn",
+              "isNew": true
             }
           ]
         }
@@ -1853,6 +1934,16 @@
               "key": "claude project purge [path]",
               "value": "Delete all CC state; --dry-run, -y, -i, --all",
               "isNew": false
+            },
+            {
+              "key": "claude agents",
+              "value": "Agent view — list every CC session (running/blocked/done)",
+              "isNew": true
+            },
+            {
+              "key": "claude plugin details <name>",
+              "value": "Show plugin component inventory and projected token cost",
+              "isNew": true
             }
           ]
         },

@@ -1,15 +1,15 @@
-# Claude Code Cheatsheet v2.1.138
+# Claude Code Cheatsheet v2.1.139
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- autoMode.hard_deny blocks unconditionally regardless of allow exceptions *(v2.1.136)*
-- CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL for enterprise OTEL *(v2.1.136)*
-- Fixed MCP servers disappearing after /clear in VS Code/JetBrains/SDK *(v2.1.136)*
-- Fixed MCP OAuth refresh tokens lost with concurrent refreshes *(v2.1.136)*
-- Fixed plan mode not blocking file writes with matching Edit allow rule *(v2.1.136)*
-- Fixed --resume/--continue not finding sessions when path has underscores *(v2.1.136)*
+- Agent view: `claude agents` lists every CC session *(v2.1.139)*
+- /goal command: set completion condition, Claude works until met *(v2.1.139)*
+- Hook args: string[] exec form and continueOnBlock for PostToolUse *(v2.1.139)*
+- CLAUDE_PROJECT_DIR now passed to MCP stdio servers *(v2.1.139)*
+- API key disables Remote Control, /schedule, claude.ai MCP, notifications *(v2.1.139)*
+- /scroll-speed command: tune mouse wheel speed with live preview *(v2.1.139)*
 
 ---
 
@@ -27,9 +27,10 @@
 | `Ctrl G` | Open prompt in editor |
 | `Ctrl B` | Background running task |
 | `Ctrl T` | Toggle task list |
-| `Ctrl V` | Paste image |
 | `Ctrl+X Ctrl+K` | Kill background agents |
 | `Esc Esc` | Rewind / undo |
+| `{ / }` | Jump between user prompts (transcript view) **NEW** |
+| `?` | Show keyboard shortcuts (transcript view) **NEW** |
 
 ### Mode Switching
 
@@ -63,7 +64,6 @@
 |-----|-------------|
 | `↑↓` | Navigate |
 | `←→` | Expand/collapse |
-| `P` | Preview |
 | `R` | Rename |
 | `/` | Search |
 | `Ctrl+A` | Show all projects (in /resume) |
@@ -97,6 +97,7 @@
 | `_meta maxResultSizeChars` | Override result size up to 500K |
 | `alwaysLoad` | Skip tool-search deferral for server tools |
 | `workspace` | Reserved server name — skipped with warning |
+| `${CLAUDE_PROJECT_DIR}` | Reference project dir in MCP server commands **NEW** |
 
 ## ⚡ Slash Commands
 
@@ -109,13 +110,13 @@
 | `/resume` | Resume/switch session |
 | `/rename [name]` | Name current session |
 | `/branch [name]` | Branch conversation (/fork alias) |
-| `/cost` | Alias for /usage (cost tab) |
 | `/context` | Visualize context (grid) |
 | `/diff` | Interactive diff viewer |
 | `/rewind` | Rewind conv / code checkpoint (/undo alias) |
 | `/recap` | Context summary when returning to session |
 | `/focus` | Toggle focus view |
 | `/export` | Export conversation |
+| `/goal [condition]` | Set completion condition; Claude works across turns until met **NEW** |
 
 ### Config
 
@@ -131,6 +132,7 @@
 | `/keybindings` | Customize keyboard shortcuts |
 | `/terminal-setup` | Configure terminal keybindings |
 | `/tui [fullscreen]` | Switch to flicker-free TUI rendering |
+| `/scroll-speed` | Tune mouse wheel scroll speed with live preview **NEW** |
 
 ### Tools
 
@@ -163,7 +165,6 @@
 | `/release-notes` | Interactive version picker |
 | `/feedback` | Submit feedback (alias: /bug) |
 | `/powerup` | Interactive lessons + animated demos |
-| `/team-onboarding` | Generate teammate ramp-up guide |
 
 ## 📁 Memory & Files
 
@@ -262,6 +263,7 @@
 | `/rc` | Remote Control |
 | `--remote` | Web session on claude.ai |
 | `Push notifications` | Mobile push via Remote Control |
+| `API key → no cloud` | API key disables Remote Control, /schedule, claude.ai MCP, notifications **NEW** |
 
 ## 🖥️ CLI & Flags
 
@@ -279,6 +281,8 @@
 | `claude plugin prune` | Remove orphaned auto-installed plugins |
 | `claude ultrareview [target]` | Run /ultrareview non-interactively; --json for raw |
 | `claude project purge [path]` | Delete all CC state; --dry-run, -y, -i, --all |
+| `claude agents` | Agent view — list every CC session (running/blocked/done) **NEW** |
+| `claude plugin details <name>` | Show plugin component inventory and projected token cost **NEW** |
 
 ### Key Flags
 
@@ -389,7 +393,6 @@
 | `modelOverrides` | Map model picker → custom IDs |
 | `worktree.sparsePaths` | Sparse checkout dirs |
 | `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
-| `wslInheritsWindowsSettings` | WSL inherits Windows managed settings |
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
 | `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
@@ -409,6 +412,7 @@
 | `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN` | Opt out of fullscreen alternate-screen renderer |
 | `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
 | `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises |
+| `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env **NEW** |
 
 ### Hooks
 
@@ -420,12 +424,12 @@
 | `Notification` | When Claude sends notification |
 | `Stop` | When Claude finishes response |
 | `SubagentStop` | When subagent finishes |
-| `CwdChanged` | Working directory changed |
-| `FileChanged` | File changed on disk |
 | `PermissionDenied` | After auto mode denials |
 | `TaskCreated` | When task created via TaskCreate |
 | `PreCompact` | Block compaction (exit 2 or decision:block) |
 | `mcp_tool type` | Invoke MCP tool directly from hook |
+| `args: string[]` | Hook exec form — spawn directly without shell **NEW** |
+| `continueOnBlock` | PostToolUse: feed rejection reason back, continue turn **NEW** |
 
 ---
 
