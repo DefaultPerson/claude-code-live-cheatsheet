@@ -12,6 +12,49 @@ const args = process.argv.slice(2);
 const force = args.includes('--force');
 const renderOnly = args.includes('--render-only');
 
+// How many recent non-empty changelog entries contribute to the NEW badge.
+// "Non-empty" = the version actually added or updated cheatsheet items.
+const RECENT_VERSIONS_FOR_NEW_BADGE = 3;
+
+function todayIso() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+// LLM has no access to system time and hallucinates dates; the pipeline is
+// the source of truth. Restamp the given versions with today's date.
+function stampVersionDates(data, versions) {
+  const today = todayIso();
+  const set = new Set(versions);
+  for (const entry of (data.changelog || [])) {
+    if (set.has(entry.version)) entry.date = today;
+  }
+  for (const rc of (data.recentChanges || [])) {
+    if (set.has(rc.version)) rc.date = today;
+  }
+}
+
+function recomputeIsNew(data, count = RECENT_VERSIONS_FOR_NEW_BADGE) {
+  const meaningful = [];
+  for (const c of (data.changelog || [])) {
+    if ((c.added?.length || 0) + (c.updated?.length || 0) > 0) {
+      meaningful.push(c);
+      if (meaningful.length >= count) break;
+    }
+  }
+  const flagged = new Set();
+  for (const c of meaningful) {
+    for (const a of (c.added || [])) flagged.add(`${a.section}|${a.key}`);
+    for (const u of (c.updated || [])) flagged.add(`${u.section}|${u.key}`);
+  }
+  for (const sec of (data.sections || [])) {
+    for (const g of (sec.groups || [])) {
+      for (const item of (g.items || [])) {
+        item.isNew = flagged.has(`${sec.id}|${item.key}`);
+      }
+    }
+  }
+}
+
 async function main() {
   console.log('=== Claude Code Live Cheatsheet Pipeline ===\n');
 
@@ -26,6 +69,8 @@ async function main() {
       console.log('\nNo updates needed. Use --force to regenerate anyway.');
       return;
     }
+
+    let versionsToStamp = [];
 
     if (result) {
       // Step 2: Update via Claude API
@@ -52,11 +97,25 @@ async function main() {
         if (entry) entry.raw = v.entries;
       }
 
-      writeFileSync('cheatsheet.json', JSON.stringify(data, null, 2));
-      console.log(`cheatsheet.json updated to v${data.meta.lastVersion}`);
+      versionsToStamp = result.newEntries.map(v => v.version);
     } else {
       console.log('No new version, but --force specified. Regenerating outputs...');
+      // Treat --force as "this is the moment this cheatsheet state was
+      // re-validated" — restamp the current latest version to repair any
+      // historical date drift from prior LLM runs.
+      versionsToStamp = [data.meta.lastVersion];
     }
+
+    stampVersionDates(data, versionsToStamp);
+    data.meta.lastUpdated = todayIso();
+    recomputeIsNew(data);
+
+    writeFileSync('cheatsheet.json', JSON.stringify(data, null, 2));
+    console.log(`cheatsheet.json: v${data.meta.lastVersion}, lastUpdated=${data.meta.lastUpdated}`);
+  } else {
+    // Render-only stays read-only on cheatsheet.json, but renders must
+    // still reflect the current isNew policy.
+    recomputeIsNew(data);
   }
 
   // Step 3: Render all outputs

@@ -8,7 +8,7 @@ Your job: given the current cheatsheet.json and new CHANGELOG entries, produce a
 OUTPUT:
 1. ONLY output valid JSON. No markdown fences, no explanation, no comments. Just the raw JSON object.
 2. Update meta.lastVersion to the newest version from the changelog.
-3. Update meta.lastUpdated to today's date in YYYY-MM-DD format.
+3. Set meta.lastUpdated to the value of the <today> tag in the user message. The pipeline will overwrite this anyway; just keep the JSON consistent.
 
 WHAT TO ADD (cheatsheet-relevant):
 4. New slash commands → section "slash-commands", correct group (Session/Config/Tools/Special)
@@ -35,12 +35,12 @@ SECTION LIMITS:
 21. Prefer replacing old items that are no longer relevant over items that are still actively used.
 
 NEW BADGES:
-22. Set isNew=true ONLY for items added or meaningfully modified in THIS update.
-23. Set isNew=false for ALL previously-existing items (clear any old isNew=true flags).
+22. Set isNew=false on every item. The pipeline recomputes this field from the changelog after your output — your value is ignored. Do not try to track NEW badges yourself.
+23. (reserved — see rule 22)
 
 RECENT CHANGES:
 24. Replace recentChanges array with the 5-7 most notable USER-FACING changes from the new version(s).
-25. Each entry: { "version": "X.Y.Z", "text": "concise description under 80 chars", "date": "YYYY-MM-DD" }
+25. Each entry: { "version": "X.Y.Z", "text": "concise description under 80 chars", "date": "<today>" } — use the value from the <today> tag as the date.
 26. Prioritize: new features > new commands > behavior changes > deprecations.
 
 CHANGELOG ARRAY:
@@ -74,8 +74,12 @@ export async function update(currentData, newEntries) {
     .map(v => `## ${v.version}\n${v.entries.map(e => `- ${e}`).join('\n')}`)
     .join('\n\n');
 
+  const today = new Date().toISOString().slice(0, 10);
+
   // Compact JSON (no indentation) saves ~40% tokens vs pretty-printed
-  const userPrompt = `Here is the current cheatsheet.json (compact format):
+  const userPrompt = `<today>${today}</today>
+
+Here is the current cheatsheet.json (compact format):
 
 <cheatsheet>
 ${JSON.stringify(currentData)}
