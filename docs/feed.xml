@@ -5,12 +5,12 @@
     <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
     <description>Auto-updating cheatsheet for Claude Code — keyboard shortcuts, commands, tips, and more.</description>
     <language>en</language>
-    <lastBuildDate>Mon, 18 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://defaultperson.github.io/cc-live-cheatsheet/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Claude Code v2.1.139 highlights</title>
       <description><![CDATA[<ul><li>Agent view: `claude agents` lists every CC session (v2.1.139)</li><li>/goal command: set completion condition, Claude works until met (v2.1.139)</li><li>Hook args: string[] exec form and continueOnBlock for PostToolUse (v2.1.139)</li><li>CLAUDE_PROJECT_DIR now passed to MCP stdio servers (v2.1.139)</li><li>API key disables Remote Control, /schedule, claude.ai MCP, notifications (v2.1.139)</li><li>/scroll-speed command: tune mouse wheel speed with live preview (v2.1.139)</li></ul>]]></description>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="false">highlights-v2.1.139</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/</link>
     </item>
@@ -84,7 +84,7 @@
 • Fixed `claude_code.active_time.total` OpenTelemetry metric not being emitted in `--print` mode
 • Fixed `claude plugin update` not preserving cross-plugin symlinks inside a marketplace
 • [VSCode] Press Cmd/Ctrl+Shift+T to reopen the most recently closed session tab, configurable via `claudeCode.enableReopenClosedSessionShortcut`</pre>]]></description>
-      <pubDate>Mon, 18 May 2026 00:00:00 GMT</pubDate>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
       <guid isPermaLink="false">v2.1.139</guid>
       <link>https://defaultperson.github.io/cc-live-cheatsheet/changelog.html#v2.1.139</link>
     </item>

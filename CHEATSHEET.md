@@ -349,7 +349,7 @@
 | `keep-coding-instructions` | Frontmatter for plugin output styles |
 | `monitors` | Plugin background monitors (auto-arm on session/skill) |
 | `slash commands (Skill)` | Model discovers/invokes built-in commands |
-| `${CLAUDE_EFFORT}` | Current effort level (skills, hooks, Bash tool) |
+| `${CLAUDE_EFFORT}` | Current effort level (skills, hooks, Bash tool) **NEW** |
 
 ### Built-in Agents
 
@@ -395,8 +395,8 @@
 | `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
-| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
-| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions |
+| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) **NEW** |
+| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions **NEW** |
 
 ### Key Env Vars
 
@@ -410,8 +410,8 @@
 | `ANTHROPIC_BEDROCK_SERVICE_TIER` | Select Bedrock tier (default/flex/priority) |
 | `CLAUDE_CODE_SESSION_ID` | Session ID in Bash tool subprocess env |
 | `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN` | Opt out of fullscreen alternate-screen renderer |
-| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
-| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises |
+| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool **NEW** |
+| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises **NEW** |
 | `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env **NEW** |
 
 ### Hooks

@@ -1,45 +1,45 @@
 {
   "meta": {
     "lastVersion": "2.1.139",
-    "lastUpdated": "2026-05-18",
+    "lastUpdated": "2026-05-12",
     "schemaVersion": 1
   },
   "recentChanges": [
     {
       "version": "2.1.139",
       "text": "Agent view: `claude agents` lists every CC session",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     },
     {
       "version": "2.1.139",
       "text": "/goal command: set completion condition, Claude works until met",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     },
     {
       "version": "2.1.139",
       "text": "Hook args: string[] exec form and continueOnBlock for PostToolUse",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     },
     {
       "version": "2.1.139",
       "text": "CLAUDE_PROJECT_DIR now passed to MCP stdio servers",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     },
     {
       "version": "2.1.139",
       "text": "API key disables Remote Control, /schedule, claude.ai MCP, notifications",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     },
     {
       "version": "2.1.139",
       "text": "/scroll-speed command: tune mouse wheel speed with live preview",
-      "date": "2026-05-18"
+      "date": "2026-05-12"
     }
   ],
   "changelog": [
     {
       "version": "2.1.139",
-      "date": "2026-05-18",
+      "date": "2026-05-12",
       "added": [
         {
           "section": "slash-commands",
@@ -1533,12 +1533,12 @@
             {
               "key": "worktree.baseRef",
               "value": "fresh|head — base branch for worktrees (default changed)",
-              "isNew": false
+              "isNew": true
             },
             {
               "key": "autoMode.hard_deny",
               "value": "Block unconditionally regardless of user intent or allow exceptions",
-              "isNew": false
+              "isNew": true
             }
           ]
         },
@@ -1588,12 +1588,12 @@
             {
               "key": "CLAUDE_EFFORT",
               "value": "Current effort level in hooks and Bash tool",
-              "isNew": false
+              "isNew": true
             },
             {
               "key": "CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL",
               "value": "Re-enable session quality survey for OTEL enterprises",
-              "isNew": false
+              "isNew": true
             },
             {
               "key": "CLAUDE_PROJECT_DIR",
@@ -1798,7 +1798,7 @@
             {
               "key": "${CLAUDE_EFFORT}",
               "value": "Current effort level (skills, hooks, Bash tool)",
-              "isNew": false
+              "isNew": true
             }
           ]
         },
