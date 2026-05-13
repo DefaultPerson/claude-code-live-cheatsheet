@@ -78,7 +78,25 @@ del { opacity: 0.5; text-decoration: line-through; }
 </p>
 
 
-    <details id="v2.1.140" open>
+    <details id="v2.1.141" open>
+      <summary>
+        <strong>v2.1.141</strong>
+        <span class="changelog-date">2026-05-13</span>
+        <span class="changelog-stats">
+          <span class="stat-add">+4</span>
+          <span class="stat-update">~2</span>
+          <span class="stat-remove">-3</span>
+        </span>
+      </summary>
+      <div class="diff-body">
+        <div class="diff-label">Cheatsheet changes:</div>
+        <div class="diff-item diff-add">+ <strong>terminalSequence</strong> → Hook JSON field — emit desktop notifications, window titles, bells <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>CLAUDE_CODE_PLUGIN_PREFER_HTTPS</strong> → Clone GitHub plugin sources over HTTPS instead of SSH <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>ANTHROPIC_WORKSPACE_ID</strong> → Scope minted token to specific workspace in identity federation <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>Summarize up to here</strong> → Rewind menu option — compress earlier context, keep recent turns <span class="diff-section">[workflows-tips]</span></div><div class="diff-item diff-update">~ <strong>claude agents</strong>: <del>Agent view — list every CC session (running/blocked/done)</del> → Agent view — list sessions; --cwd &lt;path&gt; to scope dir <span class="diff-section">[cli-flags]</span></div><div class="diff-item diff-update">~ <strong>/feedback</strong>: <del>Submit feedback (alias: /bug)</del> → Submit feedback; include recent sessions (alias: /bug) <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_SESSION_ID</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</strong> <span class="diff-section">[config-env]</span></div>
+        
+        <div class="raw-section"><div class="diff-label">Full changelog (61 entries):</div><div class="raw-entries"><div class="raw-entry">• Added `terminalSequence` field to hook JSON output so hooks can emit desktop notifications, window titles, and bells without a controlling terminal</div><div class="raw-entry">• Added `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` to clone GitHub plugin sources over HTTPS instead of SSH, for environments without a GitHub SSH key</div><div class="raw-entry">• Added `ANTHROPIC_WORKSPACE_ID` environment variable for workload identity federation — scopes the minted token to a specific workspace when the federation rule covers more than one</div><div class="raw-entry">• Added `claude agents --cwd &lt;path&gt;` to scope the session list to a directory</div><div class="raw-entry">• `/feedback` can now include recent sessions (last 24 hours or 7 days) for issues spanning more than the current session</div><div class="raw-entry">• Rewind menu: added "Summarize up to here" to compress earlier context while keeping recent turns intact</div><div class="raw-entry">• Auto mode permission dialog now explains when a `permissions.ask` rule caused the prompt</div><div class="raw-entry">• Restored the "view diff in your IDE" option on file-edit permission prompts when an IDE is connected</div><div class="raw-entry">• Background agents launched via `/bg` or `←←` now preserve the current permission mode instead of reverting to default</div><div class="raw-entry">• `claude agents`: agents that finish work but leave a background shell running now move to Completed instead of staying under Working</div><div class="raw-entry">• Improved spinner feedback during long thinking periods — the spinner now warms to amber after 10 seconds to signal Claude is still working</div><div class="raw-entry">• Improved plugin menu navigation: `→`/Tab switch tabs, `↑` moves to the tab strip, and tab headers and search box are clickable in fullscreen mode</div><div class="raw-entry">• Fixed background side-queries sending an unavailable Haiku model ID on Bedrock/Vertex/Foundry/gateway when no `ANTHROPIC_SMALL_FAST_MODEL` override is set — now falls back to the main-loop model</div><div class="raw-entry">• Fixed `claude daemon status` and `/doctor` on Windows throwing when the daemon pipe key file is locked or unreadable — now shows the underlying error instead of an opaque failure</div><div class="raw-entry">• Fixed `claude agents` showing the agent-type list instead of the dashboard when launched through a wrapper that adds flags</div><div class="raw-entry">• Fixed `claude agents` opening a crashed session firing redundant dispatches when the working directory was deleted</div><div class="raw-entry">• Fixed background jobs on a custom `ANTHROPIC_BASE_URL` gateway not getting auto-named — the namer now uses the main model when no Haiku model is configured</div><div class="raw-entry">• Fixed `/model` in one session silently changing the autocompact threshold in other concurrent sessions</div><div class="raw-entry">• Fixed switching permission mode while a tool-permission prompt is open not auto-dismissing the prompt when the new setting permits the tool</div><div class="raw-entry">• Fixed pressing Enter while a permission/dialog prompt is open also submitting text in the input box</div><div class="raw-entry">• Fixed hooks receiving a non-existent `transcript_path` after `EnterWorktree` switches the working directory</div><div class="raw-entry">• Fixed markdown tables with cell wrapping falling back to the vertical key-value layout instead of rendering as a bordered grid (regression in 2.1.136)</div><div class="raw-entry">• Fixed cancelled prompts being removed from Up-arrow history when auto-restored into the input box, avoiding duplicate entries</div><div class="raw-entry">• Fixed prompts cancelled with Ctrl+C/Esc before any response being dropped from Up-arrow history</div><div class="raw-entry">• Fixed Ctrl+C not interrupting a running turn while in vim INSERT/VISUAL mode</div><div class="raw-entry">• Fixed alternative `chat:submit` keybindings (e.g. `meta+enter`, `ctrl+enter`) not working when `enter` is rebound to `chat:newline`</div><div class="raw-entry">• Fixed prompt suggestions being silently disabled when an output style was configured</div><div class="raw-entry">• Fixed `spinnerVerbs` setting not being honored in turn-completion messages</div><div class="raw-entry">• Fixed AskUserQuestion popup hiding the last line of preceding chat content</div><div class="raw-entry">• Fixed Web Search status showing "Did 0 searches" when searches returned errors</div><div class="raw-entry">• Fixed multi-line statusline output dropping or corrupting rows when any line exceeds terminal width</div><div class="raw-entry">• Fixed light-ansi theme using invisible white for diff context lines on light backgrounds — now uses black</div><div class="raw-entry">• Fixed error overlay dumping minified bundle source that hid the original error message</div><div class="raw-entry">• Fixed pressing Enter after typing a feedback survey rating digit submitting it as a chat message instead of the rating</div><div class="raw-entry">• Fixed pressing `x` on a selected subagent in the agent panel typing into the prompt instead of stopping the agent</div><div class="raw-entry">• Fixed session title being derived from plugin monitor notifications before the user's first prompt</div><div class="raw-entry">• Fixed "Allowed by PermissionRequest hook" repeating once per tool call under a collapsed read/search group</div><div class="raw-entry">• Fixed `/tui` silently dropping running background shells and subagents — now refuses and asks to wait for them to finish</div><div class="raw-entry">• Fixed welcome banner showing "API Usage Billing" on Bedrock, Vertex, Foundry, and other third-party providers — now shows the provider name</div><div class="raw-entry">• Fixed `/mcp` server list not keeping the focused server visible in short terminals in fullscreen mode</div><div class="raw-entry">• Fixed redaction in `/feedback` bundles producing invalid JSON for quoted values like session IDs</div><div class="raw-entry">• Fixed desktop and third-party provider sessions incorrectly inheriting `apiKeyHelper`/`ANTHROPIC_AUTH_TOKEN` from host managed-settings</div><div class="raw-entry">• Fixed early analytics events being silently dropped when fired before logger initialization</div><div class="raw-entry">• Fixed `claude plugin install` failing for plugins whose marketplace `ref` no longer exists upstream when a `sha` is also pinned</div><div class="raw-entry">• Fixed plugin details pane showing 0 MCP servers for plugins that declare them via `.mcp.json`</div><div class="raw-entry">• Fixed plugin MCP servers with unset config variables showing a generic connection failure instead of a "config issue" message with a fix-it hint; malformed `.mcp.json` entries no longer drop other MCP servers</div><div class="raw-entry">• Fixed MCP server configs using POSIX shell parameter expansions (e.g. `${var%pattern}`) being incorrectly flagged as missing environment variables</div><div class="raw-entry">• Fixed MCP HTTP/SSE servers returning 403 on connect showing as "failed" instead of "needs auth"</div><div class="raw-entry">• Fixed remote MCP servers disconnecting unnecessarily when the optional server-events stream failed to reconnect — tool calls continue over POST</div><div class="raw-entry">• Fixed Remote Control MCP connectors all failing with 401 when the worker session token rotated mid-session</div><div class="raw-entry">• Fixed Remote Control automatically re-enrolling a trusted device when the server rejects a stale token, instead of looping through `/login`</div><div class="raw-entry">• Fixed a race where early OTel spans could be silently dropped in SDK/headless mode with beta tracing enabled</div><div class="raw-entry">• Fixed custom `voice:pushToTalk` keybindings and `"space": null` unbinds being silently ignored</div><div class="raw-entry">• Fixed Windows Alt+V image paste reporting "no image found" when the clipboard contains a screenshot</div><div class="raw-entry">• Fixed SDK "Claude Code native binary not found" on Linux when both glibc and musl platform packages are installed</div><div class="raw-entry">• Bedrock: `awsCredentialExport` now always runs when configured instead of being skipped when ambient AWS credentials resolve, fixing auth for cross-account access</div><div class="raw-entry">• [VSCode] Fixed in-chat mic showing no feedback when the microphone produced only silence — now shows "No audio detected"</div><div class="raw-entry">• [VSCode] Voice mode: the WSL error now suggests installing `sox libsox-fmt-pulse` for WSLg users</div><div class="raw-entry">• `claude agents`: launching a session no longer fails when the pre-warmed background worker is unhealthy — now falls back to a fresh launch</div><div class="raw-entry">• `claude agents` no longer shows empty placeholder sessions left over from backgrounding a fresh REPL, and shows onboarding text when entered via ← with no other agents</div><div class="raw-entry">• Empty idle background sessions left over from `←` are now automatically retired by the daemon after 5 minutes</div></div></div>
+      </div>
+    </details>
+
+    <details id="v2.1.140" >
       <summary>
         <strong>v2.1.140</strong>
         <span class="changelog-date">2026-05-12</span>
@@ -361,78 +379,6 @@ del { opacity: 0.5; text-decoration: line-through; }
       <div class="diff-body">
         <div class="diff-label">Cheatsheet changes:</div>
         <div class="diff-item diff-add">+ <strong>v / V (vim mode)</strong> → Visual / visual-line mode with selection <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-add">+ <strong>~/.claude/themes/</strong> → Custom theme JSON files <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>wslInheritsWindowsSettings</strong> → WSL inherits Windows managed settings <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>autoMode.$defaults</strong> → Extend built-in auto mode rules instead of replacing <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>DISABLE_UPDATES</strong> → Block all update paths including manual <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>mcp_tool type</strong> → Invoke MCP tool directly from hook <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>claude plugin tag</strong> → Create release git tag for plugin <span class="diff-section">[cli-flags]</span></div><div class="diff-item diff-update">~ <strong>/cost</strong>: <del>Token usage stats</del> → Alias for /usage (cost tab) <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-update">~ <strong>/usage</strong>: <del>Plan limits &amp; rate status</del> → Usage stats, cost, and rate status <span class="diff-section">[slash-commands]</span></div><div class="diff-item diff-remove">- <strong>MCP_CONNECTION_NONBLOCKING</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>ENABLE_PROMPT_CACHING_1H</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>showThinkingSummaries</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>refreshInterval</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>hookSpecificOutput.sessionTitle</strong> <span class="diff-section">[config-env]</span></div>
-        
-        
-      </div>
-    </details>
-
-    <details id="v2.1.117" >
-      <summary>
-        <strong>v2.1.117</strong>
-        <span class="changelog-date">2026-04-26</span>
-        <span class="changelog-stats">
-          <span class="stat-add">+4</span>
-          
-          <span class="stat-remove">-3</span>
-        </span>
-      </summary>
-      <div class="diff-body">
-        <div class="diff-label">Cheatsheet changes:</div>
-        <div class="diff-item diff-add">+ <strong>blockedMarketplaces</strong> → Block plugin marketplaces (managed) <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>strictKnownMarketplaces</strong> → Only allow known marketplaces (managed) <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>CLAUDE_CODE_FORK_SUBAGENT</strong> → Enable forked subagents on external builds <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>mcpServers</strong> → Load MCP servers for agent session <span class="diff-section">[skills-agents]</span></div><div class="diff-item diff-remove">- <strong>autoMemoryDirectory</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>disableSkillShellExecution</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>CLAUDE_CODE_USE_POWERSHELL_TOOL</strong> <span class="diff-section">[config-env]</span></div>
-        
-        
-      </div>
-    </details>
-
-    <details id="v2.1.116" >
-      <summary>
-        <strong>v2.1.116</strong>
-        <span class="changelog-date">2026-04-25</span>
-        <span class="changelog-stats">
-          
-          
-          
-        </span>
-      </summary>
-      <div class="diff-body">
-        
-        
-        <div class="diff-item">No cheatsheet changes in this version</div>
-        
-      </div>
-    </details>
-
-    <details id="v2.1.114" >
-      <summary>
-        <strong>v2.1.114</strong>
-        <span class="changelog-date">2026-04-23</span>
-        <span class="changelog-stats">
-          
-          
-          
-        </span>
-      </summary>
-      <div class="diff-body">
-        
-        
-        <div class="diff-item">No cheatsheet changes in this version</div>
-        
-      </div>
-    </details>
-
-    <details id="v2.1.113" >
-      <summary>
-        <strong>v2.1.113</strong>
-        <span class="changelog-date">2026-04-22</span>
-        <span class="changelog-stats">
-          <span class="stat-add">+2</span>
-          
-          <span class="stat-remove">-2</span>
-        </span>
-      </summary>
-      <div class="diff-body">
-        <div class="diff-label">Cheatsheet changes:</div>
-        <div class="diff-item diff-add">+ <strong>sandbox.network.deniedDomains</strong> → Block domains even when allowedDomains wildcard permits <span class="diff-section">[config-env]</span></div><div class="diff-item diff-add">+ <strong>Ctrl+E</strong> → Move to end of line (multiline input) <span class="diff-section">[keyboard-shortcuts]</span></div><div class="diff-item diff-remove">- <strong>autoScrollEnabled</strong> <span class="diff-section">[config-env]</span></div><div class="diff-item diff-remove">- <strong>B</strong> <span class="diff-section">[keyboard-shortcuts]</span></div>
         
         
       </div>

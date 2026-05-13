@@ -1,15 +1,15 @@
-# Claude Code Cheatsheet v2.1.140
+# Claude Code Cheatsheet v2.1.141
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- Agent view: `claude agents` lists every CC session *(v2.1.139)*
-- /goal command: set completion condition, Claude works until met *(v2.1.139)*
-- Hook args: string[] exec form and continueOnBlock for PostToolUse *(v2.1.139)*
-- CLAUDE_PROJECT_DIR now passed to MCP stdio servers *(v2.1.139)*
-- API key disables Remote Control, /schedule, claude.ai MCP, notifications *(v2.1.139)*
-- /scroll-speed command: tune mouse wheel speed with live preview *(v2.1.139)*
+- terminalSequence hook field: emit desktop notifications, bells, titles *(v2.1.141)*
+- claude agents --cwd <path> to scope session list to directory *(v2.1.141)*
+- Rewind menu: Summarize up to here — compress earlier context *(v2.1.141)*
+- CLAUDE_CODE_PLUGIN_PREFER_HTTPS for HTTPS plugin cloning *(v2.1.141)*
+- ANTHROPIC_WORKSPACE_ID for workload identity federation scoping *(v2.1.141)*
+- /feedback can include recent sessions (24h or 7 days) *(v2.1.141)*
 
 ---
 
@@ -163,7 +163,7 @@
 | `/schedule` | Cloud scheduled tasks |
 | `/security-review` | Security analysis of changes |
 | `/release-notes` | Interactive version picker |
-| `/feedback` | Submit feedback (alias: /bug) |
+| `/feedback` | Submit feedback; include recent sessions (alias: /bug) **NEW** |
 | `/powerup` | Interactive lessons + animated demos |
 
 ## 📁 Memory & Files
@@ -235,6 +235,7 @@
 | `/context` | Usage + optimization tips |
 | `/compact [focus]` | Compress with focus |
 | `Auto-compact` | ~95% capacity |
+| `Summarize up to here` | Rewind menu option — compress earlier context, keep recent turns **NEW** |
 | `1M context` | Opus 4.7 (Max/Team/Ent) |
 | `CLAUDE.md` | Survives compaction! |
 
@@ -281,7 +282,7 @@
 | `claude plugin prune` | Remove orphaned auto-installed plugins |
 | `claude ultrareview [target]` | Run /ultrareview non-interactively; --json for raw |
 | `claude project purge [path]` | Delete all CC state; --dry-run, -y, -i, --all |
-| `claude agents` | Agent view — list every CC session (running/blocked/done) **NEW** |
+| `claude agents` | Agent view — list sessions; --cwd <path> to scope dir **NEW** |
 | `claude plugin details <name>` | Show plugin component inventory and projected token cost **NEW** |
 
 ### Key Flags
@@ -349,7 +350,7 @@
 | `keep-coding-instructions` | Frontmatter for plugin output styles |
 | `monitors` | Plugin background monitors (auto-arm on session/skill) |
 | `slash commands (Skill)` | Model discovers/invokes built-in commands |
-| `${CLAUDE_EFFORT}` | Current effort level (skills, hooks, Bash tool) **NEW** |
+| `${CLAUDE_EFFORT}` | Current effort level (skills, hooks, Bash tool) |
 
 ### Built-in Agents
 
@@ -395,7 +396,7 @@
 | `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
-| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) **NEW** |
+| `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
 | `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions **NEW** |
 
 ### Key Env Vars
@@ -408,11 +409,10 @@
 | `MAX_THINKING_TOKENS` | 0=off |
 | `DISABLE_UPDATES` | Block all update paths including manual |
 | `ANTHROPIC_BEDROCK_SERVICE_TIER` | Select Bedrock tier (default/flex/priority) |
-| `CLAUDE_CODE_SESSION_ID` | Session ID in Bash tool subprocess env |
-| `CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN` | Opt out of fullscreen alternate-screen renderer |
-| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool **NEW** |
-| `CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL` | Re-enable session quality survey for OTEL enterprises **NEW** |
+| `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
 | `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env **NEW** |
+| `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | Clone GitHub plugin sources over HTTPS instead of SSH **NEW** |
+| `ANTHROPIC_WORKSPACE_ID` | Scope minted token to specific workspace in identity federation **NEW** |
 
 ### Hooks
 
@@ -430,6 +430,7 @@
 | `mcp_tool type` | Invoke MCP tool directly from hook |
 | `args: string[]` | Hook exec form — spawn directly without shell **NEW** |
 | `continueOnBlock` | PostToolUse: feed rejection reason back, continue turn **NEW** |
+| `terminalSequence` | Hook JSON field — emit desktop notifications, window titles, bells **NEW** |
 
 ---
 

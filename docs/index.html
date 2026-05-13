@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.140</span>
-    <span class="date-label">Last updated: May 12, 2026</span>
+    <span class="version-label">Claude Code v2.1.141</span>
+    <span class="date-label">Last updated: May 13, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• Agent view: `claude agents` lists every CC session</span>  <span class="rc-item">• /goal command: set completion condition, Claude works until met</span>  <span class="rc-item">• Hook args: string[] exec form and continueOnBlock for PostToolUse</span>  <span class="rc-item">• CLAUDE_PROJECT_DIR now passed to MCP stdio servers</span>  <span class="rc-item">• API key disables Remote Control, /schedule, claude.ai MCP, notifications</span>  <span class="rc-item">• /scroll-speed command: tune mouse wheel speed with live preview</span></div>
+  <div class="rc-content"><span class="rc-item">• terminalSequence hook field: emit desktop notifications, bells, titles</span>  <span class="rc-item">• claude agents --cwd &lt;path&gt; to scope session list to directory</span>  <span class="rc-item">• Rewind menu: Summarize up to here — compress earlier context</span>  <span class="rc-item">• CLAUDE_CODE_PLUGIN_PREFER_HTTPS for HTTPS plugin cloning</span>  <span class="rc-item">• ANTHROPIC_WORKSPACE_ID for workload identity federation scoping</span>  <span class="rc-item">• /feedback can include recent sessions (24h or 7 days)</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -556,7 +556,7 @@ kbd{
               </div>
               <div class="item" data-copy="/feedback">
                 <span class="item-key">/feedback</span>
-                <span class="item-val">Submit feedback (alias: /bug)</span>
+                <span class="item-val">Submit feedback; include recent sessions (alias: /bug) <b class="new">NEW</b></span>
               </div>
               <div class="item" data-copy="/powerup">
                 <span class="item-key">/powerup</span>
@@ -710,6 +710,10 @@ kbd{
                 <span class="item-key">Auto-compact</span>
                 <span class="item-val">~95% capacity</span>
               </div>
+              <div class="item" data-copy="Summarize up to here">
+                <span class="item-key">Summarize up to here</span>
+                <span class="item-val">Rewind menu option — compress earlier context, keep recent turns <b class="new">NEW</b></span>
+              </div>
               <div class="item" data-copy="1M context">
                 <span class="item-key">1M context</span>
                 <span class="item-val">Opus 4.7 (Max/Team/Ent)</span>
@@ -830,7 +834,7 @@ kbd{
               </div>
               <div class="item" data-copy="claude agents">
                 <span class="item-key">claude agents</span>
-                <span class="item-val">Agent view — list every CC session (running/blocked/done) <b class="new">NEW</b></span>
+                <span class="item-val">Agent view — list sessions; --cwd &lt;path&gt; to scope dir <b class="new">NEW</b></span>
               </div>
               <div class="item" data-copy="claude plugin details &lt;name&gt;">
                 <span class="item-key">claude plugin details &lt;name&gt;</span>
@@ -1036,7 +1040,7 @@ kbd{
               </div>
               <div class="item" data-copy="${CLAUDE_EFFORT}">
                 <span class="item-key">${CLAUDE_EFFORT}</span>
-                <span class="item-val">Current effort level (skills, hooks, Bash tool) <b class="new">NEW</b></span>
+                <span class="item-val">Current effort level (skills, hooks, Bash tool)</span>
               </div>
             </div>
             <div class="group">
@@ -1154,7 +1158,7 @@ kbd{
               </div>
               <div class="item" data-copy="worktree.baseRef">
                 <span class="item-key">worktree.baseRef</span>
-                <span class="item-val">fresh|head — base branch for worktrees (default changed) <b class="new">NEW</b></span>
+                <span class="item-val">fresh|head — base branch for worktrees (default changed)</span>
               </div>
               <div class="item" data-copy="autoMode.hard_deny">
                 <span class="item-key">autoMode.hard_deny</span>
@@ -1188,25 +1192,21 @@ kbd{
                 <span class="item-key">ANTHROPIC_BEDROCK_SERVICE_TIER</span>
                 <span class="item-val">Select Bedrock tier (default/flex/priority)</span>
               </div>
-              <div class="item" data-copy="CLAUDE_CODE_SESSION_ID">
-                <span class="item-key">CLAUDE_CODE_SESSION_ID</span>
-                <span class="item-val">Session ID in Bash tool subprocess env</span>
-              </div>
-              <div class="item" data-copy="CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN">
-                <span class="item-key">CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN</span>
-                <span class="item-val">Opt out of fullscreen alternate-screen renderer</span>
-              </div>
               <div class="item" data-copy="CLAUDE_EFFORT">
                 <span class="item-key">CLAUDE_EFFORT</span>
-                <span class="item-val">Current effort level in hooks and Bash tool <b class="new">NEW</b></span>
-              </div>
-              <div class="item" data-copy="CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL">
-                <span class="item-key">CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL</span>
-                <span class="item-val">Re-enable session quality survey for OTEL enterprises <b class="new">NEW</b></span>
+                <span class="item-val">Current effort level in hooks and Bash tool</span>
               </div>
               <div class="item" data-copy="CLAUDE_PROJECT_DIR">
                 <span class="item-key">CLAUDE_PROJECT_DIR</span>
                 <span class="item-val">Project dir passed to MCP stdio servers and hooks env <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_PLUGIN_PREFER_HTTPS">
+                <span class="item-key">CLAUDE_CODE_PLUGIN_PREFER_HTTPS</span>
+                <span class="item-val">Clone GitHub plugin sources over HTTPS instead of SSH <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="ANTHROPIC_WORKSPACE_ID">
+                <span class="item-key">ANTHROPIC_WORKSPACE_ID</span>
+                <span class="item-val">Scope minted token to specific workspace in identity federation <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1259,6 +1259,10 @@ kbd{
               <div class="item" data-copy="continueOnBlock">
                 <span class="item-key">continueOnBlock</span>
                 <span class="item-val">PostToolUse: feed rejection reason back, continue turn <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="terminalSequence">
+                <span class="item-key">terminalSequence</span>
+                <span class="item-val">Hook JSON field — emit desktop notifications, window titles, bells <b class="new">NEW</b></span>
               </div>
             </div>
         </div>
