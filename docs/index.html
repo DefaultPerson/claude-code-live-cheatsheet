@@ -138,14 +138,14 @@ kbd{
 <header class="header">
   <h1>Claude Code Cheat Sheet</h1>
   <div class="header-right">
-    <span class="version-label">Claude Code v2.1.141</span>
-    <span class="date-label">Last updated: May 13, 2026</span>
+    <span class="version-label">Claude Code v2.1.142</span>
+    <span class="date-label">Last updated: May 14, 2026</span>
   </div>
 </header>
 
 <div class="recent-bar">
   <div class="rc-header"><span class="rc-icon">🔔</span> <span class="rc-title">Recent Changes</span></div>
-  <div class="rc-content"><span class="rc-item">• terminalSequence hook field: emit desktop notifications, bells, titles</span>  <span class="rc-item">• claude agents --cwd &lt;path&gt; to scope session list to directory</span>  <span class="rc-item">• Rewind menu: Summarize up to here — compress earlier context</span>  <span class="rc-item">• CLAUDE_CODE_PLUGIN_PREFER_HTTPS for HTTPS plugin cloning</span>  <span class="rc-item">• ANTHROPIC_WORKSPACE_ID for workload identity federation scoping</span>  <span class="rc-item">• /feedback can include recent sessions (24h or 7 days)</span></div>
+  <div class="rc-content"><span class="rc-item">• claude agents: --add-dir, --settings, --mcp-config, --model, --effort flags</span>  <span class="rc-item">• Fast mode default upgraded to Opus 4.7; override env to pin 4.6</span>  <span class="rc-item">• Plugin root SKILL.md (no skills/ dir) now surfaces as a skill</span>  <span class="rc-item">• Plugin details pane and /plugin now show LSP servers</span>  <span class="rc-item">• /web-setup warns before replacing GitHub App connection</span></div>
   <button class="rc-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
 </div>
 
@@ -834,11 +834,11 @@ kbd{
               </div>
               <div class="item" data-copy="claude agents">
                 <span class="item-key">claude agents</span>
-                <span class="item-val">Agent view — list sessions; --cwd &lt;path&gt; to scope dir <b class="new">NEW</b></span>
+                <span class="item-val">Agent dashboard; --cwd scope; --add-dir, --model, --effort, --permission-mode <b class="new">NEW</b></span>
               </div>
               <div class="item" data-copy="claude plugin details &lt;name&gt;">
                 <span class="item-key">claude plugin details &lt;name&gt;</span>
-                <span class="item-val">Show plugin component inventory and projected token cost <b class="new">NEW</b></span>
+                <span class="item-val">Show plugin components, LSP servers, and projected token cost <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">
@@ -1042,6 +1042,10 @@ kbd{
                 <span class="item-key">${CLAUDE_EFFORT}</span>
                 <span class="item-val">Current effort level (skills, hooks, Bash tool)</span>
               </div>
+              <div class="item" data-copy="root SKILL.md">
+                <span class="item-key">root SKILL.md</span>
+                <span class="item-val">Plugin skill without skills/ subdirectory <b class="new">NEW</b></span>
+              </div>
             </div>
             <div class="group">
               <div class="group-label">Built-in Agents</div>
@@ -1144,10 +1148,6 @@ kbd{
                 <span class="item-key">worktree.sparsePaths</span>
                 <span class="item-val">Sparse checkout dirs</span>
               </div>
-              <div class="item" data-copy="sandbox.network.deniedDomains">
-                <span class="item-key">sandbox.network.deniedDomains</span>
-                <span class="item-val">Block domains even when allowedDomains wildcard permits</span>
-              </div>
               <div class="item" data-copy="autoMode.$defaults">
                 <span class="item-key">autoMode.$defaults</span>
                 <span class="item-val">Extend built-in auto mode rules instead of replacing</span>
@@ -1162,7 +1162,7 @@ kbd{
               </div>
               <div class="item" data-copy="autoMode.hard_deny">
                 <span class="item-key">autoMode.hard_deny</span>
-                <span class="item-val">Block unconditionally regardless of user intent or allow exceptions <b class="new">NEW</b></span>
+                <span class="item-val">Block unconditionally regardless of user intent or allow exceptions</span>
               </div>
             </div>
             <div class="group">
@@ -1207,6 +1207,10 @@ kbd{
               <div class="item" data-copy="ANTHROPIC_WORKSPACE_ID">
                 <span class="item-key">ANTHROPIC_WORKSPACE_ID</span>
                 <span class="item-val">Scope minted token to specific workspace in identity federation <b class="new">NEW</b></span>
+              </div>
+              <div class="item" data-copy="CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE">
+                <span class="item-key">CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE</span>
+                <span class="item-val">Pin fast mode to Opus 4.6 (default now Opus 4.7) <b class="new">NEW</b></span>
               </div>
             </div>
             <div class="group">

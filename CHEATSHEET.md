@@ -1,15 +1,14 @@
-# Claude Code Cheatsheet v2.1.141
+# Claude Code Cheatsheet v2.1.142
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- terminalSequence hook field: emit desktop notifications, bells, titles *(v2.1.141)*
-- claude agents --cwd <path> to scope session list to directory *(v2.1.141)*
-- Rewind menu: Summarize up to here — compress earlier context *(v2.1.141)*
-- CLAUDE_CODE_PLUGIN_PREFER_HTTPS for HTTPS plugin cloning *(v2.1.141)*
-- ANTHROPIC_WORKSPACE_ID for workload identity federation scoping *(v2.1.141)*
-- /feedback can include recent sessions (24h or 7 days) *(v2.1.141)*
+- claude agents: --add-dir, --settings, --mcp-config, --model, --effort flags *(v2.1.142)*
+- Fast mode default upgraded to Opus 4.7; override env to pin 4.6 *(v2.1.142)*
+- Plugin root SKILL.md (no skills/ dir) now surfaces as a skill *(v2.1.142)*
+- Plugin details pane and /plugin now show LSP servers *(v2.1.142)*
+- /web-setup warns before replacing GitHub App connection *(v2.1.142)*
 
 ---
 
@@ -282,8 +281,8 @@
 | `claude plugin prune` | Remove orphaned auto-installed plugins |
 | `claude ultrareview [target]` | Run /ultrareview non-interactively; --json for raw |
 | `claude project purge [path]` | Delete all CC state; --dry-run, -y, -i, --all |
-| `claude agents` | Agent view — list sessions; --cwd <path> to scope dir **NEW** |
-| `claude plugin details <name>` | Show plugin component inventory and projected token cost **NEW** |
+| `claude agents` | Agent dashboard; --cwd scope; --add-dir, --model, --effort, --permission-mode **NEW** |
+| `claude plugin details <name>` | Show plugin components, LSP servers, and projected token cost **NEW** |
 
 ### Key Flags
 
@@ -351,6 +350,7 @@
 | `monitors` | Plugin background monitors (auto-arm on session/skill) |
 | `slash commands (Skill)` | Model discovers/invokes built-in commands |
 | `${CLAUDE_EFFORT}` | Current effort level (skills, hooks, Bash tool) |
+| `root SKILL.md` | Plugin skill without skills/ subdirectory **NEW** |
 
 ### Built-in Agents
 
@@ -393,11 +393,10 @@
 |-----|-------------|
 | `modelOverrides` | Map model picker → custom IDs |
 | `worktree.sparsePaths` | Sparse checkout dirs |
-| `sandbox.network.deniedDomains` | Block domains even when allowedDomains wildcard permits |
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
 | `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
-| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions **NEW** |
+| `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions |
 
 ### Key Env Vars
 
@@ -413,6 +412,7 @@
 | `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env **NEW** |
 | `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | Clone GitHub plugin sources over HTTPS instead of SSH **NEW** |
 | `ANTHROPIC_WORKSPACE_ID` | Scope minted token to specific workspace in identity federation **NEW** |
+| `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` | Pin fast mode to Opus 4.6 (default now Opus 4.7) **NEW** |
 
 ### Hooks
 
