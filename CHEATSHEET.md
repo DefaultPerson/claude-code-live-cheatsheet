@@ -1,14 +1,15 @@
-# Claude Code Cheatsheet v2.1.142
+# Claude Code Cheatsheet v2.1.143
 
 > Auto-generated from [cheatsheet.json](cheatsheet.json) | [Visual version](cheatsheet.png) | [Interactive](https://defaultperson.github.io/cc-live-cheatsheet/)
 
 ## Recent Changes
 
-- claude agents: --add-dir, --settings, --mcp-config, --model, --effort flags *(v2.1.142)*
-- Fast mode default upgraded to Opus 4.7; override env to pin 4.6 *(v2.1.142)*
-- Plugin root SKILL.md (no skills/ dir) now surfaces as a skill *(v2.1.142)*
-- Plugin details pane and /plugin now show LSP servers *(v2.1.142)*
-- /web-setup warns before replacing GitHub App connection *(v2.1.142)*
+- Plugin dependency enforcement: disable refuses if depended on *(v2.1.143)*
+- worktree.bgIsolation none: background sessions edit working copy *(v2.1.143)*
+- PowerShell tool now default on Windows for Bedrock/Vertex/Foundry *(v2.1.143)*
+- Stop hooks capped at 8 consecutive blocks (configurable via env) *(v2.1.143)*
+- claude agents: --settings, --mcp-config, --plugin-dir flags *(v2.1.143)*
+- /bg preserves MCP, settings, plugin dirs across respawn *(v2.1.143)*
 
 ---
 
@@ -28,8 +29,8 @@
 | `Ctrl T` | Toggle task list |
 | `Ctrl+X Ctrl+K` | Kill background agents |
 | `Esc Esc` | Rewind / undo |
-| `{ / }` | Jump between user prompts (transcript view) **NEW** |
-| `?` | Show keyboard shortcuts (transcript view) **NEW** |
+| `{ / }` | Jump between user prompts (transcript view) |
+| `?` | Show keyboard shortcuts (transcript view) |
 
 ### Mode Switching
 
@@ -96,7 +97,7 @@
 | `_meta maxResultSizeChars` | Override result size up to 500K |
 | `alwaysLoad` | Skip tool-search deferral for server tools |
 | `workspace` | Reserved server name — skipped with warning |
-| `${CLAUDE_PROJECT_DIR}` | Reference project dir in MCP server commands **NEW** |
+| `${CLAUDE_PROJECT_DIR}` | Reference project dir in MCP server commands |
 
 ## ⚡ Slash Commands
 
@@ -115,7 +116,7 @@
 | `/recap` | Context summary when returning to session |
 | `/focus` | Toggle focus view |
 | `/export` | Export conversation |
-| `/goal [condition]` | Set completion condition; Claude works across turns until met **NEW** |
+| `/goal [condition]` | Set completion condition; Claude works across turns until met |
 
 ### Config
 
@@ -131,7 +132,7 @@
 | `/keybindings` | Customize keyboard shortcuts |
 | `/terminal-setup` | Configure terminal keybindings |
 | `/tui [fullscreen]` | Switch to flicker-free TUI rendering |
-| `/scroll-speed` | Tune mouse wheel scroll speed with live preview **NEW** |
+| `/scroll-speed` | Tune mouse wheel scroll speed with live preview |
 
 ### Tools
 
@@ -263,7 +264,7 @@
 | `/rc` | Remote Control |
 | `--remote` | Web session on claude.ai |
 | `Push notifications` | Mobile push via Remote Control |
-| `API key → no cloud` | API key disables Remote Control, /schedule, claude.ai MCP, notifications **NEW** |
+| `API key → no cloud` | API key disables Remote Control, /schedule, claude.ai MCP, notifications |
 
 ## 🖥️ CLI & Flags
 
@@ -281,7 +282,7 @@
 | `claude plugin prune` | Remove orphaned auto-installed plugins |
 | `claude ultrareview [target]` | Run /ultrareview non-interactively; --json for raw |
 | `claude project purge [path]` | Delete all CC state; --dry-run, -y, -i, --all |
-| `claude agents` | Agent dashboard; --cwd scope; --add-dir, --model, --effort, --permission-mode **NEW** |
+| `claude agents` | Agent dashboard; --cwd, --add-dir, --settings, --mcp-config, --model, --effort **NEW** |
 | `claude plugin details <name>` | Show plugin components, LSP servers, and projected token cost **NEW** |
 
 ### Key Flags
@@ -396,6 +397,7 @@
 | `autoMode.$defaults` | Extend built-in auto mode rules instead of replacing |
 | `skillOverrides` | Control skill visibility: off/user-invocable-only/name-only |
 | `worktree.baseRef` | fresh|head — base branch for worktrees (default changed) |
+| `worktree.bgIsolation` | none — background sessions edit working copy directly (no worktree) **NEW** |
 | `autoMode.hard_deny` | Block unconditionally regardless of user intent or allow exceptions |
 
 ### Key Env Vars
@@ -409,10 +411,10 @@
 | `DISABLE_UPDATES` | Block all update paths including manual |
 | `ANTHROPIC_BEDROCK_SERVICE_TIER` | Select Bedrock tier (default/flex/priority) |
 | `CLAUDE_EFFORT` | Current effort level in hooks and Bash tool |
-| `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env **NEW** |
-| `CLAUDE_CODE_PLUGIN_PREFER_HTTPS` | Clone GitHub plugin sources over HTTPS instead of SSH **NEW** |
-| `ANTHROPIC_WORKSPACE_ID` | Scope minted token to specific workspace in identity federation **NEW** |
-| `CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE` | Pin fast mode to Opus 4.6 (default now Opus 4.7) **NEW** |
+| `CLAUDE_PROJECT_DIR` | Project dir passed to MCP stdio servers and hooks env |
+| `CLAUDE_CODE_POWERSHELL_RESPECT_EXECUTION_POLICY` | Opt out of PowerShell -ExecutionPolicy Bypass **NEW** |
+| `CLAUDE_CODE_USE_POWERSHELL_TOOL` | Opt out of PowerShell tool on Windows (Bedrock/Vertex/Foundry) **NEW** |
+| `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` | Override stop-hook consecutive-block cap (default 8) **NEW** |
 
 ### Hooks
 
@@ -425,11 +427,10 @@
 | `Stop` | When Claude finishes response |
 | `SubagentStop` | When subagent finishes |
 | `PermissionDenied` | After auto mode denials |
-| `TaskCreated` | When task created via TaskCreate |
 | `PreCompact` | Block compaction (exit 2 or decision:block) |
 | `mcp_tool type` | Invoke MCP tool directly from hook |
-| `args: string[]` | Hook exec form — spawn directly without shell **NEW** |
-| `continueOnBlock` | PostToolUse: feed rejection reason back, continue turn **NEW** |
+| `args: string[]` | Hook exec form — spawn directly without shell |
+| `continueOnBlock` | PostToolUse: feed rejection reason back, continue turn |
 | `terminalSequence` | Hook JSON field — emit desktop notifications, window titles, bells **NEW** |
 
 ---
